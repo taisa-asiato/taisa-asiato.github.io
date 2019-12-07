@@ -1,0 +1,102 @@
+
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+ <channel>
+   <title>Categories on でぶろぐ</title>
+   <link>https://taisa-asiato.github.io/categories/</link>
+   <description>Recent content in Categories on でぶろぐ</description>
+   <generator>Hugo -- gohugo.io</generator>
+   <language>ja</language>
+   
+       <atom:link href="https://taisa-asiato.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+   
+   
+     <item>
+       <title>螺旋2</title>
+       <link>https://taisa-asiato.github.io/post/pra/</link>
+       <pubDate>Wed, 04 Dec 2019 00:00:00 +0000</pubDate>
+       
+       <guid>https://taisa-asiato.github.io/post/pra/</guid>
+       <description>&lt;p&gt;Rustの勉強がてらプロコンの問題を解くことにしました。
+AOJのプロコン導入問題を解いていきます。
+問題は螺旋本に登場する問題を順番に解いていきます。
+はじめの問題はALDS1_1_Dです。&lt;/p&gt;
+&lt;p&gt;なお，タイトルの螺旋2は螺旋+章番号を意味します。
+今後のナンバリングは上記螺旋+章番号で統一します。&lt;/p&gt;
+&lt;p&gt;以下ソースコードです。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-Rust&#34; data-lang=&#34;Rust&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;use&lt;/span&gt; std::io;
+
+&lt;span style=&#34;color:#66d9ef&#34;&gt;fn&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;main&lt;/span&gt;() {
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;mut&lt;/span&gt; tmp_str &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; String::new();
+    &lt;span style=&#34;color:#75715e&#34;&gt;// 標準入力から一行受け取る
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    io::stdin().read_line( &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;mut&lt;/span&gt; tmp_str );
+
+    &lt;span style=&#34;color:#75715e&#34;&gt;// 標準入力から受け取った文字を数字に変換する
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; linenum: &lt;span style=&#34;color:#66d9ef&#34;&gt;i32&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; tmp_str.trim().parse().expect( &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;expected val is inreger&amp;#34;&lt;/span&gt; );
+
+    &lt;span style=&#34;color:#75715e&#34;&gt;// 動的配列を宣言
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;mut&lt;/span&gt; numv: Vec&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;i32&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; Vec::new();
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; i &lt;span style=&#34;color:#66d9ef&#34;&gt;in&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;..linenum {
+        &lt;span style=&#34;color:#75715e&#34;&gt;// enter区切りで標準入力から数値を受け取り, 動的配列の末尾へpushする
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;        tmp_str &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; String::new();
+        io::stdin().read_line( &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;mut&lt;/span&gt; tmp_str );
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; tmp_val &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; tmp_str.trim().parse().expect( &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Failed read line from standard input&amp;#34;&lt;/span&gt; );
+        numv.push( tmp_val );
+    }
+
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;mut&lt;/span&gt; max_val &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1000000000&lt;/span&gt;;
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; i &lt;span style=&#34;color:#66d9ef&#34;&gt;in&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;..linenum {
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; j &lt;span style=&#34;color:#66d9ef&#34;&gt;in&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;..i {
+            &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; numv[i &lt;span style=&#34;color:#66d9ef&#34;&gt;as&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;usize&lt;/span&gt;] &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; numv[j &lt;span style=&#34;color:#66d9ef&#34;&gt;as&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;usize&lt;/span&gt; ] &lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; max_val {
+                max_val &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; numv[ i &lt;span style=&#34;color:#66d9ef&#34;&gt;as&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;usize&lt;/span&gt; ] &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; numv[ j &lt;span style=&#34;color:#66d9ef&#34;&gt;as&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;usize&lt;/span&gt; ];
+            }
+        } 
+    }
+    println&lt;span style=&#34;color:#f92672&#34;&gt;!&lt;/span&gt;( &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;{}&amp;#34;&lt;/span&gt;, max_val );
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;当初は上記コードを実装しましたが, TLEで通りませんでした。
+（過去にCで出したときはどうだったのだろう。）&lt;/p&gt;
+&lt;p&gt;本問題は, ある時点での入力値とそれ以前の入力との差が最大になるものを
+求める問題であるため, ある時点における最小の入力値を記録しておけば計算量を
+減らすことができます。&lt;/p&gt;
+&lt;p&gt;下記に改良したソースコードを記載します。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-Rust&#34; data-lang=&#34;Rust&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;use&lt;/span&gt; std::io;
+
+&lt;span style=&#34;color:#66d9ef&#34;&gt;fn&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;main&lt;/span&gt;() {
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;mut&lt;/span&gt; tmp_str &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; String::new();
+    &lt;span style=&#34;color:#75715e&#34;&gt;// 標準入力から一行受け取る
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    io::stdin().read_line( &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;mut&lt;/span&gt; tmp_str );
+
+    &lt;span style=&#34;color:#75715e&#34;&gt;// 標準入力から受け取った文字を数字に変換する
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; linenum: &lt;span style=&#34;color:#66d9ef&#34;&gt;i32&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; tmp_str.trim().parse().expect( &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;expected val is inreger&amp;#34;&lt;/span&gt; );
+
+    &lt;span style=&#34;color:#75715e&#34;&gt;// 動的配列を宣言
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;mut&lt;/span&gt; numv: Vec&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;i32&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; Vec::new();
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; i &lt;span style=&#34;color:#66d9ef&#34;&gt;in&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;..linenum {
+        &lt;span style=&#34;color:#75715e&#34;&gt;// enter区切りで標準入力から数値を受け取り, 動的配列の末尾へpushする
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;        tmp_str &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; String::new();
+        io::stdin().read_line( &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;mut&lt;/span&gt; tmp_str );
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; tmp_val &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; tmp_str.trim().parse().expect( &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Failed read line from standard input&amp;#34;&lt;/span&gt; );
+        numv.push( tmp_val );
+    }
+
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;mut&lt;/span&gt; max_val &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1000000000&lt;/span&gt;;
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;mut&lt;/span&gt; min_val &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; numv[&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;];
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; i &lt;span style=&#34;color:#66d9ef&#34;&gt;in&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;..linenum {
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; max_val &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; numv[i &lt;span style=&#34;color:#66d9ef&#34;&gt;as&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;usize&lt;/span&gt;] &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; min_val {
+            max_val &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; numv[i &lt;span style=&#34;color:#66d9ef&#34;&gt;as&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;usize&lt;/span&gt;] &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; min_val;
+        }
+
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; min_val &lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; numv[i &lt;span style=&#34;color:#66d9ef&#34;&gt;as&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;usize&lt;/span&gt;] {
+            min_val &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; numv[i &lt;span style=&#34;color:#66d9ef&#34;&gt;as&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;usize&lt;/span&gt;];
+        }
+    }
+    println&lt;span style=&#34;color:#f92672&#34;&gt;!&lt;/span&gt;( &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;{}&amp;#34;&lt;/span&gt;, max_val );
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;上記でACとなりました。&lt;/p&gt;
+&lt;p&gt;末尾に, 本投稿が技術に関する初めての投稿のため, 説明が下手ですが
+今後改善していけたらと思います。&lt;/p&gt;
+</description>
+     </item>
+   
+ </channel>
+</rss>
