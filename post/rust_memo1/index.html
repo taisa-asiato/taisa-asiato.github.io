@@ -1,0 +1,225 @@
+<!doctype html>
+
+<html lang="ja">
+
+<head>
+  <title>でぶろぐ</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="taisa" /><meta name="generator" content="Hugo 0.60.1" />
+    
+
+  <meta property="og:title" content="memo" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://taisa-asiato.github.io/tags/memo/" />
+<meta property="og:updated_time" content="2019-12-14T23:39:06+09:00" />
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="memo"/>
+<meta name="twitter:description" content=""/>
+
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css" />
+  <script src="https://kit.fontawesome.com/b76b73e8e8.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" /></head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">でぶろぐ</a>
+            </h1>
+
+      <ul id="social-media">
+             <li>
+               <a href="https://github.com/taisa-asiato" title="GitHub">
+               <i class="fab fa-github fa-lg"></i>
+               </a>
+             </li>
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>Rust memo1</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2019-12-14T23:39:06&#43;09:00">Dec 14, 2019</time>
+        </li>
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/rust">#Rust</a>
+                
+                    , 
+                    <a href="/tags/memo">#memo</a>
+                
+            </em>
+        </li>
+        
+
+        <li>2 minutes read</li>
+    </ul>
+</aside>
+
+    
+
+    <p>Rustメモ用です。</p>
+<p>螺旋本の挿入ソートプログラムを書きました。
+ソースコードは以下です。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Rust" data-lang="Rust"><span style="color:#66d9ef">use</span> std::io;
+
+<span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+
+    <span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> tmp_str <span style="color:#f92672">=</span> String::new();
+    io::stdin().read_line( <span style="color:#f92672">&amp;</span><span style="color:#66d9ef">mut</span> tmp_str ).expect( <span style="color:#e6db74">&#34;No input val&#34;</span> );
+    <span style="color:#66d9ef">let</span> ar_size: <span style="color:#66d9ef">u32</span> <span style="color:#f92672">=</span> tmp_str.trim().parse().expect( <span style="color:#e6db74">&#34;Failed parse&#34;</span> );
+
+    tmp_str <span style="color:#f92672">=</span> String::new();
+    io::stdin().read_line( <span style="color:#f92672">&amp;</span><span style="color:#66d9ef">mut</span> tmp_str ).expect( <span style="color:#e6db74">&#34;readline error val&#34;</span> );
+    <span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> numv: Vec<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">i32</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">=</span> tmp_str.split_whitespace().filter_map( <span style="color:#f92672">|</span>k<span style="color:#f92672">|</span> k.parse().ok() ).collect::<span style="color:#f92672">&lt;</span>Vec<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">i32</span><span style="color:#f92672">&gt;</span><span style="color:#f92672">&gt;</span>();
+
+    <span style="color:#66d9ef">let</span> iter_v <span style="color:#f92672">=</span> numv.iter();
+
+    trace( <span style="color:#f92672">&amp;</span>numv );
+    <span style="color:#66d9ef">for</span> i <span style="color:#66d9ef">in</span> <span style="color:#ae81ff">1</span>..ar_size {
+        <span style="color:#66d9ef">let</span> tmp_val <span style="color:#f92672">=</span> numv[i <span style="color:#66d9ef">as</span> <span style="color:#66d9ef">usize</span>];
+        <span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> j <span style="color:#f92672">=</span>  i <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>;
+        <span style="color:#66d9ef">while</span> ( j <span style="color:#f92672">&gt;</span><span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">&amp;</span><span style="color:#f92672">&amp;</span> tmp_val <span style="color:#f92672">&lt;</span> numv[j <span style="color:#66d9ef">as</span> <span style="color:#66d9ef">usize</span>] ) {
+            <span style="color:#66d9ef">let</span> tmp_stat <span style="color:#f92672">=</span> j <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>;
+            numv[tmp_stat <span style="color:#66d9ef">as</span> <span style="color:#66d9ef">usize</span>] <span style="color:#f92672">=</span> numv[j <span style="color:#66d9ef">as</span> <span style="color:#66d9ef">usize</span>];
+            j <span style="color:#f92672">=</span> j <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>;
+        }
+        numv[(j<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>) <span style="color:#66d9ef">as</span> <span style="color:#66d9ef">usize</span>] <span style="color:#f92672">=</span> tmp_val;
+        trace( <span style="color:#f92672">&amp;</span>numv );
+    }
+}
+
+<span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">trace</span>( numv: <span style="color:#66d9ef">&amp;</span>Vec<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">i32</span><span style="color:#f92672">&gt;</span> ) {
+    <span style="color:#66d9ef">let</span> round: <span style="color:#66d9ef">usize</span> <span style="color:#f92672">=</span> numv.len();
+
+    <span style="color:#66d9ef">for</span> i <span style="color:#66d9ef">in</span> <span style="color:#ae81ff">0</span>..round {
+        <span style="color:#66d9ef">if</span> i <span style="color:#f92672">=</span><span style="color:#f92672">=</span> round <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span> {
+            println<span style="color:#f92672">!</span>( <span style="color:#e6db74">&#34;{}&#34;</span>, numv[i <span style="color:#66d9ef">as</span> <span style="color:#66d9ef">usize</span>] );
+        } <span style="color:#66d9ef">else</span> {
+            print<span style="color:#f92672">!</span>( <span style="color:#e6db74">&#34;{} &#34;</span>, numv[i <span style="color:#66d9ef">as</span> <span style="color:#66d9ef">usize</span>] );
+        }
+    }
+}
+</code></pre></div><p>実行すると下記のエラーが出力されました。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#ae81ff">6</span>
+<span style="color:#ae81ff">5</span> <span style="color:#ae81ff">4</span> <span style="color:#ae81ff">2</span> <span style="color:#ae81ff">6</span> <span style="color:#ae81ff">3</span> <span style="color:#ae81ff">1</span>
+<span style="color:#ae81ff">5</span> <span style="color:#ae81ff">4</span> <span style="color:#ae81ff">2</span> <span style="color:#ae81ff">6</span> <span style="color:#ae81ff">3</span> <span style="color:#ae81ff">1</span>
+thread <span style="color:#e6db74">&#39;main&#39;</span> panicked at <span style="color:#e6db74">&#39;attempt to subtract with overflow&#39;</span>, src/main.rs:23:17
+note: Run with <span style="color:#e6db74">`</span>RUST_BACKTRACE<span style="color:#f92672">=</span>1<span style="color:#e6db74">`</span> environment variable to display a backtrace.
+</code></pre></div><p>原因はVecのサイズなどではなく, 変数jの型がusizeのため, whileループ中で
+jの値が-1になるためエラーが出ていたっぽい。
+jの宣言をi32, 値を代入する際にキャストして以下のコードに書き換えました。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Rust" data-lang="Rust"><span style="color:#66d9ef">use</span> std::io;
+
+<span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+
+    <span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> tmp_str <span style="color:#f92672">=</span> String::new();
+    io::stdin().read_line( <span style="color:#f92672">&amp;</span><span style="color:#66d9ef">mut</span> tmp_str ).expect( <span style="color:#e6db74">&#34;No input val&#34;</span> );
+    <span style="color:#66d9ef">let</span> ar_size: <span style="color:#66d9ef">u32</span> <span style="color:#f92672">=</span> tmp_str.trim().parse().expect( <span style="color:#e6db74">&#34;Failed parse&#34;</span> );
+
+    tmp_str <span style="color:#f92672">=</span> String::new();
+    io::stdin().read_line( <span style="color:#f92672">&amp;</span><span style="color:#66d9ef">mut</span> tmp_str ).expect( <span style="color:#e6db74">&#34;readline error val&#34;</span> );
+    <span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> numv: Vec<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">i32</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">=</span> tmp_str.split_whitespace().filter_map( <span style="color:#f92672">|</span>k<span style="color:#f92672">|</span> k.parse().ok() ).collect::<span style="color:#f92672">&lt;</span>Vec<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">i32</span><span style="color:#f92672">&gt;</span><span style="color:#f92672">&gt;</span>();
+
+    <span style="color:#66d9ef">let</span> iter_v <span style="color:#f92672">=</span> numv.iter();
+
+    trace( <span style="color:#f92672">&amp;</span>numv );
+    <span style="color:#66d9ef">for</span> i <span style="color:#66d9ef">in</span> <span style="color:#ae81ff">1</span>..ar_size {
+        <span style="color:#66d9ef">let</span> tmp_val <span style="color:#f92672">=</span> numv[i <span style="color:#66d9ef">as</span> <span style="color:#66d9ef">usize</span>];
+        <span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> j: <span style="color:#66d9ef">i32</span>  <span style="color:#f92672">=</span> ( i <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span> ) <span style="color:#66d9ef">as</span> <span style="color:#66d9ef">i32</span>;
+        <span style="color:#66d9ef">while</span> ( j <span style="color:#f92672">&gt;</span><span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">&amp;</span><span style="color:#f92672">&amp;</span> tmp_val <span style="color:#f92672">&lt;</span> numv[j <span style="color:#66d9ef">as</span> <span style="color:#66d9ef">usize</span>] ) {
+            <span style="color:#66d9ef">let</span> tmp_stat <span style="color:#f92672">=</span> j <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>;
+            numv[tmp_stat <span style="color:#66d9ef">as</span> <span style="color:#66d9ef">usize</span>] <span style="color:#f92672">=</span> numv[j <span style="color:#66d9ef">as</span> <span style="color:#66d9ef">usize</span>];
+            j <span style="color:#f92672">=</span> j <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>;
+        }
+        numv[(j<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>) <span style="color:#66d9ef">as</span> <span style="color:#66d9ef">usize</span>] <span style="color:#f92672">=</span> tmp_val;
+        trace( <span style="color:#f92672">&amp;</span>numv );
+    }
+}
+
+<span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">trace</span>( numv: <span style="color:#66d9ef">&amp;</span>Vec<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">i32</span><span style="color:#f92672">&gt;</span> ) {
+    <span style="color:#66d9ef">let</span> round: <span style="color:#66d9ef">usize</span> <span style="color:#f92672">=</span> numv.len();
+
+    <span style="color:#66d9ef">for</span> i <span style="color:#66d9ef">in</span> <span style="color:#ae81ff">0</span>..round {
+        <span style="color:#66d9ef">if</span> i <span style="color:#f92672">=</span><span style="color:#f92672">=</span> round <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span> {
+            println<span style="color:#f92672">!</span>( <span style="color:#e6db74">&#34;{}&#34;</span>, numv[i <span style="color:#66d9ef">as</span> <span style="color:#66d9ef">usize</span>] );
+        } <span style="color:#66d9ef">else</span> {
+            print<span style="color:#f92672">!</span>( <span style="color:#e6db74">&#34;{} &#34;</span>, numv[i <span style="color:#66d9ef">as</span> <span style="color:#66d9ef">usize</span>] );
+        }
+    }
+}
+</code></pre></div><p>推測が上であっているのかわからないため, 下記のコードで確かめたところ
+同じエラーがでました。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Rust" data-lang="Rust"><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+    <span style="color:#66d9ef">let</span> i: <span style="color:#66d9ef">usize</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>;
+    <span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> j <span style="color:#f92672">=</span> i;
+
+    <span style="color:#66d9ef">for</span> m <span style="color:#66d9ef">in</span> <span style="color:#ae81ff">0</span>..<span style="color:#ae81ff">10</span> {
+        j <span style="color:#f92672">=</span> i <span style="color:#f92672">-</span> <span style="color:#ae81ff">2</span><span style="color:#f92672">*</span>m;
+        println<span style="color:#f92672">!</span>( <span style="color:#e6db74">&#34;[{}] \t {}&#34;</span>, m, j );
+    }
+}
+</code></pre></div><p>多分自分の推測のとおりかなと思います。</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="https://taisa-asiato.github.io/post/pra/"><i class="fa fa-chevron-circle-left"></i> 螺旋2</a>
+        </li>
+        
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> |
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="https://taisa-asiato.github.io/index.xml">Subscribe </a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+
+</body>
+
+</html>
+

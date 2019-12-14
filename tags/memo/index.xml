@@ -1,14 +1,14 @@
 
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
  <channel>
-   <title>でぶろぐ</title>
-   <link>https://taisa-asiato.github.io/post/</link>
-   <description>Recent content on でぶろぐ</description>
+   <title>memo on でぶろぐ</title>
+   <link>https://taisa-asiato.github.io/tags/memo/</link>
+   <description>Recent content in memo on でぶろぐ</description>
    <generator>Hugo -- gohugo.io</generator>
    <language>ja</language>
    <lastBuildDate>Sat, 14 Dec 2019 23:39:06 +0900</lastBuildDate>
    
-       <atom:link href="https://taisa-asiato.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+       <atom:link href="https://taisa-asiato.github.io/tags/memo/index.xml" rel="self" type="application/rss+xml" />
    
    
      <item>
