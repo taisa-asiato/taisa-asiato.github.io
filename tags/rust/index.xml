@@ -6,10 +6,74 @@
    <description>Recent content in Rust on でぶろぐ</description>
    <generator>Hugo -- gohugo.io</generator>
    <language>ja</language>
-   <lastBuildDate>Sat, 14 Dec 2019 23:39:06 +0900</lastBuildDate>
+   <lastBuildDate>Sun, 12 Jan 2020 21:48:17 +0900</lastBuildDate>
    
        <atom:link href="https://taisa-asiato.github.io/tags/rust/index.xml" rel="self" type="application/rss+xml" />
    
+   
+     <item>
+       <title>Rust Memo2</title>
+       <link>https://taisa-asiato.github.io/post/rust-memo2/</link>
+       <pubDate>Sun, 12 Jan 2020 21:48:17 +0900</pubDate>
+       
+       <guid>https://taisa-asiato.github.io/post/rust-memo2/</guid>
+       <description>&lt;p&gt;Rustの勉強メモその2です。&lt;/p&gt;
+&lt;p&gt;螺旋本の3.5問目(安定ソート), トランプカードを
+構造体を使用して表現していたのですが,
+標準入力から得た値をパースしてCard型のVectorにpushする処理が
+コンパイル時にエラーになりました。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;error&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;E0382&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;: assign to part of moved value: &lt;span style=&#34;color:#e6db74&#34;&gt;`&lt;/span&gt;card_val&lt;span style=&#34;color:#e6db74&#34;&gt;`&lt;/span&gt;
+  --&amp;gt; pro3-4.rs:28:9
+   |
+&lt;span style=&#34;color:#ae81ff&#34;&gt;20&lt;/span&gt; |     let mut card_val &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; Card &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+   |         ------------ move occurs because &lt;span style=&#34;color:#e6db74&#34;&gt;`&lt;/span&gt;card_val&lt;span style=&#34;color:#e6db74&#34;&gt;`&lt;/span&gt; has type &lt;span style=&#34;color:#e6db74&#34;&gt;`&lt;/span&gt;Card&lt;span style=&#34;color:#e6db74&#34;&gt;`&lt;/span&gt;, which does not implement the &lt;span style=&#34;color:#e6db74&#34;&gt;`&lt;/span&gt;Copy&lt;span style=&#34;color:#e6db74&#34;&gt;`&lt;/span&gt; trait
+...
+&lt;span style=&#34;color:#ae81ff&#34;&gt;28&lt;/span&gt; |         card_val.symbol &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; chs.nth&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;0&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;.unwrap&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;;
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ value partially assigned here after move
+...
+&lt;span style=&#34;color:#ae81ff&#34;&gt;32&lt;/span&gt; |         card.push&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt; card_val &lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;;
+   |                    -------- value moved here, in previous iteration of loop
+
+error: aborting due to previous error
+
+For more information about this error, try &lt;span style=&#34;color:#e6db74&#34;&gt;`&lt;/span&gt;rustc --explain E0382&lt;span style=&#34;color:#e6db74&#34;&gt;`&lt;/span&gt;.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;ソースコードは次のように書いていました。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-Rust&#34; data-lang=&#34;Rust&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;use&lt;/span&gt; std::io;
+
+&lt;span style=&#34;color:#66d9ef&#34;&gt;struct&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Card&lt;/span&gt; {
+    number: &lt;span style=&#34;color:#66d9ef&#34;&gt;i32&lt;/span&gt;,
+    symbol: &lt;span style=&#34;color:#a6e22e&#34;&gt;char&lt;/span&gt;,
+}
+
+&lt;span style=&#34;color:#66d9ef&#34;&gt;fn&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;main&lt;/span&gt;() {
+
+    ...
+
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; i &lt;span style=&#34;color:#66d9ef&#34;&gt;in&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;..ary_size {
+	&lt;span style=&#34;color:#75715e&#34;&gt;//　カードのシンボルを代入
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;mut&lt;/span&gt; chs &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; valv[i &lt;span style=&#34;color:#66d9ef&#34;&gt;as&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;usize&lt;/span&gt;].chars().clone();
+        card_val.symbol &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; chs.nth(&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;).unwrap();
+
+	&lt;span style=&#34;color:#75715e&#34;&gt;// カードの数値を代入
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;        valv[i &lt;span style=&#34;color:#66d9ef&#34;&gt;as&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;usize&lt;/span&gt;].remove( &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt; );
+        card_val.number &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; valv[i &lt;span style=&#34;color:#66d9ef&#34;&gt;as&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;usize&lt;/span&gt;].parse().expect( &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;value is not integer&amp;#34;&lt;/span&gt; );
+        card.push( card_val );
+    }
+
+    ...
+}
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;エラーの内容から推察するに, Card型がCopyトレイトを実装していないため,
+28行目の代入でchsの値から資源がcard_val.symbolに移動しており,
+再度chsの値への資源割当ができないために起こっていたっぽい。&lt;/p&gt;
+&lt;p&gt;構造体の宣言前に&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-Rust&#34; data-lang=&#34;Rust&#34;&gt;[&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;#&lt;/span&gt;derive(Copy,Clone)]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;を記載することで明示的にユーザ定義型にCopyトレイトを実装できるので,
+こちらを記載することで上記エラーに対処できました。&lt;/p&gt;
+&lt;p&gt;※ 28行目の~のあたりの推察は間違っている気がするので, 正しい情報がわかれば
+修正したい。&lt;/p&gt;
+</description>
+     </item>
    
      <item>
        <title>コンピュータシステムの理論と実装 10章</title>
