@@ -1,0 +1,211 @@
+<!doctype html>
+
+<html lang="ja">
+
+<head>
+  <title>でぶろぐ</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="taisa" /><meta name="generator" content="Hugo 0.60.1" />
+    
+
+  <meta property="og:title" content="でぶろぐ" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://taisa-asiato.github.io/" />
+<meta property="og:updated_time" content="2020-01-11T23:07:22+09:00" />
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="でぶろぐ"/>
+<meta name="twitter:description" content=""/>
+
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css" />
+  <script src="https://kit.fontawesome.com/b76b73e8e8.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" /></head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">でぶろぐ</a>
+            </h1>
+
+      <ul id="social-media">
+             <li>
+               <a href="https://github.com/taisa-asiato" title="GitHub">
+               <i class="fab fa-github fa-lg"></i>
+               </a>
+             </li>
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>コンピュータシステムの理論と実装 10章</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2020-01-11T23:07:22&#43;09:00">Jan 11, 2020</time>
+        </li>
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/the-elements-of-computing-system">#The Elements of Computing System</a>
+                
+                    , 
+                    <a href="/tags/memo">#memo</a>
+                
+            </em>
+        </li>
+        
+
+        <li>One minute read</li>
+    </ul>
+</aside>
+
+    
+
+    <h2 id="heading">概要</h2>
+<p>コンピュータシステムの理論と実装の10章の課題を終えたので記事を書きます。</p>
+<p>10章の目的(11章もですが)はJackコンパイラの作成です。
+コンパイラは,</p>
+<blockquote>
+<p>コンピュータ・プログラミング言語の処理系（言語処理系）の一種で、
+高水準言語によるソースコードから、機械語あるいは元のプログラムよりも
+低い水準のコードに変換（コンパイル）する
+<!-- raw HTML omitted --><a href="https://ja.wikipedia.org/wiki/%E3%82%B3%E3%83%B3%E3%83%91%E3%82%A4%E3%83%A9">https://ja.wikipedia.org/wiki/%E3%82%B3%E3%83%B3%E3%83%91%E3%82%A4%E3%83%A9</a><!-- raw HTML omitted --></p>
+</blockquote>
+<p>プログラムです。
+コンパイラはコンパイルする際</p>
+<ul>
+<li>構文解析</li>
+<li>コード生成</li>
+</ul>
+<p>の大きく2つの作業を行なっています。
+本書ではJackコンパイラが行う上記２つの作業の詳細を10章, 11章の2章に分けて学び,
+課題としてそれぞれ構文解析器, コード生成器を実装します。それぞれ作成したものを合体させ
+Jackコンパイラの実装が完了します。</p>
+<p>10章で作成する構文解析器は, 10章の終了時点では解析器単体で動作し
+.xmlファイルへ構文解析の結果を出力できるよう実装を行います。</p>
+<h2 id="heading1">詳細</h2>
+<p>構文解析機は下記２つの異なるモジュールから構成されます。</p>
+<ul>
+<li>トークナイザ</li>
+<li>パーサ</li>
+</ul>
+<h3 id="heading2">トークナイザ</h3>
+<p>トークナイザは</p>
+<blockquote>
+<p>広義の構文解析の前半の処理で、自然言語の文やプログラミング言語の
+ソースコードなどの文字列を解析して、後半の狭義の構文解析で
+最小単位（終端記号）となっている「トークン」（字句）の並びを得る手続き
+<!-- raw HTML omitted --><a href="https://ja.wikipedia.org/wiki/%E5%AD%97%E5%8F%A5%E8%A7%A3%E6%9E%90">https://ja.wikipedia.org/wiki/%E5%AD%97%E5%8F%A5%E8%A7%A3%E6%9E%90</a><!-- raw HTML omitted --></p>
+</blockquote>
+<p>を行います。
+例えばC言語で記載された次の様なソースコードがあるとします。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C"><span style="color:#75715e">#</span><span style="color:#75715e">include</span> <span style="color:#75715e">&lt;stdio.h&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
+	printf( <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">hello, world</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span> );
+	<span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+}
+</code></pre></div><p>これをトークナイズすると, 次の様なトークン列となります。</p>
+<pre><code>#
+include
+&lt;
+stdio.h
+&gt;
+int 
+main
+(
+)
+...
+</code></pre><p>Jack言語のトークンは本書に記載されているため, それを元に字句分割を行いトークンを生成する
+プログラムを実装します。</p>
+<p>トークナイザは,</p>
+<ul>
+<li>1文字ずつ入力ストリームから値を取得</li>
+<li>異なる性質の文字を取得した場合にトークンの区切れとする</li>
+</ul>
+<p>の2つの処理を実装することで正しくトークン列を生成することができるようになります。</p>
+<h3 id="heading3">パーサ</h3>
+<p>パーサは構文解析を行うプログラムの総称です。
+プログラミング言語などが持つ構文の文法と, トークナイザが生成したトークン列との比較を行います。
+例えば, C言語ではif文の構文は次の様になっています。</p>
+<pre><code>if ( 条件式 ) {
+	then節 
+} else {
+	else節
+}
+</code></pre><p>C言語で記述されたソースコードをトークナイズした時, トークン列の中にifのトークンが
+あれば, 上記の構文が期待されます。そのため, ifの次のトークンは(, その次のトークンは&hellip;となります。
+得られたトークン列を上記構文と比較し, パース処理を進めます。</p>
+<p>トークナイザと同様, こちらもJack言語の構文が記載されているので, そちらを参考にパーサを実装
+します。また, 本章の課題である.xmlファイルを生成する機能も実装します。</p>
+<h3 id="heading4">その他</h3>
+<p>10章で作成する構文解析器はファイルかディレクトリを入力として与えることになるので,
+それらの値を判定しファイル読込及び書込を行う処理を実装する必要があります。</p>
+<h2 id="heading5">感想</h2>
+<p>実装中にはまったのが, トークナイザの作成です。
+実装開始からしばらくは空白区切りでトークン生成を行なっていました。
+考えれば当たり前ですが, ソースコード中のトークンがすべて空白で区切られている
+訳ではないため, この方法ではうまくいきませんでした。
+トークン列を得る際には入力ストリームから1文字づつ値を得て, その都度トークンの区切れかどうか
+判定する処理に書き換えるのがとても億劫で, 書き換えるのにかなりの時間をかけた気がします。</p>
+<p>残り2章です。10章に長くかけすぎたので, 残りの章は早めに終わらせらるよう頑張ります。</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="https://taisa-asiato.github.io/post/rust_memo1/"><i class="fa fa-chevron-circle-left"></i> Rust memo1</a>
+        </li>
+        
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> |
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="https://taisa-asiato.github.io/index.xml">Subscribe </a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+
+</body>
+
+</html>
+

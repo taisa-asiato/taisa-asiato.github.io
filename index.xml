@@ -6,10 +6,107 @@
    <description>Recent content on でぶろぐ</description>
    <generator>Hugo -- gohugo.io</generator>
    <language>ja</language>
-   <lastBuildDate>Sat, 14 Dec 2019 23:39:06 +0900</lastBuildDate>
+   <lastBuildDate>Sat, 11 Jan 2020 23:07:22 +0900</lastBuildDate>
    
        <atom:link href="https://taisa-asiato.github.io/index.xml" rel="self" type="application/rss+xml" />
    
+   
+     <item>
+       <title>コンピュータシステムの理論と実装 10章</title>
+       <link>https://taisa-asiato.github.io/post/compsystem10/</link>
+       <pubDate>Sat, 11 Jan 2020 23:07:22 +0900</pubDate>
+       
+       <guid>https://taisa-asiato.github.io/post/compsystem10/</guid>
+       <description>&lt;h2 id=&#34;heading&#34;&gt;概要&lt;/h2&gt;
+&lt;p&gt;コンピュータシステムの理論と実装の10章の課題を終えたので記事を書きます。&lt;/p&gt;
+&lt;p&gt;10章の目的(11章もですが)はJackコンパイラの作成です。
+コンパイラは,&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;コンピュータ・プログラミング言語の処理系（言語処理系）の一種で、
+高水準言語によるソースコードから、機械語あるいは元のプログラムよりも
+低い水準のコードに変換（コンパイル）する
+&lt;!-- raw HTML omitted --&gt;&lt;a href=&#34;https://ja.wikipedia.org/wiki/%E3%82%B3%E3%83%B3%E3%83%91%E3%82%A4%E3%83%A9&#34;&gt;https://ja.wikipedia.org/wiki/%E3%82%B3%E3%83%B3%E3%83%91%E3%82%A4%E3%83%A9&lt;/a&gt;&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;プログラムです。
+コンパイラはコンパイルする際&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;構文解析&lt;/li&gt;
+&lt;li&gt;コード生成&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;の大きく2つの作業を行なっています。
+本書ではJackコンパイラが行う上記２つの作業の詳細を10章, 11章の2章に分けて学び,
+課題としてそれぞれ構文解析器, コード生成器を実装します。それぞれ作成したものを合体させ
+Jackコンパイラの実装が完了します。&lt;/p&gt;
+&lt;p&gt;10章で作成する構文解析器は, 10章の終了時点では解析器単体で動作し
+.xmlファイルへ構文解析の結果を出力できるよう実装を行います。&lt;/p&gt;
+&lt;h2 id=&#34;heading1&#34;&gt;詳細&lt;/h2&gt;
+&lt;p&gt;構文解析機は下記２つの異なるモジュールから構成されます。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;トークナイザ&lt;/li&gt;
+&lt;li&gt;パーサ&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;heading2&#34;&gt;トークナイザ&lt;/h3&gt;
+&lt;p&gt;トークナイザは&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;広義の構文解析の前半の処理で、自然言語の文やプログラミング言語の
+ソースコードなどの文字列を解析して、後半の狭義の構文解析で
+最小単位（終端記号）となっている「トークン」（字句）の並びを得る手続き
+&lt;!-- raw HTML omitted --&gt;&lt;a href=&#34;https://ja.wikipedia.org/wiki/%E5%AD%97%E5%8F%A5%E8%A7%A3%E6%9E%90&#34;&gt;https://ja.wikipedia.org/wiki/%E5%AD%97%E5%8F%A5%E8%A7%A3%E6%9E%90&lt;/a&gt;&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;を行います。
+例えばC言語で記載された次の様なソースコードがあるとします。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-C&#34; data-lang=&#34;C&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;include&lt;/span&gt; &lt;span style=&#34;color:#75715e&#34;&gt;&amp;lt;stdio.h&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;main&lt;/span&gt;() {
+	printf( &lt;span style=&#34;color:#e6db74&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;hello, world&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;\n&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt; );
+	&lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;これをトークナイズすると, 次の様なトークン列となります。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;#
+include
+&amp;lt;
+stdio.h
+&amp;gt;
+int 
+main
+(
+)
+...
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Jack言語のトークンは本書に記載されているため, それを元に字句分割を行いトークンを生成する
+プログラムを実装します。&lt;/p&gt;
+&lt;p&gt;トークナイザは,&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;1文字ずつ入力ストリームから値を取得&lt;/li&gt;
+&lt;li&gt;異なる性質の文字を取得した場合にトークンの区切れとする&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;の2つの処理を実装することで正しくトークン列を生成することができるようになります。&lt;/p&gt;
+&lt;h3 id=&#34;heading3&#34;&gt;パーサ&lt;/h3&gt;
+&lt;p&gt;パーサは構文解析を行うプログラムの総称です。
+プログラミング言語などが持つ構文の文法と, トークナイザが生成したトークン列との比較を行います。
+例えば, C言語ではif文の構文は次の様になっています。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;if ( 条件式 ) {
+	then節 
+} else {
+	else節
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;C言語で記述されたソースコードをトークナイズした時, トークン列の中にifのトークンが
+あれば, 上記の構文が期待されます。そのため, ifの次のトークンは(, その次のトークンは&amp;hellip;となります。
+得られたトークン列を上記構文と比較し, パース処理を進めます。&lt;/p&gt;
+&lt;p&gt;トークナイザと同様, こちらもJack言語の構文が記載されているので, そちらを参考にパーサを実装
+します。また, 本章の課題である.xmlファイルを生成する機能も実装します。&lt;/p&gt;
+&lt;h3 id=&#34;heading4&#34;&gt;その他&lt;/h3&gt;
+&lt;p&gt;10章で作成する構文解析器はファイルかディレクトリを入力として与えることになるので,
+それらの値を判定しファイル読込及び書込を行う処理を実装する必要があります。&lt;/p&gt;
+&lt;h2 id=&#34;heading5&#34;&gt;感想&lt;/h2&gt;
+&lt;p&gt;実装中にはまったのが, トークナイザの作成です。
+実装開始からしばらくは空白区切りでトークン生成を行なっていました。
+考えれば当たり前ですが, ソースコード中のトークンがすべて空白で区切られている
+訳ではないため, この方法ではうまくいきませんでした。
+トークン列を得る際には入力ストリームから1文字づつ値を得て, その都度トークンの区切れかどうか
+判定する処理に書き換えるのがとても億劫で, 書き換えるのにかなりの時間をかけた気がします。&lt;/p&gt;
+&lt;p&gt;残り2章です。10章に長くかけすぎたので, 残りの章は早めに終わらせらるよう頑張ります。&lt;/p&gt;
+</description>
+     </item>
    
      <item>
        <title>Rust memo1</title>
