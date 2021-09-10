@@ -1,0 +1,170 @@
+<!doctype html>
+
+<html lang="ja">
+
+<head>
+  <title>でぶろぐ</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="taisa" /><meta name="generator" content="Hugo 0.60.1" />
+    
+
+  <meta property="og:title" content="でぶろぐ" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://taisa-asiato.github.io/" />
+<meta property="og:updated_time" content="2021-09-10T22:16:19+09:00" />
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="でぶろぐ"/>
+<meta name="twitter:description" content=""/>
+
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css" />
+  <script src="https://kit.fontawesome.com/b76b73e8e8.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" /></head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">でぶろぐ</a>
+            </h1>
+
+      <ul id="social-media">
+             <li>
+               <a href="https://github.com/taisa-asiato" title="GitHub">
+               <i class="fab fa-github fa-lg"></i>
+               </a>
+             </li>
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>Abc080</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2021-09-10T22:16:19&#43;09:00">Sep 10, 2021</time>
+        </li>
+        
+
+        
+
+        <li>One minute read</li>
+    </ul>
+</aside>
+
+    
+
+    <p>問題文を勘違いして, 10営業区間それぞれで利益最大となる店の利益の和を求めていた。</p>
+<p>求める回答は, joisinoお姉ちゃんが営業を行った区間のうち, 個別の店iに対して,
+被った営業区間毎に利益がP<!-- raw HTML omitted -->ij<!-- raw HTML omitted -->(店jの営業区間がjoisinoお姉ちゃんの営業区間とj個被る)
+となるので, 利益最大となるpi,jを各店毎に求めた和となる。</p>
+<p>解法は解説通りで, joisinoお姉ちゃんの10営業区間の（営業する/しない）すべての組み合わせに対して
+各店iで利益最大となるP<!-- raw HTML omitted -->ij<!-- raw HTML omitted -->を求めいき, 最終的にその和を出力する。</p>
+<p>全ての組み合わせを試すのにbit演算を用いている。
+※ 高々(2^10-1)×100なので, 全通り試しても十分間に合う。</p>
+<p>以下提出コードです。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Rust" data-lang="Rust"><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">read</span><span style="color:#f92672">&lt;</span>T: <span style="color:#a6e22e">std</span>::<span style="color:#66d9ef">str</span>::FromStr<span style="color:#f92672">&gt;</span>() -&gt; <span style="color:#a6e22e">T</span> {
+    <span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> s <span style="color:#f92672">=</span> String::new();
+    std::io::stdin().read_line(<span style="color:#f92672">&amp;</span><span style="color:#66d9ef">mut</span> s).ok();
+    s.trim().parse().ok().unwrap()
+}
+
+<span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">read_vec</span><span style="color:#f92672">&lt;</span>T: <span style="color:#a6e22e">std</span>::<span style="color:#66d9ef">str</span>::FromStr<span style="color:#f92672">&gt;</span>() -&gt; Vec<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> {
+    read::<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;</span>().split_whitespace()
+        .map(<span style="color:#f92672">|</span>e<span style="color:#f92672">|</span> e.parse().ok().unwrap()).collect()
+}
+
+<span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+    <span style="color:#66d9ef">let</span> n: <span style="color:#66d9ef">usize</span> <span style="color:#f92672">=</span> read::<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">usize</span><span style="color:#f92672">&gt;</span>();
+    <span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> f: Vec<span style="color:#f92672">&lt;</span>Vec<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">u8</span><span style="color:#f92672">&gt;</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">=</span> Vec::new();
+    <span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> p: Vec<span style="color:#f92672">&lt;</span>Vec<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">i64</span><span style="color:#f92672">&gt;</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">=</span> Vec::new();
+    <span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> ans: <span style="color:#66d9ef">i64</span> <span style="color:#f92672">=</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1_000_000_000</span>;
+
+    <span style="color:#66d9ef">for</span> i <span style="color:#66d9ef">in</span> <span style="color:#ae81ff">0</span>..n {
+        <span style="color:#66d9ef">let</span> tmp: Vec<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">u8</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">=</span> read_vec::<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">u8</span><span style="color:#f92672">&gt;</span>();
+        f.push(tmp);
+    }
+
+    <span style="color:#66d9ef">for</span> i <span style="color:#66d9ef">in</span> <span style="color:#ae81ff">0</span>..n {
+        <span style="color:#66d9ef">let</span> tmp: Vec<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">i64</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">=</span> read_vec::<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">i64</span><span style="color:#f92672">&gt;</span>();
+        p.push(tmp);
+    }
+
+    <span style="color:#66d9ef">for</span> i <span style="color:#66d9ef">in</span> <span style="color:#ae81ff">1</span>..<span style="color:#ae81ff">1</span><span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span><span style="color:#ae81ff">10</span> {
+
+        <span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> tmp: <span style="color:#66d9ef">i64</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+        <span style="color:#66d9ef">for</span> j <span style="color:#66d9ef">in</span> <span style="color:#ae81ff">0</span>..n {
+            <span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> c: <span style="color:#66d9ef">usize</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+            <span style="color:#66d9ef">for</span> l <span style="color:#66d9ef">in</span> <span style="color:#ae81ff">0</span>..<span style="color:#ae81ff">10</span> {
+                <span style="color:#66d9ef">if</span> (i<span style="color:#f92672">&gt;</span><span style="color:#f92672">&gt;</span>l <span style="color:#f92672">&amp;</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">=</span><span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">&amp;</span><span style="color:#f92672">&amp;</span> f[j][l] <span style="color:#f92672">=</span><span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> {
+                    <span style="color:#75715e">// joisionと同じ時間帯にi店が営業している場合
+</span><span style="color:#75715e"></span>                    c <span style="color:#f92672">+</span><span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
+                }
+            }
+            tmp <span style="color:#f92672">+</span><span style="color:#f92672">=</span> p[j][c];
+        }
+
+        <span style="color:#66d9ef">if</span> ans <span style="color:#f92672">&lt;</span> tmp {
+            ans <span style="color:#f92672">=</span> tmp;
+        } 
+    }
+
+    println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;{}&#34;</span>, ans);
+}
+
+
+</code></pre></div>
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="https://taisa-asiato.github.io/post/rust_memo3/"><i class="fa fa-chevron-circle-left"></i> Rust memo3</a>
+        </li>
+        
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> |
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="https://taisa-asiato.github.io/index.xml">Subscribe </a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+
+</body>
+
+</html>
+

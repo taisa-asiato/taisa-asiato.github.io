@@ -6,10 +6,78 @@
    <description>Recent content on でぶろぐ</description>
    <generator>Hugo -- gohugo.io</generator>
    <language>ja</language>
-   <lastBuildDate>Mon, 04 Jan 2021 23:53:49 +0900</lastBuildDate>
+   <lastBuildDate>Fri, 10 Sep 2021 22:16:19 +0900</lastBuildDate>
    
        <atom:link href="https://taisa-asiato.github.io/post/index.xml" rel="self" type="application/rss+xml" />
    
+   
+     <item>
+       <title>Abc080</title>
+       <link>https://taisa-asiato.github.io/post/abc080/</link>
+       <pubDate>Fri, 10 Sep 2021 22:16:19 +0900</pubDate>
+       
+       <guid>https://taisa-asiato.github.io/post/abc080/</guid>
+       <description>&lt;p&gt;問題文を勘違いして, 10営業区間それぞれで利益最大となる店の利益の和を求めていた。&lt;/p&gt;
+&lt;p&gt;求める回答は, joisinoお姉ちゃんが営業を行った区間のうち, 個別の店iに対して,
+被った営業区間毎に利益がP&lt;!-- raw HTML omitted --&gt;ij&lt;!-- raw HTML omitted --&gt;(店jの営業区間がjoisinoお姉ちゃんの営業区間とj個被る)
+となるので, 利益最大となるpi,jを各店毎に求めた和となる。&lt;/p&gt;
+&lt;p&gt;解法は解説通りで, joisinoお姉ちゃんの10営業区間の（営業する/しない）すべての組み合わせに対して
+各店iで利益最大となるP&lt;!-- raw HTML omitted --&gt;ij&lt;!-- raw HTML omitted --&gt;を求めいき, 最終的にその和を出力する。&lt;/p&gt;
+&lt;p&gt;全ての組み合わせを試すのにbit演算を用いている。
+※ 高々(2^10-1)×100なので, 全通り試しても十分間に合う。&lt;/p&gt;
+&lt;p&gt;以下提出コードです。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-Rust&#34; data-lang=&#34;Rust&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;fn&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;read&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;T: &lt;span style=&#34;color:#a6e22e&#34;&gt;std&lt;/span&gt;::&lt;span style=&#34;color:#66d9ef&#34;&gt;str&lt;/span&gt;::FromStr&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt;() -&amp;gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;T&lt;/span&gt; {
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;mut&lt;/span&gt; s &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; String::new();
+    std::io::stdin().read_line(&lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;mut&lt;/span&gt; s).ok();
+    s.trim().parse().ok().unwrap()
+}
+
+&lt;span style=&#34;color:#66d9ef&#34;&gt;fn&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;read_vec&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;T: &lt;span style=&#34;color:#a6e22e&#34;&gt;std&lt;/span&gt;::&lt;span style=&#34;color:#66d9ef&#34;&gt;str&lt;/span&gt;::FromStr&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt;() -&amp;gt; Vec&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;T&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; {
+    read::&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;String&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt;().split_whitespace()
+        .map(&lt;span style=&#34;color:#f92672&#34;&gt;|&lt;/span&gt;e&lt;span style=&#34;color:#f92672&#34;&gt;|&lt;/span&gt; e.parse().ok().unwrap()).collect()
+}
+
+&lt;span style=&#34;color:#66d9ef&#34;&gt;fn&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;main&lt;/span&gt;() {
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; n: &lt;span style=&#34;color:#66d9ef&#34;&gt;usize&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; read::&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;usize&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt;();
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;mut&lt;/span&gt; f: Vec&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;Vec&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;u8&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; Vec::new();
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;mut&lt;/span&gt; p: Vec&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;Vec&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;i64&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; Vec::new();
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;mut&lt;/span&gt; ans: &lt;span style=&#34;color:#66d9ef&#34;&gt;i64&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1_000_000_000&lt;/span&gt;;
+
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; i &lt;span style=&#34;color:#66d9ef&#34;&gt;in&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;..n {
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; tmp: Vec&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;u8&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; read_vec::&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;u8&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt;();
+        f.push(tmp);
+    }
+
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; i &lt;span style=&#34;color:#66d9ef&#34;&gt;in&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;..n {
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; tmp: Vec&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;i64&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; read_vec::&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;i64&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt;();
+        p.push(tmp);
+    }
+
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; i &lt;span style=&#34;color:#66d9ef&#34;&gt;in&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;..&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;10&lt;/span&gt; {
+
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;mut&lt;/span&gt; tmp: &lt;span style=&#34;color:#66d9ef&#34;&gt;i64&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;;
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; j &lt;span style=&#34;color:#66d9ef&#34;&gt;in&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;..n {
+            &lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;mut&lt;/span&gt; c: &lt;span style=&#34;color:#66d9ef&#34;&gt;usize&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;;
+            &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; l &lt;span style=&#34;color:#66d9ef&#34;&gt;in&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;..&lt;span style=&#34;color:#ae81ff&#34;&gt;10&lt;/span&gt; {
+                &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; (i&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt;l &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;) &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&lt;/span&gt; f[j][l] &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt; {
+                    &lt;span style=&#34;color:#75715e&#34;&gt;// joisionと同じ時間帯にi店が営業している場合
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;                    c &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;;
+                }
+            }
+            tmp &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; p[j][c];
+        }
+
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; ans &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; tmp {
+            ans &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; tmp;
+        } 
+    }
+
+    println&lt;span style=&#34;color:#f92672&#34;&gt;!&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;{}&amp;#34;&lt;/span&gt;, ans);
+}
+
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+     </item>
    
      <item>
        <title>Rust memo3</title>
