@@ -21,7 +21,7 @@
 被った営業区間毎に利益がP&lt;!-- raw HTML omitted --&gt;ij&lt;!-- raw HTML omitted --&gt;(店jの営業区間がjoisinoお姉ちゃんの営業区間とj個被る)
 となるので, 利益最大となるpi,jを各店毎に求めた和となる。&lt;/p&gt;
 &lt;p&gt;解法は解説通りで, joisinoお姉ちゃんの10営業区間の（営業する/しない）すべての組み合わせに対して
-各店iで利益最大となるP&lt;!-- raw HTML omitted --&gt;ij&lt;!-- raw HTML omitted --&gt;を求めいき, 最終的にその和を出力する。&lt;/p&gt;
+各店iで利益最大となるP&lt;!-- raw HTML omitted --&gt;ij&lt;!-- raw HTML omitted --&gt;を求めていき, 最終的にその和を出力する。&lt;/p&gt;
 &lt;p&gt;全ての組み合わせを試すのにbit演算を用いている。
 ※ 高々(2^10-1)×100なので, 全通り試しても十分間に合う。&lt;/p&gt;
 &lt;p&gt;以下提出コードです。&lt;/p&gt;
