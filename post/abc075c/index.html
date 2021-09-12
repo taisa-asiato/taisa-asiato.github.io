@@ -1,0 +1,193 @@
+<!doctype html>
+
+<html lang="ja">
+
+<head>
+  <title>でぶろぐ</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="taisa" /><meta name="generator" content="Hugo 0.60.1" />
+    
+
+  <meta property="og:title" content="Rust" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://taisa-asiato.github.io/tags/rust/" />
+<meta property="og:updated_time" content="2021-01-04T23:53:49+09:00" />
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Rust"/>
+<meta name="twitter:description" content=""/>
+
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css" />
+  <script src="https://kit.fontawesome.com/b76b73e8e8.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" /></head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">でぶろぐ</a>
+            </h1>
+
+      <ul id="social-media">
+             <li>
+               <a href="https://github.com/taisa-asiato" title="GitHub">
+               <i class="fab fa-github fa-lg"></i>
+               </a>
+             </li>
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>Abc075C</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2021-09-12T14:59:56&#43;09:00">Sep 12, 2021</time>
+        </li>
+        
+
+        
+
+        <li>One minute read</li>
+    </ul>
+</aside>
+
+    
+
+    <p>何となくやり方は思いついたが, コードに落とし込むことができなかった。
+解説と同じとおり, 下記のようなアルゴリズムを実装しました。</p>
+<ul>
+<li>辺から一つ選択し, その辺が無いものとする</li>
+<li>dfsによって各頂点を訪れることができるか探索する
+<ul>
+<li>未訪問の頂点で, 辺が接続されている場合は接続先の頂点に対して更に探索を続ける</li>
+<li>訪問した頂点はメモしておく</li>
+</ul>
+</li>
+<li>探索が終了したら訪問済みの頂点を確認する</li>
+<li>全ての頂点を訪問できた場合, その辺は橋ではない</li>
+</ul>
+<p>以下が提出コードです。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Rust" data-lang="Rust"><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">read</span><span style="color:#f92672">&lt;</span>T: <span style="color:#a6e22e">std</span>::<span style="color:#66d9ef">str</span>::FromStr<span style="color:#f92672">&gt;</span>() -&gt; <span style="color:#a6e22e">T</span> {
+    <span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> s <span style="color:#f92672">=</span> String::new();
+    std::io::stdin().read_line(<span style="color:#f92672">&amp;</span><span style="color:#66d9ef">mut</span> s).ok();
+    s.trim().parse().ok().unwrap()
+}
+
+<span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">read_vec</span><span style="color:#f92672">&lt;</span>T: <span style="color:#a6e22e">std</span>::<span style="color:#66d9ef">str</span>::FromStr<span style="color:#f92672">&gt;</span>() -&gt; Vec<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> {
+    read::<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;</span>().split_whitespace()
+        .map(<span style="color:#f92672">|</span>e<span style="color:#f92672">|</span> e.parse().ok().unwrap()).collect()
+}
+
+<span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+    <span style="color:#66d9ef">let</span> nm: Vec<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">usize</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">=</span> read_vec::<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">usize</span><span style="color:#f92672">&gt;</span>();
+    <span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> p: Vec<span style="color:#f92672">&lt;</span>(<span style="color:#66d9ef">usize</span>, <span style="color:#66d9ef">usize</span>)<span style="color:#f92672">&gt;</span> <span style="color:#f92672">=</span> Vec::new();
+    <span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> path: [[<span style="color:#66d9ef">bool</span>; <span style="color:#ae81ff">51</span>]; <span style="color:#ae81ff">51</span>] <span style="color:#f92672">=</span> [[<span style="color:#66d9ef">false</span>; <span style="color:#ae81ff">51</span>]; <span style="color:#ae81ff">51</span>];
+    <span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> node: [<span style="color:#66d9ef">bool</span>; <span style="color:#ae81ff">51</span>] <span style="color:#f92672">=</span> [<span style="color:#66d9ef">false</span>; <span style="color:#ae81ff">51</span>];
+    <span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> flag: <span style="color:#66d9ef">bool</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span>;
+    <span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> cnt: <span style="color:#66d9ef">u32</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+
+    <span style="color:#66d9ef">for</span> i <span style="color:#66d9ef">in</span> <span style="color:#ae81ff">0</span>..nm[<span style="color:#ae81ff">1</span>] {
+        <span style="color:#66d9ef">let</span> tmp: Vec<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">usize</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">=</span> read_vec::<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">usize</span><span style="color:#f92672">&gt;</span>();
+        p.push((tmp[<span style="color:#ae81ff">0</span>], tmp[<span style="color:#ae81ff">1</span>]));
+        path[tmp[<span style="color:#ae81ff">0</span>]][tmp[<span style="color:#ae81ff">1</span>]] <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;
+        path[tmp[<span style="color:#ae81ff">1</span>]][tmp[<span style="color:#ae81ff">0</span>]] <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;
+    }
+
+    <span style="color:#66d9ef">for</span> i <span style="color:#66d9ef">in</span> <span style="color:#ae81ff">0</span>..nm[<span style="color:#ae81ff">1</span>] {
+        flag <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span>;
+        path[p[i].<span style="color:#ae81ff">0</span>][p[i].<span style="color:#ae81ff">1</span>] <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span>;
+        path[p[i].<span style="color:#ae81ff">1</span>][p[i].<span style="color:#ae81ff">0</span>] <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span>;
+
+        <span style="color:#66d9ef">for</span> j <span style="color:#66d9ef">in</span> <span style="color:#ae81ff">1</span>..<span style="color:#f92672">=</span>nm[<span style="color:#ae81ff">0</span>] {
+            node[j] <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span>;
+        }
+
+        dfs(path, <span style="color:#f92672">&amp;</span><span style="color:#66d9ef">mut</span> node, <span style="color:#ae81ff">1</span>, nm[<span style="color:#ae81ff">0</span>]);
+
+        path[p[i].<span style="color:#ae81ff">0</span>][p[i].<span style="color:#ae81ff">1</span>] <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;
+        path[p[i].<span style="color:#ae81ff">1</span>][p[i].<span style="color:#ae81ff">0</span>] <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;
+
+        <span style="color:#66d9ef">for</span> j <span style="color:#66d9ef">in</span> <span style="color:#ae81ff">1</span>..<span style="color:#f92672">=</span>nm[<span style="color:#ae81ff">0</span>] {
+            <span style="color:#66d9ef">if</span> node[j] <span style="color:#f92672">=</span><span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span> {
+                flag <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;
+            }
+        }
+
+        <span style="color:#66d9ef">if</span> flag {
+            cnt <span style="color:#f92672">+</span><span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
+        }
+    }
+
+    println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;{}&#34;</span>, cnt);
+}
+
+<span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">dfs</span>(path: [[<span style="color:#66d9ef">bool</span>; <span style="color:#ae81ff">51</span>]; <span style="color:#ae81ff">51</span>], node: <span style="color:#66d9ef">&amp;</span><span style="color:#a6e22e">mut</span> [<span style="color:#66d9ef">bool</span>; <span style="color:#ae81ff">51</span>], pos: <span style="color:#66d9ef">usize</span>, nodemax: <span style="color:#66d9ef">usize</span>) {
+    node[pos] <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;
+
+    <span style="color:#66d9ef">for</span> i <span style="color:#66d9ef">in</span> <span style="color:#ae81ff">1</span>..<span style="color:#f92672">=</span>nodemax {
+        <span style="color:#66d9ef">if</span> node[i] <span style="color:#f92672">=</span><span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span> {
+            <span style="color:#66d9ef">continue</span>;
+        }
+        <span style="color:#66d9ef">if</span> path[pos][i] <span style="color:#f92672">=</span><span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span> {
+            <span style="color:#66d9ef">continue</span>;
+        }
+        dfs(path, node, i, nodemax);
+    }
+}
+
+</code></pre></div>
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="https://taisa-asiato.github.io/post/abc080/"><i class="fa fa-chevron-circle-left"></i> Abc080</a>
+        </li>
+        
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> |
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="https://taisa-asiato.github.io/index.xml">Subscribe </a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+
+</body>
+
+</html>
+
