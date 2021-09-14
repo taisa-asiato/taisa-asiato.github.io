@@ -10,14 +10,14 @@
   <meta name="author" content="taisa" /><link rel="alternate" type="application/rss+xml+xml" href="https://taisa-asiato.github.io/index.xml" title="でぶろぐ" /><meta name="generator" content="Hugo 0.60.1" />
     
 
-  <meta property="og:title" content="Rust" />
+  <meta property="og:title" content="Tags" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="https://taisa-asiato.github.io/tags/rust/" />
+<meta property="og:url" content="https://taisa-asiato.github.io/tags/" />
 <meta property="og:updated_time" content="2021-01-04T23:53:49+09:00" />
 
   <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Rust"/>
+<meta name="twitter:title" content="Tags"/>
 <meta name="twitter:description" content=""/>
 
 
@@ -59,6 +59,29 @@
         <ul>
           
           <li class="first">
+            <h1><a href="https://taisa-asiato.github.io/post/abc084c/" title="Abc084C">Abc084C</a></h1>
+            <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2021-09-15T00:26:55&#43;09:00">Sep 15, 2021</time>
+        </li>
+        
+
+        
+
+        <li>One minute read</li>
+    </ul>
+</aside>
+
+            <p>問題記載のとおり, ダイアグラムを考え実装するだけ。 自力で実装したが, 解説を見たらそちらの方がわかりやすかった。
+以下提出コードです。
+fn read&lt;T: std::str::FromStr&gt;() -&gt; T { let mut s = String::new(); std::io::stdin().read_line(&amp;mut s).ok(); s.trim().parse().ok().unwrap() } fn read_vec&lt;T: std::str::FromStr&gt;() -&gt; Vec&lt;T&gt; { read::&lt;String&gt;().split_whitespace() .map(|e| e.parse().ok().unwrap()).collect() } fn main() { let n: usize = read::&lt;usize&gt;(); let mut v: Vec&lt;Vec&lt;u64&gt;&gt; = Vec::new(); let mut t: Vec&lt;u64&gt; = Vec::new(); for i in 0.</p>
+            
+            <a href="/post/abc084c/">Read more…</a>
+            
+          </li>
+          
+          <li >
             <h1><a href="https://taisa-asiato.github.io/post/abc075c/" title="Abc075C">Abc075C</a></h1>
             <aside>
     <ul>
