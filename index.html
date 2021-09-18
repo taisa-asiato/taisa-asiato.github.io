@@ -10,14 +10,14 @@
   <meta name="author" content="taisa" /><link rel="alternate" type="application/rss+xml+xml" href="https://taisa-asiato.github.io/index.xml" title="でぶろぐ" /><meta name="generator" content="Hugo 0.60.1" />
     
 
-  <meta property="og:title" content="memo" />
+  <meta property="og:title" content="" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="https://taisa-asiato.github.io/tags/memo/" />
-<meta property="og:updated_time" content="2021-01-04T23:53:49+09:00" />
+<meta property="og:url" content="https://taisa-asiato.github.io/post/" />
+<meta property="og:updated_time" content="2021-09-18T17:52:48+09:00" />
 
   <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="memo"/>
+<meta name="twitter:title" content=""/>
 <meta name="twitter:description" content=""/>
 
 
@@ -59,6 +59,30 @@
         <ul>
           
           <li class="first">
+            <h1><a href="https://taisa-asiato.github.io/post/abc088c/" title="Abc088c">Abc088c</a></h1>
+            <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2021-09-18T17:52:48&#43;09:00">Sep 18, 2021</time>
+        </li>
+        
+
+        
+
+        <li>One minute read</li>
+    </ul>
+</aside>
+
+            <p>はじめはa1からb3までの和がc11からc33までの和の1/3に等しいので すべての入力を和算したのち3で割り切れるかどうかで判定したがWAとなった。
+解説のとおり, a1を0と仮定しても差し支えないため, そのような実装にしました。
+以下提出コードです。
+fn read&lt;T: std::str::FromStr&gt;() -&gt; T { let mut s = String::new(); std::io::stdin().read_line(&amp;mut s).ok(); s.trim().parse().ok().unwrap() } fn read_vec&lt;T: std::str::FromStr&gt;() -&gt; Vec&lt;T&gt; { read::&lt;String&gt;().split_whitespace() .map(|e| e.parse().ok().unwrap()).collect() } fn main() { let mut v: Vec&lt;Vec&lt;i32&gt;&gt; = Vec::new(); let mut a: [i32; 3] = [0; 3]; let mut b: [i32; 3] = [0; 3]; for i in 0.</p>
+            
+            <a href="/post/abc088c/">Read more…</a>
+            
+          </li>
+          
+          <li >
             <h1><a href="https://taisa-asiato.github.io/post/abc123b/" title="Abc123B">Abc123B</a></h1>
             <aside>
     <ul>
@@ -253,7 +277,8 @@ error[E0382]: assign to part of moved value: `card_val` --&gt; pro3-4.rs:28:9 | 
 
             <p>概要 コンピュータシステムの理論と実装の10章の課題を終えたので記事を書きます。
 10章の目的(11章もですが)はJackコンパイラの作成です。 コンパイラは,
- コンピュータ・プログラミング言語の処理系（言語処理系）の一種で、 高水準言語によるソースコードから、機械語あるいは元のプログラムよりも 低い水準のコードに変換（コンパイル）する https://ja.wikipedia.org/wiki/%E3%82%B3%E3%83%B3%E3%83%91%E3%82%A4%E3%83%A9 プログラムです。 コンパイラはコンパイルする際
+ コンピュータ・プログラミング言語の処理系（言語処理系）の一種で、 高水準言語によるソースコードから、機械語あるいは元のプログラムよりも 低い水準のコードに変換（コンパイル）する https://ja.wikipedia.org/wiki/%E3%82%B3%E3%83%B3%E3%83%91%E3%82%A4%E3%83%A9
+ プログラムです。 コンパイラはコンパイルする際
  構文解析 コード生成  の大きく2つの作業を行なっています。 本書ではJackコンパイラが行う上記２つの作業の詳細を10章, 11章の2章に分けて学び, 課題としてそれぞれ構文解析器, コード生成器を実装します。それぞれ作成したものを合体させ Jackコンパイラの実装が完了します。
 10章で作成する構文解析器は, 10章の終了時点では解析器単体で動作し .xmlファイルへ構文解析の結果を出力できるよう実装を行います。
 詳細 構文解析機は下記２つの異なるモジュールから構成されます。

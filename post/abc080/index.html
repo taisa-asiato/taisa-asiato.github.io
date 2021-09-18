@@ -10,14 +10,14 @@
   <meta name="author" content="taisa" /><meta name="generator" content="Hugo 0.60.1" />
     
 
-  <meta property="og:title" content="memo" />
+  <meta property="og:title" content="" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="https://taisa-asiato.github.io/tags/memo/" />
-<meta property="og:updated_time" content="2021-01-04T23:53:49+09:00" />
+<meta property="og:url" content="https://taisa-asiato.github.io/post/" />
+<meta property="og:updated_time" content="2021-09-18T17:52:48+09:00" />
 
   <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="memo"/>
+<meta name="twitter:title" content=""/>
 <meta name="twitter:description" content=""/>
 
 
@@ -77,10 +77,10 @@
 
     <p>問題文を勘違いして, 10営業区間それぞれで利益最大となる店の利益の和を求めていた。</p>
 <p>求める回答は, joisinoお姉ちゃんが営業を行った区間のうち, 個別の店iに対して,
-被った営業区間毎に利益がP<!-- raw HTML omitted -->ij<!-- raw HTML omitted -->(店jの営業区間がjoisinoお姉ちゃんの営業区間とj個被る)
+被った営業区間毎に利益がP<sub>ij</sub>(店jの営業区間がjoisinoお姉ちゃんの営業区間とj個被る)
 となるので, 利益最大となるpi,jを各店毎に求めた和となる。</p>
 <p>解法は解説通りで, joisinoお姉ちゃんの10営業区間の（営業する/しない）すべての組み合わせに対して
-各店iで利益最大となるP<!-- raw HTML omitted -->ij<!-- raw HTML omitted -->を求めていき, 最終的にその和を出力する。</p>
+各店iで利益最大となるP<sub>ij</sub>を求めていき, 最終的にその和を出力する。</p>
 <p>全ての組み合わせを試すのにbit演算を用いている。
 ※ 高々(2^10-1)×100なので, 全通り試しても十分間に合う。</p>
 <p>以下提出コードです。</p>

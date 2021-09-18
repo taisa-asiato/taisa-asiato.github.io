@@ -6,10 +6,57 @@
    <description>Recent content on でぶろぐ</description>
    <generator>Hugo -- gohugo.io</generator>
    <language>ja</language>
-   <lastBuildDate>Wed, 15 Sep 2021 15:11:41 +0900</lastBuildDate>
+   <lastBuildDate>Sat, 18 Sep 2021 17:52:48 +0900</lastBuildDate>
    
        <atom:link href="https://taisa-asiato.github.io/post/index.xml" rel="self" type="application/rss+xml" />
    
+   
+     <item>
+       <title>Abc088c</title>
+       <link>https://taisa-asiato.github.io/post/abc088c/</link>
+       <pubDate>Sat, 18 Sep 2021 17:52:48 +0900</pubDate>
+       
+       <guid>https://taisa-asiato.github.io/post/abc088c/</guid>
+       <description>&lt;p&gt;はじめはa&lt;sub&gt;1&lt;/sub&gt;からb&lt;sub&gt;3&lt;/sub&gt;までの和がc&lt;sub&gt;11&lt;/sub&gt;からc&lt;sub&gt;33&lt;/sub&gt;までの和の1/3に等しいので
+すべての入力を和算したのち3で割り切れるかどうかで判定したがWAとなった。&lt;/p&gt;
+&lt;p&gt;解説のとおり, a&lt;sub&gt;1&lt;/sub&gt;を0と仮定しても差し支えないため, そのような実装にしました。&lt;/p&gt;
+&lt;p&gt;以下提出コードです。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-Rust&#34; data-lang=&#34;Rust&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;fn&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;read&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;T: &lt;span style=&#34;color:#a6e22e&#34;&gt;std&lt;/span&gt;::&lt;span style=&#34;color:#66d9ef&#34;&gt;str&lt;/span&gt;::FromStr&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt;() -&amp;gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;T&lt;/span&gt; {
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;mut&lt;/span&gt; s &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; String::new();
+    std::io::stdin().read_line(&lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;mut&lt;/span&gt; s).ok();
+    s.trim().parse().ok().unwrap()
+}
+
+&lt;span style=&#34;color:#66d9ef&#34;&gt;fn&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;read_vec&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;T: &lt;span style=&#34;color:#a6e22e&#34;&gt;std&lt;/span&gt;::&lt;span style=&#34;color:#66d9ef&#34;&gt;str&lt;/span&gt;::FromStr&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt;() -&amp;gt; Vec&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;T&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; {
+    read::&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;String&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt;().split_whitespace()
+        .map(&lt;span style=&#34;color:#f92672&#34;&gt;|&lt;/span&gt;e&lt;span style=&#34;color:#f92672&#34;&gt;|&lt;/span&gt; e.parse().ok().unwrap()).collect()
+}
+
+&lt;span style=&#34;color:#66d9ef&#34;&gt;fn&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;main&lt;/span&gt;() {
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;mut&lt;/span&gt; v: Vec&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;Vec&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;i32&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; Vec::new();
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;mut&lt;/span&gt; a: [&lt;span style=&#34;color:#66d9ef&#34;&gt;i32&lt;/span&gt;; &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;] &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; [&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;; &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;];
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;mut&lt;/span&gt; b: [&lt;span style=&#34;color:#66d9ef&#34;&gt;i32&lt;/span&gt;; &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;] &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; [&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;; &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;];
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; i &lt;span style=&#34;color:#66d9ef&#34;&gt;in&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;..&lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt; {
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; tmp: Vec&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;i32&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; read_vec::&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;i32&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt;();
+        v.push(tmp);
+    }
+
+    b[&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;] &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; v[&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;][&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;] &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; a[&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;];
+    b[&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;] &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; v[&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;][&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;] &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; a[&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;];
+    b[&lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;] &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; v[&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;][&lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;] &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; a[&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;];
+
+    a[&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;] &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; v[&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;][&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;] &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; b[&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;];
+    a[&lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;] &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; v[&lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;][&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;] &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; b[&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;];
+
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; a[&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;]&lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt;b[&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;] &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; v[&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;][&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;] &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&lt;/span&gt; a[&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;]&lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt;b[&lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;] &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; v[&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;][&lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;] &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&lt;/span&gt;
+        a[&lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;]&lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt;b[&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;] &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; v[&lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;][&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;] &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&lt;/span&gt; a[&lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;]&lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt;b[&lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;] &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; v[&lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;][&lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;] {
+            println&lt;span style=&#34;color:#f92672&#34;&gt;!&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Yes&amp;#34;&lt;/span&gt;);
+    } &lt;span style=&#34;color:#66d9ef&#34;&gt;else&lt;/span&gt; {
+        println&lt;span style=&#34;color:#f92672&#34;&gt;!&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;No&amp;#34;&lt;/span&gt;);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+     </item>
    
      <item>
        <title>Abc123B</title>
@@ -200,10 +247,10 @@
        <guid>https://taisa-asiato.github.io/post/abc080/</guid>
        <description>&lt;p&gt;問題文を勘違いして, 10営業区間それぞれで利益最大となる店の利益の和を求めていた。&lt;/p&gt;
 &lt;p&gt;求める回答は, joisinoお姉ちゃんが営業を行った区間のうち, 個別の店iに対して,
-被った営業区間毎に利益がP&lt;!-- raw HTML omitted --&gt;ij&lt;!-- raw HTML omitted --&gt;(店jの営業区間がjoisinoお姉ちゃんの営業区間とj個被る)
+被った営業区間毎に利益がP&lt;sub&gt;ij&lt;/sub&gt;(店jの営業区間がjoisinoお姉ちゃんの営業区間とj個被る)
 となるので, 利益最大となるpi,jを各店毎に求めた和となる。&lt;/p&gt;
 &lt;p&gt;解法は解説通りで, joisinoお姉ちゃんの10営業区間の（営業する/しない）すべての組み合わせに対して
-各店iで利益最大となるP&lt;!-- raw HTML omitted --&gt;ij&lt;!-- raw HTML omitted --&gt;を求めていき, 最終的にその和を出力する。&lt;/p&gt;
+各店iで利益最大となるP&lt;sub&gt;ij&lt;/sub&gt;を求めていき, 最終的にその和を出力する。&lt;/p&gt;
 &lt;p&gt;全ての組み合わせを試すのにbit演算を用いている。
 ※ 高々(2^10-1)×100なので, 全通り試しても十分間に合う。&lt;/p&gt;
 &lt;p&gt;以下提出コードです。&lt;/p&gt;
@@ -423,7 +470,7 @@ For more information about this error, try &lt;span style=&#34;color:#e6db74&#34
 &lt;p&gt;コンピュータ・プログラミング言語の処理系（言語処理系）の一種で、
 高水準言語によるソースコードから、機械語あるいは元のプログラムよりも
 低い水準のコードに変換（コンパイル）する
-&lt;!-- raw HTML omitted --&gt;&lt;a href=&#34;https://ja.wikipedia.org/wiki/%E3%82%B3%E3%83%B3%E3%83%91%E3%82%A4%E3%83%A9&#34;&gt;https://ja.wikipedia.org/wiki/%E3%82%B3%E3%83%B3%E3%83%91%E3%82%A4%E3%83%A9&lt;/a&gt;&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;cite&gt;&lt;a href=&#34;https://ja.wikipedia.org/wiki/%E3%82%B3%E3%83%B3%E3%83%91%E3%82%A4%E3%83%A9&#34;&gt;https://ja.wikipedia.org/wiki/%E3%82%B3%E3%83%B3%E3%83%91%E3%82%A4%E3%83%A9&lt;/a&gt;&lt;/cite&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;プログラムです。
 コンパイラはコンパイルする際&lt;/p&gt;
@@ -449,7 +496,7 @@ Jackコンパイラの実装が完了します。&lt;/p&gt;
 &lt;p&gt;広義の構文解析の前半の処理で、自然言語の文やプログラミング言語の
 ソースコードなどの文字列を解析して、後半の狭義の構文解析で
 最小単位（終端記号）となっている「トークン」（字句）の並びを得る手続き
-&lt;!-- raw HTML omitted --&gt;&lt;a href=&#34;https://ja.wikipedia.org/wiki/%E5%AD%97%E5%8F%A5%E8%A7%A3%E6%9E%90&#34;&gt;https://ja.wikipedia.org/wiki/%E5%AD%97%E5%8F%A5%E8%A7%A3%E6%9E%90&lt;/a&gt;&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;cite&gt;&lt;a href=&#34;https://ja.wikipedia.org/wiki/%E5%AD%97%E5%8F%A5%E8%A7%A3%E6%9E%90&#34;&gt;https://ja.wikipedia.org/wiki/%E5%AD%97%E5%8F%A5%E8%A7%A3%E6%9E%90&lt;/a&gt;&lt;/cite&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;を行います。
 例えばC言語で記載された次の様なソースコードがあるとします。&lt;/p&gt;
