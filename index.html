@@ -10,14 +10,14 @@
   <meta name="author" content="taisa" /><link rel="alternate" type="application/rss+xml+xml" href="https://taisa-asiato.github.io/index.xml" title="でぶろぐ" /><meta name="generator" content="Hugo 0.60.1" />
     
 
-  <meta property="og:title" content="" />
+  <meta property="og:title" content="Tags" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="https://taisa-asiato.github.io/post/" />
-<meta property="og:updated_time" content="2021-09-18T17:52:48+09:00" />
+<meta property="og:url" content="https://taisa-asiato.github.io/tags/" />
+<meta property="og:updated_time" content="2021-01-04T23:53:49+09:00" />
 
   <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content=""/>
+<meta name="twitter:title" content="Tags"/>
 <meta name="twitter:description" content=""/>
 
 
@@ -59,6 +59,30 @@
         <ul>
           
           <li class="first">
+            <h1><a href="https://taisa-asiato.github.io/post/abc047d/" title="Abc047d">Abc047d</a></h1>
+            <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2021-09-19T14:49:35&#43;09:00">Sep 19, 2021</time>
+        </li>
+        
+
+        
+
+        <li>One minute read</li>
+    </ul>
+</aside>
+
+            <p>解法は解説通り。
+利益最大となる町の組み合わせ（買う店と売る店の組み合わせ）が複数存在する可能性もあるため一度最大の利益を求める。 その後, 町1から町i-1と町iで求められる利益と先に求めた最大の利益が同じ場合の数を カウントしていく。
+以下提出コードです。
+fn read&lt;T: std::str::FromStr&gt;() -&gt; T { let mut s = String::new(); std::io::stdin().read_line(&amp;mut s).ok(); s.trim().parse().ok().unwrap() } fn read_vec&lt;T: std::str::FromStr&gt;() -&gt; Vec&lt;T&gt; { read::&lt;String&gt;().split_whitespace() .map(|e| e.parse().ok().unwrap()).collect() } fn main() { let nt: Vec&lt;u64&gt; = read_vec::&lt;u64&gt;(); let a: Vec&lt;u64&gt; = read_vec::&lt;u64&gt;(); let mut min: u64 = 1_000_000_000; let mut max: u64 = 0; let mut cnt: u32 = 0; for i in 0.</p>
+            
+            <a href="/post/abc047d/">Read more…</a>
+            
+          </li>
+          
+          <li >
             <h1><a href="https://taisa-asiato.github.io/post/abc088c/" title="Abc088c">Abc088c</a></h1>
             <aside>
     <ul>
@@ -320,45 +344,6 @@ error[E0382]: assign to part of moved value: `card_val` --&gt; pro3-4.rs:28:9 | 
 use std::io; fn main() { let mut tmp_str = String::new(); io::stdin().read_line( &amp;mut tmp_str ).expect( &#34;No input val&#34; ); let ar_size: u32 = tmp_str.trim().parse().expect( &#34;Failed parse&#34; ); tmp_str = String::new(); io::stdin().</p>
             
             <a href="/post/rust_memo1/">Read more…</a>
-            
-          </li>
-          
-          <li >
-            <h1><a href="https://taisa-asiato.github.io/post/pra/" title="螺旋2">螺旋2</a></h1>
-            <aside>
-    <ul>
-        <li>
-            <time class="post-date" datetime="2019-12-04T00:00:00Z">Dec 4, 2019</time>
-        </li>
-        
-
-        
-        <li>
-            <em>
-                
-                    
-                    <a href="/tags/%E3%83%97%E3%83%AD%E3%82%B3%E3%83%B3">#プロコン</a>
-                
-                    , 
-                    <a href="/tags/rust">#Rust</a>
-                
-                    , 
-                    <a href="/tags/%E3%82%A2%E3%83%AB%E3%82%B4%E3%83%AA%E3%82%BA%E3%83%A0">#アルゴリズム</a>
-                
-            </em>
-        </li>
-        
-
-        <li>2 minutes read</li>
-    </ul>
-</aside>
-
-            <p>Rustの勉強がてらプロコンの問題を解くことにしました。 AOJのプロコン導入問題を解いていきます。 問題は螺旋本に登場する問題を順番に解いていきます。 はじめの問題はALDS1_1_Dです。
-なお，タイトルの螺旋2は螺旋+章番号を意味します。 今後のナンバリングは上記螺旋+章番号で統一します。
-以下ソースコードです。
-use std::io; fn main() { let mut tmp_str = String::new(); // 標準入力から一行受け取る  io::stdin().read_line( &amp;mut tmp_str ); // 標準入力から受け取った文字を数字に変換する  let linenum: i32 = tmp_str.</p>
-            
-            <a href="/post/pra/">Read more…</a>
             
           </li>
           
