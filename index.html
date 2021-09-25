@@ -10,14 +10,14 @@
   <meta name="author" content="taisa" /><link rel="alternate" type="application/rss+xml+xml" href="https://taisa-asiato.github.io/index.xml" title="でぶろぐ" /><meta name="generator" content="Hugo 0.60.1" />
     
 
-  <meta property="og:title" content="" />
+  <meta property="og:title" content="procon" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="https://taisa-asiato.github.io/post/" />
-<meta property="og:updated_time" content="2021-09-23T15:14:58+09:00" />
+<meta property="og:url" content="https://taisa-asiato.github.io/tags/procon/" />
+<meta property="og:updated_time" content="2021-09-25T13:27:05+09:00" />
 
   <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content=""/>
+<meta name="twitter:title" content="procon"/>
 <meta name="twitter:description" content=""/>
 
 
@@ -59,6 +59,47 @@
         <ul>
           
           <li class="first">
+            <h1><a href="https://taisa-asiato.github.io/post/abc099c/" title="Abc099c">Abc099c</a></h1>
+            <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2021-09-25T13:27:05&#43;09:00">Sep 25, 2021</time>
+        </li>
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/rust">#Rust</a>
+                
+                    , 
+                    <a href="/tags/memo">#memo</a>
+                
+                    , 
+                    <a href="/tags/procon">#procon</a>
+                
+            </em>
+        </li>
+        
+
+        <li>One minute read</li>
+    </ul>
+</aside>
+
+            <p>解法は解説動画のとおり。
+n円までの最小引出回数dp[n]の候補は
+ n-1円の時に1円を1回引出す場合(計dp[n-1]+1回) n-6円の時に6円を1回引出す場合(計dp[n-6]+1回) &hellip; n-9i円の時に9i円を1回引出す場合(計dp[n-9i]+1回)  があり, これらの中から最小だった引出し回数がdp[n]となる。 初期値dp[0]は0で初期化しておき, 以降ループないし再帰関数でdpのテーブルを埋めていけばよい。
+DP問題はあまり解いていないので, 早く慣れたいところ。 DP問題の中では多分簡単な方だと思う(dpテーブルが多次元のものもあるので, 1次元の問題は簡単な方では?と思う。)。 類似の問題を集めたWeb記事を見つけているのでちまちまやっていく。
+以下提出コードです。
+fn read&lt;T: std::str::FromStr&gt;() -&gt; T { let mut s = String::new(); std::io::stdin().read_line(&amp;mut s).</p>
+            
+            <a href="/post/abc099c/">Read more…</a>
+            
+          </li>
+          
+          <li >
             <h1><a href="https://taisa-asiato.github.io/post/abc097c/" title="Abc097c">Abc097c</a></h1>
             <aside>
     <ul>
@@ -306,41 +347,6 @@ fn read&lt;T: std::str::FromStr&gt;() -&gt; T { let mut s = String::new(); std::
 fn read&lt;T: std::str::FromStr&gt;() -&gt; T { let mut s = String::new(); std::io::stdin().</p>
             
             <a href="/post/rust_memo3/">Read more…</a>
-            
-          </li>
-          
-          <li >
-            <h1><a href="https://taisa-asiato.github.io/post/rust-memo2/" title="Rust Memo2">Rust Memo2</a></h1>
-            <aside>
-    <ul>
-        <li>
-            <time class="post-date" datetime="2020-01-12T21:48:17&#43;09:00">Jan 12, 2020</time>
-        </li>
-        
-
-        
-        <li>
-            <em>
-                
-                    
-                    <a href="/tags/rust">#Rust</a>
-                
-                    , 
-                    <a href="/tags/memo">#memo</a>
-                
-            </em>
-        </li>
-        
-
-        <li>One minute read</li>
-    </ul>
-</aside>
-
-            <p>Rustの勉強メモその2です。
-螺旋本の3.5問目(安定ソート), トランプカードを 構造体を使用して表現していたのですが, 標準入力から得た値をパースしてCard型のVectorにpushする処理が コンパイル時にエラーになりました。
-error[E0382]: assign to part of moved value: `card_val` --&gt; pro3-4.rs:28:9 | 20 | let mut card_val = Card { | ------------ move occurs because `card_val` has type `Card`, which does not implement the `Copy` trait .</p>
-            
-            <a href="/post/rust-memo2/">Read more…</a>
             
           </li>
           

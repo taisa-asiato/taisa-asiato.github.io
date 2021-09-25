@@ -1,0 +1,165 @@
+<!doctype html>
+
+<html lang="ja">
+
+<head>
+  <title>でぶろぐ</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="taisa" /><meta name="generator" content="Hugo 0.60.1" />
+    
+
+  <meta property="og:title" content="procon" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://taisa-asiato.github.io/tags/procon/" />
+<meta property="og:updated_time" content="2021-09-25T13:27:05+09:00" />
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="procon"/>
+<meta name="twitter:description" content=""/>
+
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css" />
+  <script src="https://kit.fontawesome.com/b76b73e8e8.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" /></head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">でぶろぐ</a>
+            </h1>
+
+      <ul id="social-media">
+             <li>
+               <a href="https://github.com/taisa-asiato" title="GitHub">
+               <i class="fab fa-github fa-lg"></i>
+               </a>
+             </li>
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>Abc099c</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2021-09-25T13:27:05&#43;09:00">Sep 25, 2021</time>
+        </li>
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/rust">#Rust</a>
+                
+                    , 
+                    <a href="/tags/memo">#memo</a>
+                
+                    , 
+                    <a href="/tags/procon">#procon</a>
+                
+            </em>
+        </li>
+        
+
+        <li>One minute read</li>
+    </ul>
+</aside>
+
+    
+
+    <p>解法は解説動画のとおり。</p>
+<p>n円までの最小引出回数dp[n]の候補は</p>
+<ul>
+<li>n-1円の時に1円を1回引出す場合(計dp[n-1]+1回)</li>
+<li>n-6円の時に6円を1回引出す場合(計dp[n-6]+1回)</li>
+<li>&hellip;</li>
+<li>n-9<sup>i</sup>円の時に9<sup>i</sup>円を1回引出す場合(計dp[n-9<sup>i</sup>]+1回)</li>
+</ul>
+<p>があり, これらの中から最小だった引出し回数がdp[n]となる。
+初期値dp[0]は0で初期化しておき, 以降ループないし再帰関数でdpのテーブルを埋めていけばよい。</p>
+<p>DP問題はあまり解いていないので, 早く慣れたいところ。
+DP問題の中では多分簡単な方だと思う(dpテーブルが多次元のものもあるので, 1次元の問題は簡単な方では?と思う。)。
+類似の問題を集めたWeb記事を見つけているのでちまちまやっていく。</p>
+<p>以下提出コードです。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Rust" data-lang="Rust"><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">read</span><span style="color:#f92672">&lt;</span>T: <span style="color:#a6e22e">std</span>::<span style="color:#66d9ef">str</span>::FromStr<span style="color:#f92672">&gt;</span>() -&gt; <span style="color:#a6e22e">T</span> {
+    <span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> s <span style="color:#f92672">=</span> String::new();
+    std::io::stdin().read_line(<span style="color:#f92672">&amp;</span><span style="color:#66d9ef">mut</span> s).ok();
+    s.trim().parse().ok().unwrap()
+}
+
+<span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+    <span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> n: <span style="color:#66d9ef">u32</span> <span style="color:#f92672">=</span> read::<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">u32</span><span style="color:#f92672">&gt;</span>();
+    <span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> dp: [<span style="color:#66d9ef">u32</span>; <span style="color:#ae81ff">1_000_10</span>] <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1_000_000</span>; <span style="color:#ae81ff">1_000_10</span>];
+    dp[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+
+    <span style="color:#66d9ef">for</span> i <span style="color:#66d9ef">in</span> <span style="color:#ae81ff">1</span>..<span style="color:#f92672">=</span><span style="color:#ae81ff">1_000_00</span> {
+        <span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> p: <span style="color:#66d9ef">usize</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
+        <span style="color:#66d9ef">while</span> p <span style="color:#f92672">&lt;</span><span style="color:#f92672">=</span> i {
+            dp[i] <span style="color:#f92672">=</span> std::cmp::min(dp[i], dp[i<span style="color:#f92672">-</span>p]<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>);
+            p <span style="color:#f92672">*</span><span style="color:#f92672">=</span> <span style="color:#ae81ff">6</span>;
+        }
+        p <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
+        <span style="color:#66d9ef">while</span> p <span style="color:#f92672">&lt;</span><span style="color:#f92672">=</span> i {
+            dp[i] <span style="color:#f92672">=</span> std::cmp::min(dp[i], dp[i<span style="color:#f92672">-</span>p]<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>);
+            p <span style="color:#f92672">*</span><span style="color:#f92672">=</span> <span style="color:#ae81ff">9</span>;
+        }
+    }
+    println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;{}&#34;</span>, dp[n <span style="color:#66d9ef">as</span> <span style="color:#66d9ef">usize</span>]);
+}
+</code></pre></div>
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="https://taisa-asiato.github.io/post/abc097c/"><i class="fa fa-chevron-circle-left"></i> Abc097c</a>
+        </li>
+        
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> |
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="https://taisa-asiato.github.io/index.xml">Subscribe </a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+
+</body>
+
+</html>
+

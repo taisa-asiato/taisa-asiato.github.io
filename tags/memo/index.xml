@@ -6,10 +6,58 @@
    <description>Recent content in memo on でぶろぐ</description>
    <generator>Hugo -- gohugo.io</generator>
    <language>ja</language>
-   <lastBuildDate>Thu, 23 Sep 2021 15:14:58 +0900</lastBuildDate>
+   <lastBuildDate>Sat, 25 Sep 2021 13:27:05 +0900</lastBuildDate>
    
        <atom:link href="https://taisa-asiato.github.io/tags/memo/index.xml" rel="self" type="application/rss+xml" />
    
+   
+     <item>
+       <title>Abc099c</title>
+       <link>https://taisa-asiato.github.io/post/abc099c/</link>
+       <pubDate>Sat, 25 Sep 2021 13:27:05 +0900</pubDate>
+       
+       <guid>https://taisa-asiato.github.io/post/abc099c/</guid>
+       <description>&lt;p&gt;解法は解説動画のとおり。&lt;/p&gt;
+&lt;p&gt;n円までの最小引出回数dp[n]の候補は&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;n-1円の時に1円を1回引出す場合(計dp[n-1]+1回)&lt;/li&gt;
+&lt;li&gt;n-6円の時に6円を1回引出す場合(計dp[n-6]+1回)&lt;/li&gt;
+&lt;li&gt;&amp;hellip;&lt;/li&gt;
+&lt;li&gt;n-9&lt;sup&gt;i&lt;/sup&gt;円の時に9&lt;sup&gt;i&lt;/sup&gt;円を1回引出す場合(計dp[n-9&lt;sup&gt;i&lt;/sup&gt;]+1回)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;があり, これらの中から最小だった引出し回数がdp[n]となる。
+初期値dp[0]は0で初期化しておき, 以降ループないし再帰関数でdpのテーブルを埋めていけばよい。&lt;/p&gt;
+&lt;p&gt;DP問題はあまり解いていないので, 早く慣れたいところ。
+DP問題の中では多分簡単な方だと思う(dpテーブルが多次元のものもあるので, 1次元の問題は簡単な方では?と思う。)。
+類似の問題を集めたWeb記事を見つけているのでちまちまやっていく。&lt;/p&gt;
+&lt;p&gt;以下提出コードです。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-Rust&#34; data-lang=&#34;Rust&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;fn&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;read&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;T: &lt;span style=&#34;color:#a6e22e&#34;&gt;std&lt;/span&gt;::&lt;span style=&#34;color:#66d9ef&#34;&gt;str&lt;/span&gt;::FromStr&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt;() -&amp;gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;T&lt;/span&gt; {
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;mut&lt;/span&gt; s &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; String::new();
+    std::io::stdin().read_line(&lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;mut&lt;/span&gt; s).ok();
+    s.trim().parse().ok().unwrap()
+}
+
+&lt;span style=&#34;color:#66d9ef&#34;&gt;fn&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;main&lt;/span&gt;() {
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;mut&lt;/span&gt; n: &lt;span style=&#34;color:#66d9ef&#34;&gt;u32&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; read::&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;u32&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt;();
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;mut&lt;/span&gt; dp: [&lt;span style=&#34;color:#66d9ef&#34;&gt;u32&lt;/span&gt;; &lt;span style=&#34;color:#ae81ff&#34;&gt;1_000_10&lt;/span&gt;] &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; [&lt;span style=&#34;color:#ae81ff&#34;&gt;1_000_000&lt;/span&gt;; &lt;span style=&#34;color:#ae81ff&#34;&gt;1_000_10&lt;/span&gt;];
+    dp[&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;] &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;;
+
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; i &lt;span style=&#34;color:#66d9ef&#34;&gt;in&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;..&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1_000_00&lt;/span&gt; {
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;mut&lt;/span&gt; p: &lt;span style=&#34;color:#66d9ef&#34;&gt;usize&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;;
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;while&lt;/span&gt; p &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; i {
+            dp[i] &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; std::cmp::min(dp[i], dp[i&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;p]&lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;);
+            p &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;6&lt;/span&gt;;
+        }
+        p &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;;
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;while&lt;/span&gt; p &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; i {
+            dp[i] &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; std::cmp::min(dp[i], dp[i&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;p]&lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;);
+            p &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;9&lt;/span&gt;;
+        }
+    }
+    println&lt;span style=&#34;color:#f92672&#34;&gt;!&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;{}&amp;#34;&lt;/span&gt;, dp[n &lt;span style=&#34;color:#66d9ef&#34;&gt;as&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;usize&lt;/span&gt;]);
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+     </item>
    
      <item>
        <title>Abc097c</title>
