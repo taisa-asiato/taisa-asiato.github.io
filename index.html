@@ -10,14 +10,14 @@
   <meta name="author" content="taisa" /><link rel="alternate" type="application/rss+xml+xml" href="https://taisa-asiato.github.io/index.xml" title="でぶろぐ" /><meta name="generator" content="Hugo 0.60.1" />
     
 
-  <meta property="og:title" content="procon" />
+  <meta property="og:title" content="Rust" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="https://taisa-asiato.github.io/tags/procon/" />
-<meta property="og:updated_time" content="2021-09-25T13:27:05+09:00" />
+<meta property="og:url" content="https://taisa-asiato.github.io/tags/rust/" />
+<meta property="og:updated_time" content="2021-09-27T23:36:50+09:00" />
 
   <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="procon"/>
+<meta name="twitter:title" content="Rust"/>
 <meta name="twitter:description" content=""/>
 
 
@@ -59,6 +59,45 @@
         <ul>
           
           <li class="first">
+            <h1><a href="https://taisa-asiato.github.io/post/abc220d/" title="Abc220d">Abc220d</a></h1>
+            <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2021-09-27T23:36:50&#43;09:00">Sep 27, 2021</time>
+        </li>
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/rust">#Rust</a>
+                
+                    , 
+                    <a href="/tags/memo">#memo</a>
+                
+                    , 
+                    <a href="/tags/procon">#procon</a>
+                
+            </em>
+        </li>
+        
+
+        <li>One minute read</li>
+    </ul>
+</aside>
+
+            <p>解法は解説どおり。
+Aiまで操作を行った際, 左端の値がjである回数をdp[i][j]にメモする。 ANまで操作を行っていき, 最終的にdp[N][0]からdp[N][9]の値が答えとなる。
+※ 配列の宣言, 回数の数え上げでミスをしていた。
+// これは要素数1_000_00の配列を10個宣言なので間違い let mut ary: [[u32; 1_000_00]; 10]; // 正しくは以下 let mut ary: [[u32; 10]; 1_000_00]; // これはdp[i][j]%mod+dp[i][j]の値をdp[m][n]に代入する操作 dp[m][n] += dp[i][j]%mod; // 正しい操作は, (dp[m][n]+dp[i][j])%modをdp[m][n]に代入する操作 自分はこんな変なことをしていたのかとかなりショックを受けた。</p>
+            
+            <a href="/post/abc220d/">Read more…</a>
+            
+          </li>
+          
+          <li >
             <h1><a href="https://taisa-asiato.github.io/post/abc099c/" title="Abc099c">Abc099c</a></h1>
             <aside>
     <ul>
@@ -310,43 +349,6 @@ fn read&lt;T: std::str::FromStr&gt;() -&gt; T { let mut s = String::new(); std::
 fn read&lt;T: std::str::FromStr&gt;() -&gt; T { let mut s = String::new(); std::io::stdin().read_line(&amp;mut s).ok(); s.</p>
             
             <a href="/post/abc080/">Read more…</a>
-            
-          </li>
-          
-          <li >
-            <h1><a href="https://taisa-asiato.github.io/post/rust_memo3/" title="Rust memo3">Rust memo3</a></h1>
-            <aside>
-    <ul>
-        <li>
-            <time class="post-date" datetime="2021-01-04T23:53:49&#43;09:00">Jan 4, 2021</time>
-        </li>
-        
-
-        
-        <li>
-            <em>
-                
-                    
-                    <a href="/tags/rust">#Rust</a>
-                
-                    , 
-                    <a href="/tags/memo">#memo</a>
-                
-            </em>
-        </li>
-        
-
-        <li>One minute read</li>
-    </ul>
-</aside>
-
-            <p>Rustの勉強メモその3です。
-2018年にアカウントを登録しその後１問も解いていなかったAtcoderですが 2020年の年末から過去問題を解き始めたので, 解いた問題のメモです。
-解いた問題はABC042 C - こだわり者いろはちゃん です。 解法は思いつかなかったので公式の解説通りなのですが,
- 数値(nとする)を1から1づつインクリメントする。 nが指定された値(問題文ではN)以上か確認 2.の判定が真ならnの各桁にいろはちゃんの嫌いな数字が混じっていないか確認 3.で嫌いな数字が混じっていなければnを出力して終了, そうでないなら1. に戻る  上記であれば&quot;間に合う&quot;との事だったので, その通りに実装したが3度TLEをもらいました。 subtask1_X_02.txtが入力の時のみTLEになっていた。 この時のコードは次の通りです。
-fn read&lt;T: std::str::FromStr&gt;() -&gt; T { let mut s = String::new(); std::io::stdin().</p>
-            
-            <a href="/post/rust_memo3/">Read more…</a>
             
           </li>
           

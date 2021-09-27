@@ -6,10 +6,63 @@
    <description>Recent content in procon on でぶろぐ</description>
    <generator>Hugo -- gohugo.io</generator>
    <language>ja</language>
-   <lastBuildDate>Sat, 25 Sep 2021 13:27:05 +0900</lastBuildDate>
+   <lastBuildDate>Mon, 27 Sep 2021 23:36:50 +0900</lastBuildDate>
    
        <atom:link href="https://taisa-asiato.github.io/tags/procon/index.xml" rel="self" type="application/rss+xml" />
    
+   
+     <item>
+       <title>Abc220d</title>
+       <link>https://taisa-asiato.github.io/post/abc220d/</link>
+       <pubDate>Mon, 27 Sep 2021 23:36:50 +0900</pubDate>
+       
+       <guid>https://taisa-asiato.github.io/post/abc220d/</guid>
+       <description>&lt;p&gt;解法は解説どおり。&lt;/p&gt;
+&lt;p&gt;A&lt;sub&gt;i&lt;/sub&gt;まで操作を行った際, 左端の値がjである回数をdp[i][j]にメモする。
+A&lt;sub&gt;N&lt;/sub&gt;まで操作を行っていき, 最終的にdp[N][0]からdp[N][9]の値が答えとなる。&lt;/p&gt;
+&lt;p&gt;※ 配列の宣言,  回数の数え上げでミスをしていた。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-Rust&#34; data-lang=&#34;Rust&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// これは要素数1_000_00の配列を10個宣言なので間違い
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;mut&lt;/span&gt; ary: [[&lt;span style=&#34;color:#66d9ef&#34;&gt;u32&lt;/span&gt;; &lt;span style=&#34;color:#ae81ff&#34;&gt;1_000_00&lt;/span&gt;]; &lt;span style=&#34;color:#ae81ff&#34;&gt;10&lt;/span&gt;];
+&lt;span style=&#34;color:#75715e&#34;&gt;// 正しくは以下
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;mut&lt;/span&gt; ary: [[&lt;span style=&#34;color:#66d9ef&#34;&gt;u32&lt;/span&gt;; &lt;span style=&#34;color:#ae81ff&#34;&gt;10&lt;/span&gt;]; &lt;span style=&#34;color:#ae81ff&#34;&gt;1_000_00&lt;/span&gt;];
+
+&lt;span style=&#34;color:#75715e&#34;&gt;// これはdp[i][j]%mod+dp[i][j]の値をdp[m][n]に代入する操作
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;dp[m][n] &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; dp[i][j]&lt;span style=&#34;color:#f92672&#34;&gt;%&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;mod&lt;/span&gt;;
+&lt;span style=&#34;color:#75715e&#34;&gt;// 正しい操作は, (dp[m][n]+dp[i][j])%modをdp[m][n]に代入する操作
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;自分はこんな変なことをしていたのかとかなりショックを受けた。&lt;/p&gt;
+&lt;p&gt;DP問題は何をメモしていくのかを考えつかないと解けないので, 早く慣れが必要。
+前回の記事にも書いたとおり, 解いていくしかないのでDP問題を今後も解いていく。&lt;/p&gt;
+&lt;p&gt;以下提出コードです。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-Rust&#34; data-lang=&#34;Rust&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;fn&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;read&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;T: &lt;span style=&#34;color:#a6e22e&#34;&gt;std&lt;/span&gt;::&lt;span style=&#34;color:#66d9ef&#34;&gt;str&lt;/span&gt;::FromStr&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt;() -&amp;gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;T&lt;/span&gt; {
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;mut&lt;/span&gt; s &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; String::new();
+    std::io::stdin().read_line(&lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;mut&lt;/span&gt; s).ok();
+    s.trim().parse().ok().unwrap()
+}
+
+&lt;span style=&#34;color:#66d9ef&#34;&gt;fn&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;read_vec&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;T: &lt;span style=&#34;color:#a6e22e&#34;&gt;std&lt;/span&gt;::&lt;span style=&#34;color:#66d9ef&#34;&gt;str&lt;/span&gt;::FromStr&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt;() -&amp;gt; Vec&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;T&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; {
+    read::&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;String&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt;().split_whitespace()
+        .map(&lt;span style=&#34;color:#f92672&#34;&gt;|&lt;/span&gt;e&lt;span style=&#34;color:#f92672&#34;&gt;|&lt;/span&gt; e.parse().ok().unwrap()).collect()
+}
+
+&lt;span style=&#34;color:#66d9ef&#34;&gt;fn&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;main&lt;/span&gt;() {
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; n: &lt;span style=&#34;color:#66d9ef&#34;&gt;usize&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; read::&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;usize&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt;();
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; v: Vec&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;usize&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; read_vec::&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;usize&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt;();
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;mut&lt;/span&gt; dp: [[&lt;span style=&#34;color:#66d9ef&#34;&gt;u64&lt;/span&gt;; &lt;span style=&#34;color:#ae81ff&#34;&gt;10&lt;/span&gt;]; &lt;span style=&#34;color:#ae81ff&#34;&gt;1_000_10&lt;/span&gt;] &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; [[&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;; &lt;span style=&#34;color:#ae81ff&#34;&gt;10&lt;/span&gt;]; &lt;span style=&#34;color:#ae81ff&#34;&gt;1_000_10&lt;/span&gt;];
+    dp[&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;][v[&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;]] &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;;
+
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; i &lt;span style=&#34;color:#66d9ef&#34;&gt;in&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;..n&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt; {
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; j &lt;span style=&#34;color:#66d9ef&#34;&gt;in&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;..&lt;span style=&#34;color:#ae81ff&#34;&gt;10&lt;/span&gt; {
+            dp[i&lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;][(j&lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt;v[i&lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;])&lt;span style=&#34;color:#f92672&#34;&gt;%&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;10&lt;/span&gt;] &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; (dp[i&lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;][(j&lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt;v[i&lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;])&lt;span style=&#34;color:#f92672&#34;&gt;%&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;10&lt;/span&gt;]&lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt;dp[i][j])&lt;span style=&#34;color:#f92672&#34;&gt;%&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;998244353&lt;/span&gt;;
+            dp[i&lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;][(j&lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;v[i&lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;])&lt;span style=&#34;color:#f92672&#34;&gt;%&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;10&lt;/span&gt;] &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; (dp[i&lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;][(j&lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;v[i&lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;])&lt;span style=&#34;color:#f92672&#34;&gt;%&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;10&lt;/span&gt;]&lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt;dp[i][j])&lt;span style=&#34;color:#f92672&#34;&gt;%&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;998244353&lt;/span&gt;;
+        }
+    }
+
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; i &lt;span style=&#34;color:#66d9ef&#34;&gt;in&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;..&lt;span style=&#34;color:#ae81ff&#34;&gt;10&lt;/span&gt; {
+        println&lt;span style=&#34;color:#f92672&#34;&gt;!&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;{}&amp;#34;&lt;/span&gt;, dp[n&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;][i]);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+     </item>
    
      <item>
        <title>Abc099c</title>
