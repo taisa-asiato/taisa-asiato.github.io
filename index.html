@@ -10,14 +10,14 @@
   <meta name="author" content="taisa" /><link rel="alternate" type="application/rss+xml+xml" href="https://taisa-asiato.github.io/index.xml" title="でぶろぐ" /><meta name="generator" content="Hugo 0.60.1" />
     
 
-  <meta property="og:title" content="Rust" />
+  <meta property="og:title" content="memo" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="https://taisa-asiato.github.io/tags/rust/" />
-<meta property="og:updated_time" content="2021-09-27T23:36:50+09:00" />
+<meta property="og:url" content="https://taisa-asiato.github.io/tags/memo/" />
+<meta property="og:updated_time" content="2021-09-29T23:32:43+09:00" />
 
   <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Rust"/>
+<meta name="twitter:title" content="memo"/>
 <meta name="twitter:description" content=""/>
 
 
@@ -59,6 +59,46 @@
         <ul>
           
           <li class="first">
+            <h1><a href="https://taisa-asiato.github.io/post/abc108c/" title="Abc108c">Abc108c</a></h1>
+            <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2021-09-29T23:32:43&#43;09:00">Sep 29, 2021</time>
+        </li>
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/rust">#Rust</a>
+                
+                    , 
+                    <a href="/tags/memo">#memo</a>
+                
+                    , 
+                    <a href="/tags/procon">#procon</a>
+                
+            </em>
+        </li>
+        
+
+        <li>One minute read</li>
+    </ul>
+</aside>
+
+            <p>解法は解説とおり。
+(a, b, c)について(a+b)%K=0, (a+c)%K=0, (b+c)%K=0となる。 これを満たすa, b, cは
+ a%K=b%K=c%K=0 a%K=b%K=c%K=K/2 のいずれか。  aについてi=1からNまでのうち, 上記個数をカウントし, それぞれ3乗した値の和が答えとなる。 (b, cも同様なのでaのみ考えれば良い。)
+以下提出コードです。
+fn read&lt;T: std::str::FromStr&gt;() -&gt; T { let mut s = String::new(); std::io::stdin().</p>
+            
+            <a href="/post/abc108c/">Read more…</a>
+            
+          </li>
+          
+          <li >
             <h1><a href="https://taisa-asiato.github.io/post/abc220d/" title="Abc220d">Abc220d</a></h1>
             <aside>
     <ul>
@@ -323,32 +363,6 @@ fn read&lt;T: std::str::FromStr&gt;() -&gt; T { let mut s = String::new(); std::
 fn read&lt;T: std::str::FromStr&gt;() -&gt; T { let mut s = String::new(); std::io::stdin().</p>
             
             <a href="/post/abc075c/">Read more…</a>
-            
-          </li>
-          
-          <li >
-            <h1><a href="https://taisa-asiato.github.io/post/abc080/" title="Abc080">Abc080</a></h1>
-            <aside>
-    <ul>
-        <li>
-            <time class="post-date" datetime="2021-09-10T22:16:19&#43;09:00">Sep 10, 2021</time>
-        </li>
-        
-
-        
-
-        <li>One minute read</li>
-    </ul>
-</aside>
-
-            <p>問題文を勘違いして, 10営業区間それぞれで利益最大となる店の利益の和を求めていた。
-求める回答は, joisinoお姉ちゃんが営業を行った区間のうち, 個別の店iに対して, 被った営業区間毎に利益がPij(店jの営業区間がjoisinoお姉ちゃんの営業区間とj個被る) となるので, 利益最大となるpi,jを各店毎に求めた和となる。
-解法は解説通りで, joisinoお姉ちゃんの10営業区間の（営業する/しない）すべての組み合わせに対して 各店iで利益最大となるPijを求めていき, 最終的にその和を出力する。
-全ての組み合わせを試すのにbit演算を用いている。 ※ 高々(2^10-1)×100なので, 全通り試しても十分間に合う。
-以下提出コードです。
-fn read&lt;T: std::str::FromStr&gt;() -&gt; T { let mut s = String::new(); std::io::stdin().read_line(&amp;mut s).ok(); s.</p>
-            
-            <a href="/post/abc080/">Read more…</a>
             
           </li>
           

@@ -57,16 +57,31 @@
 
 <article>
 
-    <h1>Abc047d</h1>
+    <h1>Abc108c</h1>
 
     
         <aside>
     <ul>
         <li>
-            <time class="post-date" datetime="2021-09-19T14:49:35&#43;09:00">Sep 19, 2021</time>
+            <time class="post-date" datetime="2021-09-29T23:32:43&#43;09:00">Sep 29, 2021</time>
         </li>
         
 
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/rust">#Rust</a>
+                
+                    , 
+                    <a href="/tags/memo">#memo</a>
+                
+                    , 
+                    <a href="/tags/procon">#procon</a>
+                
+            </em>
+        </li>
         
 
         <li>One minute read</li>
@@ -75,10 +90,16 @@
 
     
 
-    <p>解法は解説通り。</p>
-<p>利益最大となる町の組み合わせ（買う店と売る店の組み合わせ）が複数存在する可能性もあるため一度最大の利益を求める。
-その後, 町<sub>1</sub>から町<sub>i-1</sub>と町<sub>i</sub>で求められる利益と先に求めた最大の利益が同じ場合の数を
-カウントしていく。</p>
+    <p>解法は解説とおり。</p>
+<p>(a, b, c)について(a+b)%K=0, (a+c)%K=0, (b+c)%K=0となる。
+これを満たすa, b, cは</p>
+<ul>
+<li>a%K=b%K=c%K=0</li>
+<li>a%K=b%K=c%K=K/2
+のいずれか。</li>
+</ul>
+<p>aについてi=1からNまでのうち, 上記個数をカウントし, それぞれ3乗した値の和が答えとなる。
+(b, cも同様なのでaのみ考えれば良い。)</p>
 <p>以下提出コードです。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Rust" data-lang="Rust"><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">read</span><span style="color:#f92672">&lt;</span>T: <span style="color:#a6e22e">std</span>::<span style="color:#66d9ef">str</span>::FromStr<span style="color:#f92672">&gt;</span>() -&gt; <span style="color:#a6e22e">T</span> {
     <span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> s <span style="color:#f92672">=</span> String::new();
@@ -92,27 +113,26 @@
 }
 
 <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
-    <span style="color:#66d9ef">let</span> nt: Vec<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">u64</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">=</span> read_vec::<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">u64</span><span style="color:#f92672">&gt;</span>();
-    <span style="color:#66d9ef">let</span> a: Vec<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">u64</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">=</span> read_vec::<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">u64</span><span style="color:#f92672">&gt;</span>();
-    <span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> min: <span style="color:#66d9ef">u64</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1_000_000_000</span>;
-    <span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> max: <span style="color:#66d9ef">u64</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
-    <span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> cnt: <span style="color:#66d9ef">u32</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+    <span style="color:#66d9ef">let</span> nk: Vec<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">u32</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">=</span> read_vec::<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">u32</span><span style="color:#f92672">&gt;</span>();
+    <span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> cnt: <span style="color:#66d9ef">u64</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+    <span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> tmpcnt: <span style="color:#66d9ef">u64</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
 
-    <span style="color:#66d9ef">for</span> i <span style="color:#66d9ef">in</span> <span style="color:#ae81ff">0</span>..a.len() {
-        min <span style="color:#f92672">=</span> std::cmp::min(min, a[i]);
-        <span style="color:#66d9ef">if</span> a[i] <span style="color:#f92672">&gt;</span> min <span style="color:#f92672">&amp;</span><span style="color:#f92672">&amp;</span> a[i] <span style="color:#f92672">-</span> min <span style="color:#f92672">&gt;</span> max {
-            max <span style="color:#f92672">=</span> a[i] <span style="color:#f92672">-</span> min;
+    <span style="color:#66d9ef">for</span> i <span style="color:#66d9ef">in</span> <span style="color:#ae81ff">1</span>..<span style="color:#f92672">=</span>nk[<span style="color:#ae81ff">0</span>] {
+        <span style="color:#66d9ef">if</span> i<span style="color:#f92672">%</span>nk[<span style="color:#ae81ff">1</span>] <span style="color:#f92672">=</span><span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span> {
+            tmpcnt <span style="color:#f92672">+</span><span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
         }
     }
+    cnt <span style="color:#f92672">+</span><span style="color:#f92672">=</span> (tmpcnt<span style="color:#f92672">*</span>tmpcnt<span style="color:#f92672">*</span>tmpcnt);
 
-    min <span style="color:#f92672">=</span> <span style="color:#ae81ff">1_000_000_000</span>;
-    <span style="color:#66d9ef">for</span> i <span style="color:#66d9ef">in</span> <span style="color:#ae81ff">0</span>..a.len() {
-        min <span style="color:#f92672">=</span> std::cmp::min(min, a[i]);
-        <span style="color:#66d9ef">if</span> a[i] <span style="color:#f92672">-</span> min <span style="color:#f92672">=</span><span style="color:#f92672">=</span> max {
-            cnt <span style="color:#f92672">+</span><span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
+    <span style="color:#66d9ef">if</span> nk[<span style="color:#ae81ff">1</span>]<span style="color:#f92672">%</span><span style="color:#ae81ff">2</span> <span style="color:#f92672">=</span><span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span> {
+        tmpcnt <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+        <span style="color:#66d9ef">for</span> i <span style="color:#66d9ef">in</span> <span style="color:#ae81ff">1</span>..<span style="color:#f92672">=</span>nk[<span style="color:#ae81ff">0</span>] {
+            <span style="color:#66d9ef">if</span> i<span style="color:#f92672">%</span>nk[<span style="color:#ae81ff">1</span>] <span style="color:#f92672">=</span><span style="color:#f92672">=</span> nk[<span style="color:#ae81ff">1</span>]<span style="color:#f92672">/</span><span style="color:#ae81ff">2</span> {
+                tmpcnt <span style="color:#f92672">+</span><span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
+            }
         }
+        cnt <span style="color:#f92672">+</span><span style="color:#f92672">=</span> (tmpcnt<span style="color:#f92672">*</span>tmpcnt<span style="color:#f92672">*</span>tmpcnt);
     }
-
     println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;{}&#34;</span>, cnt);
 }
 </code></pre></div>
@@ -124,13 +144,9 @@
     <ul>
         
         <li>
-            <a href="https://taisa-asiato.github.io/post/abc088c/"><i class="fa fa-chevron-circle-left"></i> Abc088c</a>
+            <a href="https://taisa-asiato.github.io/post/abc220d/"><i class="fa fa-chevron-circle-left"></i> Abc220d</a>
         </li>
         
-        
-        <li>
-            <a href="https://taisa-asiato.github.io/post/abc096c/">Abc096c <i class="fa fa-chevron-circle-right"></i> </a>
-        </li>
         
     </ul>
 </section>
