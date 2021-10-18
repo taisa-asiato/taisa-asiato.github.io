@@ -6,10 +6,78 @@
    <description>Recent content in procon on でぶろぐ</description>
    <generator>Hugo -- gohugo.io</generator>
    <language>ja</language>
-   <lastBuildDate>Fri, 15 Oct 2021 23:26:50 +0900</lastBuildDate>
+   <lastBuildDate>Tue, 19 Oct 2021 00:44:00 +0900</lastBuildDate>
    
        <atom:link href="https://taisa-asiato.github.io/tags/procon/index.xml" rel="self" type="application/rss+xml" />
    
+   
+     <item>
+       <title>Abc116c</title>
+       <link>https://taisa-asiato.github.io/post/abc116c/</link>
+       <pubDate>Tue, 19 Oct 2021 00:44:00 +0900</pubDate>
+       
+       <guid>https://taisa-asiato.github.io/post/abc116c/</guid>
+       <description>&lt;p&gt;自力で解けた。
+一度の操作で水やりできる最大区間を求め水やりを行う操作を繰り返せば良い。&lt;/p&gt;
+&lt;p&gt;以下提出コードです。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-Rust&#34; data-lang=&#34;Rust&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;fn&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;read&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;T: &lt;span style=&#34;color:#a6e22e&#34;&gt;std&lt;/span&gt;::&lt;span style=&#34;color:#66d9ef&#34;&gt;str&lt;/span&gt;::FromStr&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt;() -&amp;gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;T&lt;/span&gt; {
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;mut&lt;/span&gt; s &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; String::new();
+    std::io::stdin().read_line(&lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;mut&lt;/span&gt; s).ok();
+    s.trim().parse().ok().unwrap()
+}
+
+&lt;span style=&#34;color:#66d9ef&#34;&gt;fn&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;read_vec&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;T: &lt;span style=&#34;color:#a6e22e&#34;&gt;std&lt;/span&gt;::&lt;span style=&#34;color:#66d9ef&#34;&gt;str&lt;/span&gt;::FromStr&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt;() -&amp;gt; Vec&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;T&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; {
+    read::&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;String&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt;().split_whitespace()
+        .map(&lt;span style=&#34;color:#f92672&#34;&gt;|&lt;/span&gt;e&lt;span style=&#34;color:#f92672&#34;&gt;|&lt;/span&gt; e.parse().ok().unwrap()).collect()
+}
+
+&lt;span style=&#34;color:#66d9ef&#34;&gt;fn&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;main&lt;/span&gt;() {
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; n: &lt;span style=&#34;color:#66d9ef&#34;&gt;usize&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; read::&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;usize&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt;();
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;mut&lt;/span&gt; v: Vec&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;i32&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; read_vec::&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;i32&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt;();
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;mut&lt;/span&gt; cnt: &lt;span style=&#34;color:#66d9ef&#34;&gt;u32&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;;
+
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;loop&lt;/span&gt; {
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; lr: (&lt;span style=&#34;color:#66d9ef&#34;&gt;i32&lt;/span&gt;, &lt;span style=&#34;color:#66d9ef&#34;&gt;i32&lt;/span&gt;) &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; lr(&lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&lt;/span&gt;v);
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; lr.&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&lt;/span&gt; lr.&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt; {
+            &lt;span style=&#34;color:#66d9ef&#34;&gt;break&lt;/span&gt;;
+        }
+
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; l: &lt;span style=&#34;color:#66d9ef&#34;&gt;usize&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; lr.&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;as&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;usize&lt;/span&gt;;
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; r: &lt;span style=&#34;color:#66d9ef&#34;&gt;usize&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; lr.&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;as&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;usize&lt;/span&gt;;
+
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; i &lt;span style=&#34;color:#66d9ef&#34;&gt;in&lt;/span&gt; l..r { 
+            v[i] &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;;
+        }
+        cnt &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;;
+    }
+
+    println&lt;span style=&#34;color:#f92672&#34;&gt;!&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;{}&amp;#34;&lt;/span&gt;, cnt);
+}
+
+&lt;span style=&#34;color:#66d9ef&#34;&gt;fn&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;lr&lt;/span&gt;(a: &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;amp;&lt;/span&gt;Vec&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;i32&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt;) -&amp;gt; (&lt;span style=&#34;color:#66d9ef&#34;&gt;i32&lt;/span&gt;, &lt;span style=&#34;color:#66d9ef&#34;&gt;i32&lt;/span&gt;) {
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;mut&lt;/span&gt; l: &lt;span style=&#34;color:#66d9ef&#34;&gt;i32&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;;
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;mut&lt;/span&gt; r: &lt;span style=&#34;color:#66d9ef&#34;&gt;i32&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;;
+
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; i &lt;span style=&#34;color:#66d9ef&#34;&gt;in&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;..a.len() {
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; a[i] &lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt; {
+            l &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; i &lt;span style=&#34;color:#66d9ef&#34;&gt;as&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;i32&lt;/span&gt;;
+            r &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; l&lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;;
+
+            &lt;span style=&#34;color:#66d9ef&#34;&gt;while&lt;/span&gt;  r &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; a.len() &lt;span style=&#34;color:#66d9ef&#34;&gt;as&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;i32&lt;/span&gt; {
+                &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; a[r &lt;span style=&#34;color:#66d9ef&#34;&gt;as&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;usize&lt;/span&gt;] &lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt; {
+                    r &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; r &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;;
+                } &lt;span style=&#34;color:#66d9ef&#34;&gt;else&lt;/span&gt; {
+                    &lt;span style=&#34;color:#66d9ef&#34;&gt;break&lt;/span&gt;;
+                }
+            }
+            &lt;span style=&#34;color:#66d9ef&#34;&gt;break&lt;/span&gt;;
+        }
+    }
+
+    (l, r)
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+     </item>
    
      <item>
        <title>Abc114c</title>

@@ -10,14 +10,14 @@
   <meta name="author" content="taisa" /><link rel="alternate" type="application/rss+xml+xml" href="https://taisa-asiato.github.io/index.xml" title="でぶろぐ" /><meta name="generator" content="Hugo 0.60.1" />
     
 
-  <meta property="og:title" content="memo" />
+  <meta property="og:title" content="" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="https://taisa-asiato.github.io/tags/memo/" />
-<meta property="og:updated_time" content="2021-10-15T23:26:50+09:00" />
+<meta property="og:url" content="https://taisa-asiato.github.io/post/" />
+<meta property="og:updated_time" content="2021-10-19T00:44:00+09:00" />
 
   <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="memo"/>
+<meta name="twitter:title" content=""/>
 <meta name="twitter:description" content=""/>
 
 
@@ -59,6 +59,44 @@
         <ul>
           
           <li class="first">
+            <h1><a href="https://taisa-asiato.github.io/post/abc116c/" title="Abc116c">Abc116c</a></h1>
+            <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2021-10-19T00:44:00&#43;09:00">Oct 19, 2021</time>
+        </li>
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/rust">#Rust</a>
+                
+                    , 
+                    <a href="/tags/memo">#memo</a>
+                
+                    , 
+                    <a href="/tags/procon">#procon</a>
+                
+            </em>
+        </li>
+        
+
+        <li>One minute read</li>
+    </ul>
+</aside>
+
+            <p>自力で解けた。 一度の操作で水やりできる最大区間を求め水やりを行う操作を繰り返せば良い。
+以下提出コードです。
+fn read&lt;T: std::str::FromStr&gt;() -&gt; T { let mut s = String::new(); std::io::stdin().read_line(&amp;mut s).ok(); s.trim().parse().ok().unwrap() } fn read_vec&lt;T: std::str::FromStr&gt;() -&gt; Vec&lt;T&gt; { read::&lt;String&gt;().split_whitespace() .map(|e| e.parse().ok().unwrap()).collect() } fn main() { let n: usize = read::&lt;usize&gt;(); let mut v: Vec&lt;i32&gt; = read_vec::&lt;i32&gt;(); let mut cnt: u32 = 0; loop { let lr: (i32, i32) = lr(&amp;v); if lr.</p>
+            
+            <a href="/post/abc116c/">Read more…</a>
+            
+          </li>
+          
+          <li >
             <h1><a href="https://taisa-asiato.github.io/post/abc114c/" title="Abc114c">Abc114c</a></h1>
             <aside>
     <ul>
@@ -402,30 +440,6 @@ use std::collections::HashSet; fn read&lt;T: std::str::FromStr&gt;() -&gt; T { l
 fn read&lt;T: std::str::FromStr&gt;() -&gt; T { let mut s = String::new(); std::io::stdin().read_line(&amp;mut s).ok(); s.trim().parse().ok().unwrap() } fn read_vec&lt;T: std::str::FromStr&gt;() -&gt; Vec&lt;T&gt; { read::&lt;String&gt;().</p>
             
             <a href="/post/abc096c/">Read more…</a>
-            
-          </li>
-          
-          <li >
-            <h1><a href="https://taisa-asiato.github.io/post/abc047d/" title="Abc047d">Abc047d</a></h1>
-            <aside>
-    <ul>
-        <li>
-            <time class="post-date" datetime="2021-09-19T14:49:35&#43;09:00">Sep 19, 2021</time>
-        </li>
-        
-
-        
-
-        <li>One minute read</li>
-    </ul>
-</aside>
-
-            <p>解法は解説通り。
-利益最大となる町の組み合わせ（買う店と売る店の組み合わせ）が複数存在する可能性もあるため一度最大の利益を求める。 その後, 町1から町i-1と町iで求められる利益と先に求めた最大の利益が同じ場合の数を カウントしていく。
-以下提出コードです。
-fn read&lt;T: std::str::FromStr&gt;() -&gt; T { let mut s = String::new(); std::io::stdin().read_line(&amp;mut s).ok(); s.trim().parse().ok().unwrap() } fn read_vec&lt;T: std::str::FromStr&gt;() -&gt; Vec&lt;T&gt; { read::&lt;String&gt;().split_whitespace() .map(|e| e.parse().ok().unwrap()).collect() } fn main() { let nt: Vec&lt;u64&gt; = read_vec::&lt;u64&gt;(); let a: Vec&lt;u64&gt; = read_vec::&lt;u64&gt;(); let mut min: u64 = 1_000_000_000; let mut max: u64 = 0; let mut cnt: u32 = 0; for i in 0.</p>
-            
-            <a href="/post/abc047d/">Read more…</a>
             
           </li>
           
