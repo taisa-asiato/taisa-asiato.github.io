@@ -10,14 +10,14 @@
   <meta name="author" content="taisa" /><link rel="alternate" type="application/rss+xml+xml" href="https://taisa-asiato.github.io/index.xml" title="でぶろぐ" /><meta name="generator" content="Hugo 0.60.1" />
     
 
-  <meta property="og:title" content="" />
+  <meta property="og:title" content="procon" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="https://taisa-asiato.github.io/post/" />
-<meta property="og:updated_time" content="2021-10-19T00:44:00+09:00" />
+<meta property="og:url" content="https://taisa-asiato.github.io/tags/procon/" />
+<meta property="og:updated_time" content="2021-10-19T23:34:23+09:00" />
 
   <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content=""/>
+<meta name="twitter:title" content="procon"/>
 <meta name="twitter:description" content=""/>
 
 
@@ -59,6 +59,46 @@
         <ul>
           
           <li class="first">
+            <h1><a href="https://taisa-asiato.github.io/post/abc117c/" title="Abc117c">Abc117c</a></h1>
+            <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2021-10-19T23:34:23&#43;09:00">Oct 19, 2021</time>
+        </li>
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/rust">#Rust</a>
+                
+                    , 
+                    <a href="/tags/memo">#memo</a>
+                
+                    , 
+                    <a href="/tags/procon">#procon</a>
+                
+            </em>
+        </li>
+        
+
+        <li>One minute read</li>
+    </ul>
+</aside>
+
+            <p>実装悩んだが自力で解けた。 公式解説も同じ方法っぽい。
+入力配列をソート後, Xi+1とXiの差を求める。 最大移動距離はXM-X1となる。 コマを置く位置は, 先に求めたXi+1とXiの差が大きい位置で区間を区切れば コマの移動距離の和を最小にすることができる。
+イメージを貼りたかったけど貼り方わからない上作ったイメージもわかりにくかったので貼らなかった。
+以下提出コードです。
+fn read&lt;T: std::str::FromStr&gt;() -&gt; T { let mut s = String::new(); std::io::stdin().read_line(&amp;mut s).ok(); s.trim().parse().ok().unwrap() } fn read_vec&lt;T: std::str::FromStr&gt;() -&gt; Vec&lt;T&gt; { read::&lt;String&gt;().</p>
+            
+            <a href="/post/abc117c/">Read more…</a>
+            
+          </li>
+          
+          <li >
             <h1><a href="https://taisa-asiato.github.io/post/abc116c/" title="Abc116c">Abc116c</a></h1>
             <aside>
     <ul>
@@ -403,43 +443,6 @@ fn read&lt;T: std::str::FromStr&gt;() -&gt; T { let mut s = String::new(); std::
 use std::collections::HashSet; fn read&lt;T: std::str::FromStr&gt;() -&gt; T { let mut s = String::new(); std::io::stdin().read_line(&amp;mut s).ok(); s.trim().parse().ok().unwrap() } fn main() { let v: String = read::&lt;String&gt;(); let k: usize = read::&lt;usize&gt;(); let mut hs: HashSet&lt;String&gt; = HashSet::new(); for i in 0.</p>
             
             <a href="/post/abc097c/">Read more…</a>
-            
-          </li>
-          
-          <li >
-            <h1><a href="https://taisa-asiato.github.io/post/abc096c/" title="Abc096c">Abc096c</a></h1>
-            <aside>
-    <ul>
-        <li>
-            <time class="post-date" datetime="2021-09-21T23:50:55&#43;09:00">Sep 21, 2021</time>
-        </li>
-        
-
-        
-        <li>
-            <em>
-                
-                    
-                    <a href="/tags/rust">#Rust</a>
-                
-                    , 
-                    <a href="/tags/memo">#memo</a>
-                
-            </em>
-        </li>
-        
-
-        <li>2 minutes read</li>
-    </ul>
-</aside>
-
-            <p>またしても問題文を誤読していた。
-(i, j)を黒く塗る場合は, (i+1, j), (i-1, j), (i, j+1), (i, j-1)のいずれかを 黒く塗る必要がある。
-全ての(i, j)に対して上記を満たすことができるかを確認すれば良い。
-以下提出コードです。
-fn read&lt;T: std::str::FromStr&gt;() -&gt; T { let mut s = String::new(); std::io::stdin().read_line(&amp;mut s).ok(); s.trim().parse().ok().unwrap() } fn read_vec&lt;T: std::str::FromStr&gt;() -&gt; Vec&lt;T&gt; { read::&lt;String&gt;().</p>
-            
-            <a href="/post/abc096c/">Read more…</a>
             
           </li>
           
