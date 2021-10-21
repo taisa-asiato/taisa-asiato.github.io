@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+	<meta name="generator" content="Hugo 0.60.1" />
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>でぶろぐ</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+
+	<link rel="stylesheet" href="/css/style.css">
+	
+	<link rel="alternate" type="application/rss+xml" href="/index.xml" title="でぶろぐ">
+
+	<link rel="shortcut icon" href="/favicon.ico">
+		
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container header__container">
+		
+	<div class="logo">
+		<a class="logo__link" href="/" title="でぶろぐ" rel="home">
+			<div class="logo__item logo__text">
+					<div class="logo__title">でぶろぐ</div>
+					
+				</div>
+		</a>
+	</div>
+		<div class="divider"></div>
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main list" role="main">
+	<article class="list__item post">
+	
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/post/abc084c/" rel="bookmark">
+			Abc084C
+			</a>
+		</h2>
+		
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		問題記載のとおり, ダイアグラムを考え実装するだけ。 自力で実装したが, 解説を見たらそちらの方がわかりやすかった。
+以下提出コードです。
+fn read&lt;T: std::str::FromStr&gt;() -&gt; T { let mut s = String::new(); std::io::stdin().read_line(&amp;mut s).ok(); s.trim().parse().ok().unwrap() } fn read_vec&lt;T: std::str::FromStr&gt;() -&gt; Vec&lt;T&gt; { read::&lt;String&gt;().split_whitespace() .map(|e| e.parse().ok().unwrap()).collect() } fn main() { let n: usize = read::&lt;usize&gt;(); let mut v: Vec&lt;Vec&lt;u64&gt;&gt; = Vec::new(); let mut t: Vec&lt;u64&gt; = Vec::new(); for i in 0.
+	</div>
+</article><article class="list__item post">
+	
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/post/abc075c/" rel="bookmark">
+			Abc075C
+			</a>
+		</h2>
+		
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		何となくやり方は思いついたが, コードに落とし込むことができなかった。 解説と同じとおり, 下記のようなアルゴリズムを実装しました。
+ 辺から一つ選択し, その辺が無いものとする dfsによって各頂点を訪れることができるか探索する  未訪問の頂点で, 辺が接続されている場合は接続先の頂点に対して更に探索を続ける 訪問した頂点はメモしておく   探索が終了したら訪問済みの頂点を確認する 全ての頂点を訪問できた場合, その辺は橋ではない  以下が提出コードです。
+fn read&lt;T: std::str::FromStr&gt;() -&gt; T { let mut s = String::new(); std::io::stdin().
+	</div>
+</article><article class="list__item post">
+	
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/post/abc080/" rel="bookmark">
+			Abc080
+			</a>
+		</h2>
+		
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		問題文を勘違いして, 10営業区間それぞれで利益最大となる店の利益の和を求めていた。
+求める回答は, joisinoお姉ちゃんが営業を行った区間のうち, 個別の店iに対して, 被った営業区間毎に利益がPij(店jの営業区間がjoisinoお姉ちゃんの営業区間とj個被る) となるので, 利益最大となるpi,jを各店毎に求めた和となる。
+解法は解説通りで, joisinoお姉ちゃんの10営業区間の（営業する/しない）すべての組み合わせに対して 各店iで利益最大となるPijを求めていき, 最終的にその和を出力する。
+全ての組み合わせを試すのにbit演算を用いている。 ※ 高々(2^10-1)×100なので, 全通り試しても十分間に合う。
+以下提出コードです。
+fn read&lt;T: std::str::FromStr&gt;() -&gt; T { let mut s = String::new(); std::io::stdin().read_line(&amp;mut s).ok(); s.
+	</div>
+</article>
+</main>
+
+<div class="pagination">
+	<a class="pagination__item pagination__item--prev btn" href="/page/5/">«</a>
+	<span class="pagination__item pagination__item--current">6/8</span>
+	<a class="pagination__item pagination__item--next btn" href="/page/7/">»</a>
+</div>
+
+			</div>
+			<aside class="sidebar"><div class="widget-search widget">
+	<form class="widget-search__form" role="search" method="get" action="https://google.com/search">
+		<label>
+			<input class="widget-search__field" type="search" placeholder="SEARCH…" value="" name="q" aria-label="SEARCH…">
+		</label>
+		<input class="widget-search__submit" type="submit" value="Search">
+		<input type="hidden" name="sitesearch" value="https://taisa-asiato.github.io/" />
+	</form>
+</div>
+<div class="widget-recent widget">
+	<h4 class="widget__title">Recent Posts</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/post/abc118c/">Abc118c</a></li>
+			<li class="widget__item"><a class="widget__link" href="/post/abc117c/">Abc117c</a></li>
+			<li class="widget__item"><a class="widget__link" href="/post/abc116c/">Abc116c</a></li>
+			<li class="widget__item"><a class="widget__link" href="/post/abc114c/">Abc114c</a></li>
+			<li class="widget__item"><a class="widget__link" href="/post/abc111c/">Abc111c</a></li>
+		</ul>
+	</div>
+</div>
+<div class="widget-taglist widget">
+	<h4 class="widget__title">Tags</h4>
+	<div class="widget__content">
+		<a class="widget-taglist__link widget__link btn" href="/tags/memo/" title="memo">memo</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/procon/" title="procon">procon</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/rust/" title="Rust">Rust</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/the-elements-of-computing-system/" title="The Elements of Computing System">The Elements of Computing System</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E3%82%A2%E3%83%AB%E3%82%B4%E3%83%AA%E3%82%BA%E3%83%A0/" title="アルゴリズム">アルゴリズム</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E3%83%97%E3%83%AD%E3%82%B3%E3%83%B3/" title="プロコン">プロコン</a>
+	</div>
+</div>
+</aside>
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2021 でぶろぐ.
+			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="/js/menu.js"></script>
+</body>
+</html>

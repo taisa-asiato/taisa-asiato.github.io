@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+	<meta name="generator" content="Hugo 0.60.1" />
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>でぶろぐ</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+
+	<link rel="stylesheet" href="/css/style.css">
+	
+	<link rel="alternate" type="application/rss+xml" href="/index.xml" title="でぶろぐ">
+
+	<link rel="shortcut icon" href="/favicon.ico">
+		
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container header__container">
+		
+	<div class="logo">
+		<a class="logo__link" href="/" title="でぶろぐ" rel="home">
+			<div class="logo__item logo__text">
+					<div class="logo__title">でぶろぐ</div>
+					
+				</div>
+		</a>
+	</div>
+		<div class="divider"></div>
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main list" role="main">
+	<article class="list__item post">
+	
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/post/abc109c/" rel="bookmark">
+			Abc109c
+			</a>
+		</h2>
+		
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		久々に自力で解けた。
+スタート地点Xと訪問する都市の関係は, その差の絶対値がDの倍数になる。 よって各都市とスタート地点Xとの差の最大公約数が求めるDとなる。 gcdの実装忘れてたので復習にもなった。
+以下提出コードです。
+fn read&lt;T: std::str::FromStr&gt;() -&gt; T { let mut s = String::new(); std::io::stdin().read_line(&amp;mut s).ok(); s.trim().parse().ok().unwrap() } fn read_vec&lt;T: std::str::FromStr&gt;() -&gt; Vec&lt;T&gt; { read::&lt;String&gt;().split_whitespace() .map(|e| e.parse().ok().unwrap()).collect() } fn main() { let nx: Vec&lt;u64&gt; = read_vec::&lt;u64&gt;(); let mut x: Vec&lt;u64&gt; = read_vec::&lt;u64&gt;(); let mut ans: u64 = 0; for i in 0.
+	</div>
+</article><article class="list__item post">
+	
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/post/abc108c/" rel="bookmark">
+			Abc108c
+			</a>
+		</h2>
+		
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		解法は解説とおり。
+(a, b, c)について(a+b)%K=0, (a+c)%K=0, (b+c)%K=0となる。 これを満たすa, b, cは
+ a%K=b%K=c%K=0 a%K=b%K=c%K=K/2 のいずれか。  aについてi=1からNまでのうち, 上記個数をカウントし, それぞれ3乗した値の和が答えとなる。 (b, cも同様なのでaのみ考えれば良い。)
+以下提出コードです。
+fn read&lt;T: std::str::FromStr&gt;() -&gt; T { let mut s = String::new(); std::io::stdin().
+	</div>
+</article><article class="list__item post">
+	
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/post/abc220d/" rel="bookmark">
+			Abc220d
+			</a>
+		</h2>
+		
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		解法は解説どおり。
+Aiまで操作を行った際, 左端の値がjである回数をdp[i][j]にメモする。 ANまで操作を行っていき, 最終的にdp[N][0]からdp[N][9]の値が答えとなる。
+※ 配列の宣言, 回数の数え上げでミスをしていた。
+// これは要素数1_000_00の配列を10個宣言なので間違い let mut ary: [[u32; 1_000_00]; 10]; // 正しくは以下 let mut ary: [[u32; 10]; 1_000_00]; // これはdp[i][j]%mod+dp[i][j]の値をdp[m][n]に代入する操作 dp[m][n] += dp[i][j]%mod; // 正しい操作は, (dp[m][n]+dp[i][j])%modをdp[m][n]に代入する操作 自分はこんな変なことをしていたのかとかなりショックを受けた。
+	</div>
+</article>
+</main>
+
+<div class="pagination">
+	<a class="pagination__item pagination__item--prev btn" href="/page/2/">«</a>
+	<span class="pagination__item pagination__item--current">3/8</span>
+	<a class="pagination__item pagination__item--next btn" href="/page/4/">»</a>
+</div>
+
+			</div>
+			<aside class="sidebar"><div class="widget-search widget">
+	<form class="widget-search__form" role="search" method="get" action="https://google.com/search">
+		<label>
+			<input class="widget-search__field" type="search" placeholder="SEARCH…" value="" name="q" aria-label="SEARCH…">
+		</label>
+		<input class="widget-search__submit" type="submit" value="Search">
+		<input type="hidden" name="sitesearch" value="https://taisa-asiato.github.io/" />
+	</form>
+</div>
+<div class="widget-recent widget">
+	<h4 class="widget__title">Recent Posts</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/post/abc118c/">Abc118c</a></li>
+			<li class="widget__item"><a class="widget__link" href="/post/abc117c/">Abc117c</a></li>
+			<li class="widget__item"><a class="widget__link" href="/post/abc116c/">Abc116c</a></li>
+			<li class="widget__item"><a class="widget__link" href="/post/abc114c/">Abc114c</a></li>
+			<li class="widget__item"><a class="widget__link" href="/post/abc111c/">Abc111c</a></li>
+		</ul>
+	</div>
+</div>
+<div class="widget-taglist widget">
+	<h4 class="widget__title">Tags</h4>
+	<div class="widget__content">
+		<a class="widget-taglist__link widget__link btn" href="/tags/memo/" title="memo">memo</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/procon/" title="procon">procon</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/rust/" title="Rust">Rust</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/the-elements-of-computing-system/" title="The Elements of Computing System">The Elements of Computing System</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E3%82%A2%E3%83%AB%E3%82%B4%E3%83%AA%E3%82%BA%E3%83%A0/" title="アルゴリズム">アルゴリズム</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E3%83%97%E3%83%AD%E3%82%B3%E3%83%B3/" title="プロコン">プロコン</a>
+	</div>
+</div>
+</aside>
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2021 でぶろぐ.
+			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="/js/menu.js"></script>
+</body>
+</html>

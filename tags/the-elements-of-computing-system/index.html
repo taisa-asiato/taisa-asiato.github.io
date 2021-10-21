@@ -1,102 +1,116 @@
-<!doctype html>
-
-<html lang="ja">
-
+<!DOCTYPE html>
+<html class="no-js" lang="en">
 <head>
-  <title>でぶろぐ</title>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="The HTML5 Herald" />
-  <meta name="author" content="taisa" /><link rel="alternate" type="application/rss+xml+xml" href="https://taisa-asiato.github.io/tags/the-elements-of-computing-system/index.xml" title="でぶろぐ" /><meta name="generator" content="Hugo 0.60.1" />
-    
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>The Elements of Computing System - でぶろぐ</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
 
-  <meta property="og:title" content="memo" />
-<meta property="og:description" content="" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://taisa-asiato.github.io/tags/memo/" />
-<meta property="og:updated_time" content="2021-10-21T23:57:33+09:00" />
+	<link rel="stylesheet" href="/css/style.css">
+	
+	<link rel="alternate" type="application/rss+xml" href="/tags/the-elements-of-computing-system/index.xml" title="でぶろぐ">
 
-  <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="memo"/>
-<meta name="twitter:description" content=""/>
-
-
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css" />
-  <script src="https://kit.fontawesome.com/b76b73e8e8.js" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
-  <link rel="stylesheet" type="text/css" href="/css/styles.css" /></head>
-
-<body>
-  <div id="container">
-    <header>
-      <h1>
-                <a href="/">でぶろぐ</a>
-            </h1>
-
-      <ul id="social-media">
-             <li>
-               <a href="https://github.com/taisa-asiato" title="GitHub">
-               <i class="fab fa-github fa-lg"></i>
-               </a>
-             </li>
-      </ul>
-      
-    </header>
-
-    
-<nav>
-    <ul>
-        
-    </ul>
-</nav>
-
-    <main>
-
-
-
-
-<section id="list">
-
-    
-
-    
-        <h2>#the elements of computing system</h2>
-    
-
-    
-
-    
-
-    <h3>2020</h3>
-    <ul>
-        
-        <li>
-            <a href="https://taisa-asiato.github.io/post/compsystem10/">コンピュータシステムの理論と実装 10章</a>
-            <time class="date-meta">Jan 11</time>
-        </li>
-        
-    </ul>
-    
-    
-
-</section>
-
-
-
-
-
-
-
+	<link rel="shortcut icon" href="/favicon.ico">
+		
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container header__container">
+		
+	<div class="logo">
+		<a class="logo__link" href="/" title="でぶろぐ" rel="home">
+			<div class="logo__item logo__text">
+					<div class="logo__title">でぶろぐ</div>
+					
+				</div>
+		</a>
+	</div>
+		<div class="divider"></div>
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main list" role="main">
+	<header class="main__header">
+		<h1 class="main__title">The Elements of Computing System</h1>
+	</header><article class="list__item post">
+	
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/post/compsystem10/" rel="bookmark">
+			コンピュータシステムの理論と実装 10章
+			</a>
+		</h2>
+		
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		概要 コンピュータシステムの理論と実装の10章の課題を終えたので記事を書きます。
+10章の目的(11章もですが)はJackコンパイラの作成です。 コンパイラは,
+ コンピュータ・プログラミング言語の処理系（言語処理系）の一種で、 高水準言語によるソースコードから、機械語あるいは元のプログラムよりも 低い水準のコードに変換（コンパイル）する https://ja.wikipedia.org/wiki/%E3%82%B3%E3%83%B3%E3%83%91%E3%82%A4%E3%83%A9
+ プログラムです。 コンパイラはコンパイルする際
+ 構文解析 コード生成  の大きく2つの作業を行なっています。 本書ではJackコンパイラが行う上記２つの作業の詳細を10章, 11章の2章に分けて学び, 課題としてそれぞれ構文解析器, コード生成器を実装します。それぞれ作成したものを合体させ Jackコンパイラの実装が完了します。
+10章で作成する構文解析器は, 10章の終了時点では解析器単体で動作し .xmlファイルへ構文解析の結果を出力できるよう実装を行います。
+詳細 構文解析機は下記２つの異なるモジュールから構成されます。
+ トークナイザ パーサ  トークナイザ トークナイザは
+	</div>
+</article>
 </main>
-    <footer>
-        <h6> |
-            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
-            <a href="https://taisa-asiato.github.io/index.xml">Subscribe </a></h6>
-    </footer>
+
+
+			</div>
+			
+<aside class="sidebar sidebar--left"><div class="widget-search widget">
+	<form class="widget-search__form" role="search" method="get" action="https://google.com/search">
+		<label>
+			<input class="widget-search__field" type="search" placeholder="SEARCH…" value="" name="q" aria-label="SEARCH…">
+		</label>
+		<input class="widget-search__submit" type="submit" value="Search">
+		<input type="hidden" name="sitesearch" value="https://taisa-asiato.github.io/" />
+	</form>
 </div>
-<script src="/js/scripts.js"></script>
-
+<div class="widget-recent widget">
+	<h4 class="widget__title">Recent Posts</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/post/abc118c/">Abc118c</a></li>
+			<li class="widget__item"><a class="widget__link" href="/post/abc117c/">Abc117c</a></li>
+			<li class="widget__item"><a class="widget__link" href="/post/abc116c/">Abc116c</a></li>
+			<li class="widget__item"><a class="widget__link" href="/post/abc114c/">Abc114c</a></li>
+			<li class="widget__item"><a class="widget__link" href="/post/abc111c/">Abc111c</a></li>
+		</ul>
+	</div>
+</div>
+<div class="widget-taglist widget">
+	<h4 class="widget__title">Tags</h4>
+	<div class="widget__content">
+		<a class="widget-taglist__link widget__link btn" href="/tags/memo/" title="memo">memo</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/procon/" title="procon">procon</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/rust/" title="Rust">Rust</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/the-elements-of-computing-system/" title="The Elements of Computing System">The Elements of Computing System</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E3%82%A2%E3%83%AB%E3%82%B4%E3%83%AA%E3%82%BA%E3%83%A0/" title="アルゴリズム">アルゴリズム</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E3%83%97%E3%83%AD%E3%82%B3%E3%83%B3/" title="プロコン">プロコン</a>
+	</div>
+</div>
+</aside>
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2021 でぶろぐ.
+			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="/js/menu.js"></script>
 </body>
-
 </html>
-
