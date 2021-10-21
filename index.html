@@ -10,14 +10,14 @@
   <meta name="author" content="taisa" /><link rel="alternate" type="application/rss+xml+xml" href="https://taisa-asiato.github.io/index.xml" title="でぶろぐ" /><meta name="generator" content="Hugo 0.60.1" />
     
 
-  <meta property="og:title" content="procon" />
+  <meta property="og:title" content="" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="https://taisa-asiato.github.io/tags/procon/" />
-<meta property="og:updated_time" content="2021-10-19T23:34:23+09:00" />
+<meta property="og:url" content="https://taisa-asiato.github.io/post/" />
+<meta property="og:updated_time" content="2021-10-21T23:57:33+09:00" />
 
   <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="procon"/>
+<meta name="twitter:title" content=""/>
 <meta name="twitter:description" content=""/>
 
 
@@ -59,6 +59,45 @@
         <ul>
           
           <li class="first">
+            <h1><a href="https://taisa-asiato.github.io/post/abc118c/" title="Abc118c">Abc118c</a></h1>
+            <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2021-10-21T23:57:33&#43;09:00">Oct 21, 2021</time>
+        </li>
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/rust">#Rust</a>
+                
+                    , 
+                    <a href="/tags/memo">#memo</a>
+                
+                    , 
+                    <a href="/tags/procon">#procon</a>
+                
+            </em>
+        </li>
+        
+
+        <li>One minute read</li>
+    </ul>
+</aside>
+
+            <p>自力で解いたが, 解説の解き方の方が良い気がする（わかりやすい）。
+入力配列をソート後, 最小値を用い各要素の余りを求め, あまり0の場合は配列から削除する。 以降同じ操作を配列の個数が1になるまで続け, 最後に残った数値が答えとなる。
+以下提出コードです。
+fn read&lt;T: std::str::FromStr&gt;() -&gt; T { let mut s = String::new(); std::io::stdin().read_line(&amp;mut s).ok(); s.trim().parse().ok().unwrap() } fn read_vec&lt;T: std::str::FromStr&gt;() -&gt; Vec&lt;T&gt; { read::&lt;String&gt;().split_whitespace() .</p>
+            
+            <a href="/post/abc118c/">Read more…</a>
+            
+          </li>
+          
+          <li >
             <h1><a href="https://taisa-asiato.github.io/post/abc117c/" title="Abc117c">Abc117c</a></h1>
             <aside>
     <ul>
@@ -408,41 +447,6 @@ DP問題はあまり解いていないので, 早く慣れたいところ。 DP�
 fn read&lt;T: std::str::FromStr&gt;() -&gt; T { let mut s = String::new(); std::io::stdin().read_line(&amp;mut s).</p>
             
             <a href="/post/abc099c/">Read more…</a>
-            
-          </li>
-          
-          <li >
-            <h1><a href="https://taisa-asiato.github.io/post/abc097c/" title="Abc097c">Abc097c</a></h1>
-            <aside>
-    <ul>
-        <li>
-            <time class="post-date" datetime="2021-09-23T15:14:58&#43;09:00">Sep 23, 2021</time>
-        </li>
-        
-
-        
-        <li>
-            <em>
-                
-                    
-                    <a href="/tags/rust">#Rust</a>
-                
-                    , 
-                    <a href="/tags/memo">#memo</a>
-                
-            </em>
-        </li>
-        
-
-        <li>One minute read</li>
-    </ul>
-</aside>
-
-            <p>制約(Kは1以上5以下となる。)から, 生成できる部分文字列のうち, 上位5番目までの 文字列の長さはK以下となる。 １文字目から順に文字列長K以下となる部分文字列を生成・記録し, K番目の文字列を出力すれば良い。
-以下提出コードです。
-use std::collections::HashSet; fn read&lt;T: std::str::FromStr&gt;() -&gt; T { let mut s = String::new(); std::io::stdin().read_line(&amp;mut s).ok(); s.trim().parse().ok().unwrap() } fn main() { let v: String = read::&lt;String&gt;(); let k: usize = read::&lt;usize&gt;(); let mut hs: HashSet&lt;String&gt; = HashSet::new(); for i in 0.</p>
-            
-            <a href="/post/abc097c/">Read more…</a>
             
           </li>
           
