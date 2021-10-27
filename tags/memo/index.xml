@@ -6,10 +6,24 @@
     <description>Recent content in memo on でぶろぐ</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Thu, 21 Oct 2021 23:57:33 +0900</lastBuildDate>
+    <lastBuildDate>Wed, 27 Oct 2021 23:34:41 +0900</lastBuildDate>
     
 	<atom:link href="https://taisa-asiato.github.io/tags/memo/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Abc224d</title>
+      <link>https://taisa-asiato.github.io/post/abc224d/</link>
+      <pubDate>Wed, 27 Oct 2021 23:34:41 +0900</pubDate>
+      
+      <guid>https://taisa-asiato.github.io/post/abc224d/</guid>
+      <description>解説どおり。コードも解説のものと同じ。
+各頂点の隣接頂点の配列を入力を元に作成する。 また, 初期状態と目標状態を配列で保持する。 このとき, コマが置かれていない頂点は目印(例えば-1など)の値を設定する。
+初期状態から, コマが置かれていない頂点を探し, その頂点へ隣接する各頂点からコマを移動したときの頂点とコマの状態を HashMapに記録する。このとき, 初期状態から何回コマを動かしたかを値として記録する。 この操作を繰り返し行うことで全探索を行い, 目標とする配列の状態へと遷移できるかを調べる。
+終了条件を設定するため, 頂点とコマの状態の配列をHashMap及びVecDequeで管理する。 HashMapに記録されていない状態の配列の場合はHashMapに記録し, VecDequeに配列を追加する。 探索を行う際, VecDequeから配列を取り出し, 上記の探索を行う。 探索が終了した状態の配列はVecDequeから取り除く。 VecDequeが空になった場合が終了状態となる。 最終的に目標状態の配列がHashMapに登録されていれば, その値を出力すれば良い。
+以下提出コードです。 ほぼほぼCのコード。Rustっぽく書くにはどうすれば良いのだろうか。
+use std::collections::HashMap; use std::collections::VecDeque; fn read&amp;lt;T: std::str::FromStr&amp;gt;() -&amp;gt; T { let mut s = String::new(); std::io::stdin().</description>
+    </item>
     
     <item>
       <title>Abc118c</title>

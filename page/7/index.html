@@ -44,6 +44,24 @@
 	
 	<header class="list__header">
 		<h2 class="list__title post__title">
+			<a href="/post/abc080/" rel="bookmark">
+			Abc080
+			</a>
+		</h2>
+		
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		問題文を勘違いして, 10営業区間それぞれで利益最大となる店の利益の和を求めていた。
+求める回答は, joisinoお姉ちゃんが営業を行った区間のうち, 個別の店iに対して, 被った営業区間毎に利益がPij(店jの営業区間がjoisinoお姉ちゃんの営業区間とj個被る) となるので, 利益最大となるpi,jを各店毎に求めた和となる。
+解法は解説通りで, joisinoお姉ちゃんの10営業区間の（営業する/しない）すべての組み合わせに対して 各店iで利益最大となるPijを求めていき, 最終的にその和を出力する。
+全ての組み合わせを試すのにbit演算を用いている。 ※ 高々(2^10-1)×100なので, 全通り試しても十分間に合う。
+以下提出コードです。
+fn read&lt;T: std::str::FromStr&gt;() -&gt; T { let mut s = String::new(); std::io::stdin().read_line(&amp;mut s).ok(); s.
+	</div>
+</article><article class="list__item post">
+	
+	<header class="list__header">
+		<h2 class="list__title post__title">
 			<a href="/post/rust_memo3/" rel="bookmark">
 			Rust memo3
 			</a>
@@ -72,26 +90,6 @@ fn read&lt;T: std::str::FromStr&gt;() -&gt; T { let mut s = String::new(); std::
 螺旋本の3.5問目(安定ソート), トランプカードを 構造体を使用して表現していたのですが, 標準入力から得た値をパースしてCard型のVectorにpushする処理が コンパイル時にエラーになりました。
 error[E0382]: assign to part of moved value: `card_val` --&gt; pro3-4.rs:28:9 | 20 | let mut card_val = Card { | ------------ move occurs because `card_val` has type `Card`, which does not implement the `Copy` trait .
 	</div>
-</article><article class="list__item post">
-	
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/post/compsystem10/" rel="bookmark">
-			コンピュータシステムの理論と実装 10章
-			</a>
-		</h2>
-		
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		概要 コンピュータシステムの理論と実装の10章の課題を終えたので記事を書きます。
-10章の目的(11章もですが)はJackコンパイラの作成です。 コンパイラは,
- コンピュータ・プログラミング言語の処理系（言語処理系）の一種で、 高水準言語によるソースコードから、機械語あるいは元のプログラムよりも 低い水準のコードに変換（コンパイル）する https://ja.wikipedia.org/wiki/%E3%82%B3%E3%83%B3%E3%83%91%E3%82%A4%E3%83%A9
- プログラムです。 コンパイラはコンパイルする際
- 構文解析 コード生成  の大きく2つの作業を行なっています。 本書ではJackコンパイラが行う上記２つの作業の詳細を10章, 11章の2章に分けて学び, 課題としてそれぞれ構文解析器, コード生成器を実装します。それぞれ作成したものを合体させ Jackコンパイラの実装が完了します。
-10章で作成する構文解析器は, 10章の終了時点では解析器単体で動作し .xmlファイルへ構文解析の結果を出力できるよう実装を行います。
-詳細 構文解析機は下記２つの異なるモジュールから構成されます。
- トークナイザ パーサ  トークナイザ トークナイザは
-	</div>
 </article>
 </main>
 
@@ -115,11 +113,11 @@ error[E0382]: assign to part of moved value: `card_val` --&gt; pro3-4.rs:28:9 | 
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/post/abc224d/">Abc224d</a></li>
 			<li class="widget__item"><a class="widget__link" href="/post/abc118c/">Abc118c</a></li>
 			<li class="widget__item"><a class="widget__link" href="/post/abc117c/">Abc117c</a></li>
 			<li class="widget__item"><a class="widget__link" href="/post/abc116c/">Abc116c</a></li>
 			<li class="widget__item"><a class="widget__link" href="/post/abc114c/">Abc114c</a></li>
-			<li class="widget__item"><a class="widget__link" href="/post/abc111c/">Abc111c</a></li>
 		</ul>
 	</div>
 </div>
