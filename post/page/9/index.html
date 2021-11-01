@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html class="no-js" lang="en">
 <head>
-	<meta name="generator" content="Hugo 0.60.1" />
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>でぶろぐ</title>
+	<title> - でぶろぐ</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,7 +14,7 @@
 
 	<link rel="stylesheet" href="/css/style.css">
 	
-	<link rel="alternate" type="application/rss+xml" href="/index.xml" title="でぶろぐ">
+	<link rel="alternate" type="application/rss+xml" href="/post/index.xml" title="でぶろぐ">
 
 	<link rel="shortcut icon" href="/favicon.ico">
 		
@@ -40,68 +39,38 @@
 			<div class="primary">
 			
 <main class="main list" role="main">
-	<article class="list__item post">
+	<div class="content main__content clearfix">
+		<p>title = &ldquo;Posts&rdquo;
+menu = &ldquo;main&rdquo;
+weight = &ldquo;10&rdquo;</p>
+
+	</div><article class="list__item post">
 	
 	<header class="list__header">
 		<h2 class="list__title post__title">
-			<a href="/post/abc108c/" rel="bookmark">
-			Abc108c
+			<a href="/post/pra/" rel="bookmark">
+			螺旋2
 			</a>
 		</h2>
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		解法は解説とおり。
-(a, b, c)について(a+b)%K=0, (a+c)%K=0, (b+c)%K=0となる。 これを満たすa, b, cは
- a%K=b%K=c%K=0 a%K=b%K=c%K=K/2 のいずれか。  aについてi=1からNまでのうち, 上記個数をカウントし, それぞれ3乗した値の和が答えとなる。 (b, cも同様なのでaのみ考えれば良い。)
-以下提出コードです。
-fn read&lt;T: std::str::FromStr&gt;() -&gt; T { let mut s = String::new(); std::io::stdin().
-	</div>
-</article><article class="list__item post">
-	
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/post/abc220d/" rel="bookmark">
-			Abc220d
-			</a>
-		</h2>
-		
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		解法は解説どおり。
-Aiまで操作を行った際, 左端の値がjである回数をdp[i][j]にメモする。 ANまで操作を行っていき, 最終的にdp[N][0]からdp[N][9]の値が答えとなる。
-※ 配列の宣言, 回数の数え上げでミスをしていた。
-// これは要素数1_000_00の配列を10個宣言なので間違い let mut ary: [[u32; 1_000_00]; 10]; // 正しくは以下 let mut ary: [[u32; 10]; 1_000_00]; // これはdp[i][j]%mod+dp[i][j]の値をdp[m][n]に代入する操作 dp[m][n] += dp[i][j]%mod; // 正しい操作は, (dp[m][n]+dp[i][j])%modをdp[m][n]に代入する操作 自分はこんな変なことをしていたのかとかなりショックを受けた。
-	</div>
-</article><article class="list__item post">
-	
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/post/abc099c/" rel="bookmark">
-			Abc099c
-			</a>
-		</h2>
-		
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		解法は解説動画のとおり。
-n円までの最小引出回数dp[n]の候補は
- n-1円の時に1円を1回引出す場合(計dp[n-1]+1回) n-6円の時に6円を1回引出す場合(計dp[n-6]+1回) &hellip; n-9i円の時に9i円を1回引出す場合(計dp[n-9i]+1回)  があり, これらの中から最小だった引出し回数がdp[n]となる。 初期値dp[0]は0で初期化しておき, 以降ループないし再帰関数でdpのテーブルを埋めていけばよい。
-DP問題はあまり解いていないので, 早く慣れたいところ。 DP問題の中では多分簡単な方だと思う(dpテーブルが多次元のものもあるので, 1次元の問題は簡単な方では?と思う。)。 類似の問題を集めたWeb記事を見つけているのでちまちまやっていく。
-以下提出コードです。
-fn read&lt;T: std::str::FromStr&gt;() -&gt; T { let mut s = String::new(); std::io::stdin().read_line(&amp;mut s).
+		Rustの勉強がてらプロコンの問題を解くことにしました。 AOJのプロコン導入問題を解いていきます。 問題は螺旋本に登場する問題を順番に解いていきます。 はじめの問題はALDS1_1_Dです。
+なお，タイトルの螺旋2は螺旋+章番号を意味します。 今後のナンバリングは上記螺旋+章番号で統一します。
+以下ソースコードです。
+use std::io; fn main() { let mut tmp_str = String::new(); // 標準入力から一行受け取る  io::stdin().read_line( &amp;mut tmp_str ); // 標準入力から受け取った文字を数字に変換する  let linenum: i32 = tmp_str.
 	</div>
 </article>
 </main>
 
 <div class="pagination">
-	<a class="pagination__item pagination__item--prev btn" href="/page/3/">«</a>
-	<span class="pagination__item pagination__item--current">4/9</span>
-	<a class="pagination__item pagination__item--next btn" href="/page/5/">»</a>
+	<a class="pagination__item pagination__item--prev btn" href="/post/page/8/">«</a>
+	<span class="pagination__item pagination__item--current">9/9</span>
 </div>
 
 			</div>
-			<aside class="sidebar"><div class="widget-search widget">
+			
+<aside class="sidebar sidebar--left"><div class="widget-search widget">
 	<form class="widget-search__form" role="search" method="get" action="https://google.com/search">
 		<label>
 			<input class="widget-search__field" type="search" placeholder="SEARCH…" value="" name="q" aria-label="SEARCH…">

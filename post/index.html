@@ -48,6 +48,22 @@ weight = &ldquo;10&rdquo;</p>
 	
 	<header class="list__header">
 		<h2 class="list__title post__title">
+			<a href="/post/abc044c/" rel="bookmark">
+			Abc044c
+			</a>
+		</h2>
+		
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		解説どおり。
+全ての組み合わせを網羅しないと解けないので, 効率よく全通りの組み合わを試す方法を探す。 結論としてはDPを用いて解く。 配列の定義と更新時の処理は下記となる。
+ dp[i][j][k] : i枚目までのカードのうちj枚選んだ時の合計がkである組み合わせの個数 dp[i+1][j][k] += dp[i+1][j][k] : カードを選択しなかった場合 dp[i+1][j+1][k+v[k]] += dp[i+1][j+1][k] : カードを選択した場合  以下提出コードです。
+fn read&lt;T: std::str::FromStr&gt;() -&gt; T { let mut s = String::new(); std::io::stdin().
+	</div>
+</article><article class="list__item post">
+	
+	<header class="list__header">
+		<h2 class="list__title post__title">
 			<a href="/post/abc224d/" rel="bookmark">
 			Abc224d
 			</a>
@@ -78,28 +94,11 @@ use std::collections::HashMap; use std::collections::VecDeque; fn read&lt;T: std
 以下提出コードです。
 fn read&lt;T: std::str::FromStr&gt;() -&gt; T { let mut s = String::new(); std::io::stdin().read_line(&amp;mut s).ok(); s.trim().parse().ok().unwrap() } fn read_vec&lt;T: std::str::FromStr&gt;() -&gt; Vec&lt;T&gt; { read::&lt;String&gt;().split_whitespace() .
 	</div>
-</article><article class="list__item post">
-	
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/post/abc117c/" rel="bookmark">
-			Abc117c
-			</a>
-		</h2>
-		
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		実装悩んだが自力で解けた。 公式解説も同じ方法っぽい。
-入力配列をソート後, Xi+1とXiの差を求める。 最大移動距離はXM-X1となる。 コマを置く位置は, 先に求めたXi+1とXiの差が大きい位置で区間を区切れば コマの移動距離の和を最小にすることができる。
-イメージを貼りたかったけど貼り方わからない上作ったイメージもわかりにくかったので貼らなかった。
-以下提出コードです。
-fn read&lt;T: std::str::FromStr&gt;() -&gt; T { let mut s = String::new(); std::io::stdin().read_line(&amp;mut s).ok(); s.trim().parse().ok().unwrap() } fn read_vec&lt;T: std::str::FromStr&gt;() -&gt; Vec&lt;T&gt; { read::&lt;String&gt;().
-	</div>
 </article>
 </main>
 
 <div class="pagination">
-	<span class="pagination__item pagination__item--current">1/8</span>
+	<span class="pagination__item pagination__item--current">1/9</span>
 	<a class="pagination__item pagination__item--next btn" href="/post/page/2/">»</a>
 </div>
 
@@ -118,11 +117,11 @@ fn read&lt;T: std::str::FromStr&gt;() -&gt; T { let mut s = String::new(); std::
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/post/abc044c/">Abc044c</a></li>
 			<li class="widget__item"><a class="widget__link" href="/post/abc224d/">Abc224d</a></li>
 			<li class="widget__item"><a class="widget__link" href="/post/abc118c/">Abc118c</a></li>
 			<li class="widget__item"><a class="widget__link" href="/post/abc117c/">Abc117c</a></li>
 			<li class="widget__item"><a class="widget__link" href="/post/abc116c/">Abc116c</a></li>
-			<li class="widget__item"><a class="widget__link" href="/post/abc114c/">Abc114c</a></li>
 		</ul>
 	</div>
 </div>

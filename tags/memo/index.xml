@@ -6,10 +6,22 @@
     <description>Recent content in memo on でぶろぐ</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Wed, 27 Oct 2021 23:34:41 +0900</lastBuildDate>
+    <lastBuildDate>Mon, 01 Nov 2021 22:44:10 +0900</lastBuildDate>
     
 	<atom:link href="https://taisa-asiato.github.io/tags/memo/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Abc044c</title>
+      <link>https://taisa-asiato.github.io/post/abc044c/</link>
+      <pubDate>Mon, 01 Nov 2021 22:44:10 +0900</pubDate>
+      
+      <guid>https://taisa-asiato.github.io/post/abc044c/</guid>
+      <description>解説どおり。
+全ての組み合わせを網羅しないと解けないので, 効率よく全通りの組み合わを試す方法を探す。 結論としてはDPを用いて解く。 配列の定義と更新時の処理は下記となる。
+ dp[i][j][k] : i枚目までのカードのうちj枚選んだ時の合計がkである組み合わせの個数 dp[i+1][j][k] += dp[i+1][j][k] : カードを選択しなかった場合 dp[i+1][j+1][k+v[k]] += dp[i+1][j+1][k] : カードを選択した場合  以下提出コードです。
+fn read&amp;lt;T: std::str::FromStr&amp;gt;() -&amp;gt; T { let mut s = String::new(); std::io::stdin().</description>
+    </item>
     
     <item>
       <title>Abc224d</title>

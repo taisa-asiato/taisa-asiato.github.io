@@ -44,6 +44,22 @@
 	
 	<header class="list__header">
 		<h2 class="list__title post__title">
+			<a href="/post/abc088c/" rel="bookmark">
+			Abc088c
+			</a>
+		</h2>
+		
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		はじめはa1からb3までの和がc11からc33までの和の1/3に等しいので すべての入力を和算したのち3で割り切れるかどうかで判定したがWAとなった。
+解説のとおり, a1を0と仮定しても差し支えないため, そのような実装にしました。
+以下提出コードです。
+fn read&lt;T: std::str::FromStr&gt;() -&gt; T { let mut s = String::new(); std::io::stdin().read_line(&amp;mut s).ok(); s.trim().parse().ok().unwrap() } fn read_vec&lt;T: std::str::FromStr&gt;() -&gt; Vec&lt;T&gt; { read::&lt;String&gt;().split_whitespace() .map(|e| e.parse().ok().unwrap()).collect() } fn main() { let mut v: Vec&lt;Vec&lt;i32&gt;&gt; = Vec::new(); let mut a: [i32; 3] = [0; 3]; let mut b: [i32; 3] = [0; 3]; for i in 0.
+	</div>
+</article><article class="list__item post">
+	
+	<header class="list__header">
+		<h2 class="list__title post__title">
 			<a href="/post/abc123b/" rel="bookmark">
 			Abc123B
 			</a>
@@ -69,27 +85,12 @@ fn read&lt;T: std::str::FromStr&gt;() -&gt; T { let mut s = String::new(); std::
 以下提出コードです。
 fn read&lt;T: std::str::FromStr&gt;() -&gt; T { let mut s = String::new(); std::io::stdin().read_line(&amp;mut s).ok(); s.trim().parse().ok().unwrap() } fn read_vec&lt;T: std::str::FromStr&gt;() -&gt; Vec&lt;T&gt; { read::&lt;String&gt;().split_whitespace() .map(|e| e.parse().ok().unwrap()).collect() } fn main() { let n: usize = read::&lt;usize&gt;(); let mut v: Vec&lt;Vec&lt;u64&gt;&gt; = Vec::new(); let mut t: Vec&lt;u64&gt; = Vec::new(); for i in 0.
 	</div>
-</article><article class="list__item post">
-	
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/post/abc075c/" rel="bookmark">
-			Abc075C
-			</a>
-		</h2>
-		
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		何となくやり方は思いついたが, コードに落とし込むことができなかった。 解説と同じとおり, 下記のようなアルゴリズムを実装しました。
- 辺から一つ選択し, その辺が無いものとする dfsによって各頂点を訪れることができるか探索する  未訪問の頂点で, 辺が接続されている場合は接続先の頂点に対して更に探索を続ける 訪問した頂点はメモしておく   探索が終了したら訪問済みの頂点を確認する 全ての頂点を訪問できた場合, その辺は橋ではない  以下が提出コードです。
-fn read&lt;T: std::str::FromStr&gt;() -&gt; T { let mut s = String::new(); std::io::stdin().
-	</div>
 </article>
 </main>
 
 <div class="pagination">
 	<a class="pagination__item pagination__item--prev btn" href="/page/5/">«</a>
-	<span class="pagination__item pagination__item--current">6/8</span>
+	<span class="pagination__item pagination__item--current">6/9</span>
 	<a class="pagination__item pagination__item--next btn" href="/page/7/">»</a>
 </div>
 
@@ -107,11 +108,11 @@ fn read&lt;T: std::str::FromStr&gt;() -&gt; T { let mut s = String::new(); std::
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/post/abc044c/">Abc044c</a></li>
 			<li class="widget__item"><a class="widget__link" href="/post/abc224d/">Abc224d</a></li>
 			<li class="widget__item"><a class="widget__link" href="/post/abc118c/">Abc118c</a></li>
 			<li class="widget__item"><a class="widget__link" href="/post/abc117c/">Abc117c</a></li>
 			<li class="widget__item"><a class="widget__link" href="/post/abc116c/">Abc116c</a></li>
-			<li class="widget__item"><a class="widget__link" href="/post/abc114c/">Abc114c</a></li>
 		</ul>
 	</div>
 </div>

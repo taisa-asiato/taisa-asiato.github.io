@@ -44,6 +44,22 @@
 	
 	<header class="list__header">
 		<h2 class="list__title post__title">
+			<a href="/post/abc111c/" rel="bookmark">
+			Abc111c
+			</a>
+		</h2>
+		
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		解法は解説のとおり。
+偶数番号の文字列と奇数番号の文字列をそれぞれ作成する。 それぞれの文字列で最頻出の文字, 2番目に頻出する文字をそれぞれ記録する。 最頻出の文字列が異なる場合はそれぞれの最頻出の文字にすればよい。 違う場合はそれぞれ最頻出と２番目の頻出の文字に置き換える際の, 文書き換え個数が少ない方が答えとなる。
+以下提出コードです。
+use std::collections::BTreeMap; fn read&lt;T: std::str::FromStr&gt;() -&gt; T { let mut s = String::new(); std::io::stdin().read_line(&amp;mut s).ok(); s.trim().parse().ok().unwrap() } fn read_vec&lt;T: std::str::FromStr&gt;() -&gt; Vec&lt;T&gt; { read::&lt;String&gt;().
+	</div>
+</article><article class="list__item post">
+	
+	<header class="list__header">
+		<h2 class="list__title post__title">
 			<a href="/post/abc110c/" rel="bookmark">
 			Abc110c
 			</a>
@@ -72,29 +88,12 @@ use std::collections::HashMap; fn read&lt;T: std::str::FromStr&gt;() -&gt; T { l
 以下提出コードです。
 fn read&lt;T: std::str::FromStr&gt;() -&gt; T { let mut s = String::new(); std::io::stdin().read_line(&amp;mut s).ok(); s.trim().parse().ok().unwrap() } fn read_vec&lt;T: std::str::FromStr&gt;() -&gt; Vec&lt;T&gt; { read::&lt;String&gt;().split_whitespace() .map(|e| e.parse().ok().unwrap()).collect() } fn main() { let nx: Vec&lt;u64&gt; = read_vec::&lt;u64&gt;(); let mut x: Vec&lt;u64&gt; = read_vec::&lt;u64&gt;(); let mut ans: u64 = 0; for i in 0.
 	</div>
-</article><article class="list__item post">
-	
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/post/abc108c/" rel="bookmark">
-			Abc108c
-			</a>
-		</h2>
-		
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		解法は解説とおり。
-(a, b, c)について(a+b)%K=0, (a+c)%K=0, (b+c)%K=0となる。 これを満たすa, b, cは
- a%K=b%K=c%K=0 a%K=b%K=c%K=K/2 のいずれか。  aについてi=1からNまでのうち, 上記個数をカウントし, それぞれ3乗した値の和が答えとなる。 (b, cも同様なのでaのみ考えれば良い。)
-以下提出コードです。
-fn read&lt;T: std::str::FromStr&gt;() -&gt; T { let mut s = String::new(); std::io::stdin().
-	</div>
 </article>
 </main>
 
 <div class="pagination">
 	<a class="pagination__item pagination__item--prev btn" href="/page/2/">«</a>
-	<span class="pagination__item pagination__item--current">3/8</span>
+	<span class="pagination__item pagination__item--current">3/9</span>
 	<a class="pagination__item pagination__item--next btn" href="/page/4/">»</a>
 </div>
 
@@ -112,11 +111,11 @@ fn read&lt;T: std::str::FromStr&gt;() -&gt; T { let mut s = String::new(); std::
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/post/abc044c/">Abc044c</a></li>
 			<li class="widget__item"><a class="widget__link" href="/post/abc224d/">Abc224d</a></li>
 			<li class="widget__item"><a class="widget__link" href="/post/abc118c/">Abc118c</a></li>
 			<li class="widget__item"><a class="widget__link" href="/post/abc117c/">Abc117c</a></li>
 			<li class="widget__item"><a class="widget__link" href="/post/abc116c/">Abc116c</a></li>
-			<li class="widget__item"><a class="widget__link" href="/post/abc114c/">Abc114c</a></li>
 		</ul>
 	</div>
 </div>
