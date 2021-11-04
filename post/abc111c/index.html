@@ -50,7 +50,7 @@
 最頻出の文字列が異なる場合はそれぞれの最頻出の文字にすればよい。
 違う場合はそれぞれ最頻出と２番目の頻出の文字に置き換える際の, 文書き換え個数が少ない方が答えとなる。</p>
 <p>以下提出コードです。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Rust" data-lang="Rust"><span style="color:#66d9ef">use</span> std::collections::BTreeMap;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Rust" data-lang="Rust"><span style="color:#66d9ef">use</span> std::collections::BTreeMap;
 
 <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">read</span><span style="color:#f92672">&lt;</span>T: <span style="color:#a6e22e">std</span>::<span style="color:#66d9ef">str</span>::FromStr<span style="color:#f92672">&gt;</span>() -&gt; <span style="color:#a6e22e">T</span> {
     <span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> s <span style="color:#f92672">=</span> String::new();
@@ -70,10 +70,10 @@
     <span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> even: <span style="color:#a6e22e">BTreeMap</span><span style="color:#f92672">&lt;</span><span style="color:#66d9ef">u32</span>, <span style="color:#66d9ef">u32</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">=</span> BTreeMap::new();
 
     <span style="color:#66d9ef">for</span> i <span style="color:#66d9ef">in</span> <span style="color:#ae81ff">0</span>..n <span style="color:#66d9ef">as</span> <span style="color:#66d9ef">usize</span>{
-        <span style="color:#66d9ef">if</span> i<span style="color:#f92672">%</span><span style="color:#ae81ff">2</span> <span style="color:#f92672">=</span><span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span> {
-            <span style="color:#f92672">*</span>even.entry(v[i]).or_insert(<span style="color:#ae81ff">0</span>) <span style="color:#f92672">+</span><span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
+        <span style="color:#66d9ef">if</span> i<span style="color:#f92672">%</span><span style="color:#ae81ff">2</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span> {
+            <span style="color:#f92672">*</span>even.entry(v[i]).or_insert(<span style="color:#ae81ff">0</span>) <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>;
         } <span style="color:#66d9ef">else</span> {
-            <span style="color:#f92672">*</span>odd.entry(v[i]).or_insert(<span style="color:#ae81ff">0</span>) <span style="color:#f92672">+</span><span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
+            <span style="color:#f92672">*</span>odd.entry(v[i]).or_insert(<span style="color:#ae81ff">0</span>) <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>;
         }
     }
 
@@ -82,10 +82,10 @@
     ov.sort_by(<span style="color:#f92672">|</span>(a, b), (c, d)<span style="color:#f92672">|</span> d.cmp(b));
     ev.sort_by(<span style="color:#f92672">|</span>(a, b), (c, d)<span style="color:#f92672">|</span> d.cmp(b));
 
-    <span style="color:#66d9ef">if</span> ov[<span style="color:#ae81ff">0</span>].<span style="color:#ae81ff">0</span> <span style="color:#f92672">!</span><span style="color:#f92672">=</span> ev[<span style="color:#ae81ff">0</span>].<span style="color:#ae81ff">0</span> {
+    <span style="color:#66d9ef">if</span> ov[<span style="color:#ae81ff">0</span>].<span style="color:#ae81ff">0</span> <span style="color:#f92672">!=</span> ev[<span style="color:#ae81ff">0</span>].<span style="color:#ae81ff">0</span> {
         println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;{}&#34;</span>, (n<span style="color:#f92672">/</span><span style="color:#ae81ff">2</span><span style="color:#f92672">-</span>ov[<span style="color:#ae81ff">0</span>].<span style="color:#ae81ff">1</span>)<span style="color:#f92672">+</span>(n<span style="color:#f92672">/</span><span style="color:#ae81ff">2</span><span style="color:#f92672">-</span>ev[<span style="color:#ae81ff">0</span>].<span style="color:#ae81ff">1</span>));
     } <span style="color:#66d9ef">else</span> {
-        <span style="color:#66d9ef">if</span> ov.len() <span style="color:#f92672">=</span><span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">&amp;</span><span style="color:#f92672">&amp;</span> ev.len() <span style="color:#f92672">=</span><span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> {
+        <span style="color:#66d9ef">if</span> ov.len() <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">&amp;&amp;</span> ev.len() <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span> {
             println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;{}&#34;</span>, n<span style="color:#f92672">/</span><span style="color:#ae81ff">2</span>);
         } <span style="color:#66d9ef">else</span> {
             println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;{}&#34;</span>, std::cmp::min((n<span style="color:#f92672">/</span><span style="color:#ae81ff">2</span><span style="color:#f92672">-</span>ov[<span style="color:#ae81ff">0</span>].<span style="color:#ae81ff">1</span>)<span style="color:#f92672">+</span>(n<span style="color:#f92672">/</span><span style="color:#ae81ff">2</span><span style="color:#f92672">-</span>ev[<span style="color:#ae81ff">1</span>].<span style="color:#ae81ff">1</span>), (n<span style="color:#f92672">/</span><span style="color:#ae81ff">2</span><span style="color:#f92672">-</span>ov[<span style="color:#ae81ff">1</span>].<span style="color:#ae81ff">1</span>)<span style="color:#f92672">+</span>(n<span style="color:#f92672">/</span><span style="color:#ae81ff">2</span><span style="color:#f92672">-</span>ev[<span style="color:#ae81ff">0</span>].<span style="color:#ae81ff">1</span>)));

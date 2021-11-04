@@ -49,13 +49,13 @@
 構造体を使用して表現していたのですが,
 標準入力から得た値をパースしてCard型のVectorにpushする処理が
 コンパイル時にエラーになりました。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">error<span style="color:#f92672">[</span>E0382<span style="color:#f92672">]</span>: assign to part of moved value: <span style="color:#e6db74">`</span>card_val<span style="color:#e6db74">`</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">error<span style="color:#f92672">[</span>E0382<span style="color:#f92672">]</span>: assign to part of moved value: <span style="color:#e6db74">`</span>card_val<span style="color:#e6db74">`</span>
   --&gt; pro3-4.rs:28:9
    |
 <span style="color:#ae81ff">20</span> |     let mut card_val <span style="color:#f92672">=</span> Card <span style="color:#f92672">{</span>
    |         ------------ move occurs because <span style="color:#e6db74">`</span>card_val<span style="color:#e6db74">`</span> has type <span style="color:#e6db74">`</span>Card<span style="color:#e6db74">`</span>, which does not implement the <span style="color:#e6db74">`</span>Copy<span style="color:#e6db74">`</span> trait
 ...
-<span style="color:#ae81ff">28</span> |         card_val.symbol <span style="color:#f92672">=</span> chs.nth<span style="color:#f92672">(</span>0<span style="color:#f92672">)</span>.unwrap<span style="color:#f92672">(</span><span style="color:#f92672">)</span>;
+<span style="color:#ae81ff">28</span> |         card_val.symbol <span style="color:#f92672">=</span> chs.nth<span style="color:#f92672">(</span>0<span style="color:#f92672">)</span>.unwrap<span style="color:#f92672">()</span>;
    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ value partially assigned here after move
 ...
 <span style="color:#ae81ff">32</span> |         card.push<span style="color:#f92672">(</span> card_val <span style="color:#f92672">)</span>;
@@ -65,7 +65,7 @@ error: aborting due to previous error
 
 For more information about this error, try <span style="color:#e6db74">`</span>rustc --explain E0382<span style="color:#e6db74">`</span>.
 </code></pre></div><p>ソースコードは次のように書いていました。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Rust" data-lang="Rust"><span style="color:#66d9ef">use</span> std::io;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Rust" data-lang="Rust"><span style="color:#66d9ef">use</span> std::io;
 
 <span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Card</span> {
     number: <span style="color:#66d9ef">i32</span>,
@@ -94,7 +94,7 @@ For more information about this error, try <span style="color:#e6db74">`</span>r
 28行目の代入でchsの値から資源がcard_val.symbolに移動しており,
 再度chsの値への資源割当ができないために起こっていたっぽい。</p>
 <p>構造体の宣言前に</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Rust" data-lang="Rust">[<span style="color:#960050;background-color:#1e0010">#</span>derive(Copy,Clone)]
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Rust" data-lang="Rust">[<span style="color:#960050;background-color:#1e0010">#</span>derive(Copy,Clone)]
 </code></pre></div><p>を記載することで明示的にユーザ定義型にCopyトレイトを実装できるので,
 こちらを記載することで上記エラーに対処できました。</p>
 <p>※ 28行目の~のあたりの推察は間違っている気がするので, 正しい情報がわかれば

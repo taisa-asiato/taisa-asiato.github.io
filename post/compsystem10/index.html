@@ -44,7 +44,7 @@
 			
 		</header>
 		<div class="content post__content clearfix">
-			<h2 id="heading">概要</h2>
+			<h2 id="概要">概要</h2>
 <p>コンピュータシステムの理論と実装の10章の課題を終えたので記事を書きます。</p>
 <p>10章の目的(11章もですが)はJackコンパイラの作成です。
 コンパイラは,</p>
@@ -66,13 +66,13 @@
 Jackコンパイラの実装が完了します。</p>
 <p>10章で作成する構文解析器は, 10章の終了時点では解析器単体で動作し
 .xmlファイルへ構文解析の結果を出力できるよう実装を行います。</p>
-<h2 id="heading1">詳細</h2>
+<h2 id="詳細">詳細</h2>
 <p>構文解析機は下記２つの異なるモジュールから構成されます。</p>
 <ul>
 <li>トークナイザ</li>
 <li>パーサ</li>
 </ul>
-<h3 id="heading2">トークナイザ</h3>
+<h3 id="トークナイザ">トークナイザ</h3>
 <p>トークナイザは</p>
 <blockquote>
 <p>広義の構文解析の前半の処理で、自然言語の文やプログラミング言語の
@@ -82,14 +82,14 @@ Jackコンパイラの実装が完了します。</p>
 </blockquote>
 <p>を行います。
 例えばC言語で記載された次の様なソースコードがあるとします。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C"><span style="color:#75715e">#</span><span style="color:#75715e">include</span> <span style="color:#75715e">&lt;stdio.h&gt;</span><span style="color:#75715e">
+<div class="highlight line-number"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C"><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;stdio.h&gt;</span><span style="color:#75715e">
 </span><span style="color:#75715e"></span>
 <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
-	printf( <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">hello, world</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span> );
+	printf( <span style="color:#e6db74">&#34;hello, world</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span> );
 	<span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
 }
 </code></pre></div><p>これをトークナイズすると, 次の様なトークン列となります。</p>
-<pre><code>#
+<pre tabindex="0"><code>#
 include
 &lt;
 stdio.h
@@ -107,11 +107,11 @@ main
 <li>異なる性質の文字を取得した場合にトークンの区切れとする</li>
 </ul>
 <p>の2つの処理を実装することで正しくトークン列を生成することができるようになります。</p>
-<h3 id="heading3">パーサ</h3>
+<h3 id="パーサ">パーサ</h3>
 <p>パーサは構文解析を行うプログラムの総称です。
 プログラミング言語などが持つ構文の文法と, トークナイザが生成したトークン列との比較を行います。
 例えば, C言語ではif文の構文は次の様になっています。</p>
-<pre><code>if ( 条件式 ) {
+<pre tabindex="0"><code>if ( 条件式 ) {
 	then節 
 } else {
 	else節
@@ -121,10 +121,10 @@ main
 得られたトークン列を上記構文と比較し, パース処理を進めます。</p>
 <p>トークナイザと同様, こちらもJack言語の構文が記載されているので, そちらを参考にパーサを実装
 します。また, 本章の課題である.xmlファイルを生成する機能も実装します。</p>
-<h3 id="heading4">その他</h3>
+<h3 id="その他">その他</h3>
 <p>10章で作成する構文解析器はファイルかディレクトリを入力として与えることになるので,
 それらの値を判定しファイル読込及び書込を行う処理を実装する必要があります。</p>
-<h2 id="heading5">感想</h2>
+<h2 id="感想">感想</h2>
 <p>実装中にはまったのが, トークナイザの作成です。
 実装開始からしばらくは空白区切りでトークン生成を行なっていました。
 考えれば当たり前ですが, ソースコード中のトークンがすべて空白で区切られている

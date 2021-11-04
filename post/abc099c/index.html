@@ -58,7 +58,7 @@
 DP問題の中では多分簡単な方だと思う(dpテーブルが多次元のものもあるので, 1次元の問題は簡単な方では?と思う。)。
 類似の問題を集めたWeb記事を見つけているのでちまちまやっていく。</p>
 <p>以下提出コードです。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Rust" data-lang="Rust"><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">read</span><span style="color:#f92672">&lt;</span>T: <span style="color:#a6e22e">std</span>::<span style="color:#66d9ef">str</span>::FromStr<span style="color:#f92672">&gt;</span>() -&gt; <span style="color:#a6e22e">T</span> {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Rust" data-lang="Rust"><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">read</span><span style="color:#f92672">&lt;</span>T: <span style="color:#a6e22e">std</span>::<span style="color:#66d9ef">str</span>::FromStr<span style="color:#f92672">&gt;</span>() -&gt; <span style="color:#a6e22e">T</span> {
     <span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> s <span style="color:#f92672">=</span> String::new();
     std::io::stdin().read_line(<span style="color:#f92672">&amp;</span><span style="color:#66d9ef">mut</span> s).ok();
     s.trim().parse().ok().unwrap()
@@ -71,14 +71,14 @@ DP問題の中では多分簡単な方だと思う(dpテーブルが多次元の
 
     <span style="color:#66d9ef">for</span> i <span style="color:#66d9ef">in</span> <span style="color:#ae81ff">1</span>..<span style="color:#f92672">=</span><span style="color:#ae81ff">1_000_00</span> {
         <span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> p: <span style="color:#66d9ef">usize</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
-        <span style="color:#66d9ef">while</span> p <span style="color:#f92672">&lt;</span><span style="color:#f92672">=</span> i {
+        <span style="color:#66d9ef">while</span> p <span style="color:#f92672">&lt;=</span> i {
             dp[i] <span style="color:#f92672">=</span> std::cmp::min(dp[i], dp[i<span style="color:#f92672">-</span>p]<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>);
-            p <span style="color:#f92672">*</span><span style="color:#f92672">=</span> <span style="color:#ae81ff">6</span>;
+            p <span style="color:#f92672">*=</span> <span style="color:#ae81ff">6</span>;
         }
         p <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
-        <span style="color:#66d9ef">while</span> p <span style="color:#f92672">&lt;</span><span style="color:#f92672">=</span> i {
+        <span style="color:#66d9ef">while</span> p <span style="color:#f92672">&lt;=</span> i {
             dp[i] <span style="color:#f92672">=</span> std::cmp::min(dp[i], dp[i<span style="color:#f92672">-</span>p]<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>);
-            p <span style="color:#f92672">*</span><span style="color:#f92672">=</span> <span style="color:#ae81ff">9</span>;
+            p <span style="color:#f92672">*=</span> <span style="color:#ae81ff">9</span>;
         }
     }
     println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;{}&#34;</span>, dp[n <span style="color:#66d9ef">as</span> <span style="color:#66d9ef">usize</span>]);

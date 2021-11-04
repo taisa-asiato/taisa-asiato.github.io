@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Abc117c - でぶろぐ</title>
+	<title>Abc124c - でぶろぐ</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -40,18 +40,13 @@
 <main class="main" role="main">
 	<article class="post">
 		<header class="post__header">
-			<h1 class="post__title">Abc117c</h1>
+			<h1 class="post__title">Abc124c</h1>
 			
 		</header>
 		<div class="content post__content clearfix">
-			<p>実装悩んだが自力で解けた。
-公式解説も同じ方法っぽい。</p>
-<p>入力配列をソート後, X<sub>i+1</sub>とX<sub>i</sub>の差を求める。
-最大移動距離はX<sub>M</sub>-X<sub>1</sub>となる。
-コマを置く位置は, 先に求めたX<sub>i+1</sub>とX<sub>i</sub>の差が大きい位置で区間を区切れば
-コマの移動距離の和を最小にすることができる。</p>
-<p><sub>イメージを貼りたかったけど貼り方わからない上作ったイメージもわかりにくかったので貼らなかった。</sub></p>
-<p>以下提出コードです。</p>
+			<p>解説のとおり。</p>
+<p>配列の左からi番目までの最大公約数と, 右からi番目の最大公約数をそれぞれ配列(l, r)に保存しておく。
+左からi番目の数を書き換えるとき, gcd(l[i], r[i+1])を求め, その最大値が解となる。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Rust" data-lang="Rust"><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">read</span><span style="color:#f92672">&lt;</span>T: <span style="color:#a6e22e">std</span>::<span style="color:#66d9ef">str</span>::FromStr<span style="color:#f92672">&gt;</span>() -&gt; <span style="color:#a6e22e">T</span> {
     <span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> s <span style="color:#f92672">=</span> String::new();
     std::io::stdin().read_line(<span style="color:#f92672">&amp;</span><span style="color:#66d9ef">mut</span> s).ok();
@@ -64,26 +59,42 @@
 }
 
 <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
-    <span style="color:#66d9ef">let</span> nm: Vec<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">usize</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">=</span> read_vec::<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">usize</span><span style="color:#f92672">&gt;</span>();
-    <span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> v: Vec<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">i32</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">=</span> read_vec::<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">i32</span><span style="color:#f92672">&gt;</span>();
-    <span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> diff: Vec<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">i32</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">=</span> Vec::new(); 
-    <span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> ans: <span style="color:#66d9ef">i32</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+    <span style="color:#66d9ef">let</span> n: <span style="color:#66d9ef">usize</span> <span style="color:#f92672">=</span> read::<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">usize</span><span style="color:#f92672">&gt;</span>();
+    <span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> v: Vec<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">u64</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">=</span> read_vec::<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">u64</span><span style="color:#f92672">&gt;</span>();
+    <span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> l: [<span style="color:#66d9ef">u64</span>; <span style="color:#ae81ff">100010</span>] <span style="color:#f92672">=</span> [<span style="color:#ae81ff">0</span>; <span style="color:#ae81ff">100010</span>];
+    <span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> r: [<span style="color:#66d9ef">u64</span>; <span style="color:#ae81ff">100010</span>] <span style="color:#f92672">=</span> [<span style="color:#ae81ff">0</span>; <span style="color:#ae81ff">100010</span>];
+    <span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> ans: <span style="color:#66d9ef">u64</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
 
-    v.sort();
-    <span style="color:#66d9ef">if</span> v.len() <span style="color:#f92672">&lt;</span> nm[<span style="color:#ae81ff">0</span>] {
-        println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;0&#34;</span>);
+    l[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+    <span style="color:#66d9ef">for</span> i <span style="color:#66d9ef">in</span> <span style="color:#ae81ff">0</span>..n {
+        l[i<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>] <span style="color:#f92672">=</span> gcd(l[i], v[i]);
+    }
+
+    r[n] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+    <span style="color:#66d9ef">for</span>  i <span style="color:#66d9ef">in</span> (<span style="color:#ae81ff">0</span>..n).rev() {
+        r[i] <span style="color:#f92672">=</span> gcd(r[i<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>], v[i]);
+    }
+
+    <span style="color:#66d9ef">for</span> i <span style="color:#66d9ef">in</span> <span style="color:#ae81ff">0</span>..n {
+        <span style="color:#66d9ef">let</span> tmp: <span style="color:#66d9ef">u64</span> <span style="color:#f92672">=</span> gcd(l[i], r[i<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>]);
+        ans <span style="color:#f92672">=</span> std::cmp::max(ans, tmp);
+    }
+
+    println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;{}&#34;</span>, ans);
+
+}
+
+<span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">gcd</span>(<span style="color:#66d9ef">mut</span> a: <span style="color:#66d9ef">u64</span>, <span style="color:#66d9ef">mut</span> b: <span style="color:#66d9ef">u64</span>) -&gt; <span style="color:#66d9ef">u64</span> {
+    <span style="color:#66d9ef">if</span> a <span style="color:#f92672">&lt;</span> b {
+        <span style="color:#66d9ef">let</span> tmp: <span style="color:#66d9ef">u64</span> <span style="color:#f92672">=</span> a;
+        a <span style="color:#f92672">=</span> b;
+        b <span style="color:#f92672">=</span> tmp;
+    }
+
+    <span style="color:#66d9ef">if</span> b <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span> {
+        <span style="color:#66d9ef">return</span> a;
     } <span style="color:#66d9ef">else</span> {
-        <span style="color:#66d9ef">for</span> i <span style="color:#66d9ef">in</span> <span style="color:#ae81ff">0</span>..v.len()<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span> {
-            diff.push(v[i<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>]<span style="color:#f92672">-</span>v[i]);
-        }
-
-
-        diff.sort_by(<span style="color:#f92672">|</span>a, b<span style="color:#f92672">|</span> b.cmp(a));
-        ans <span style="color:#f92672">=</span> v[v.len()<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]<span style="color:#f92672">-</span>v[<span style="color:#ae81ff">0</span>];
-        <span style="color:#66d9ef">for</span> i <span style="color:#66d9ef">in</span> <span style="color:#ae81ff">0</span>..(nm[<span style="color:#ae81ff">0</span>]<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>) {
-            ans <span style="color:#f92672">-=</span> diff[i];
-        }
-        println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;{}&#34;</span>, ans);
+        <span style="color:#66d9ef">return</span> gcd(b, a<span style="color:#f92672">%</span>b);
     }
 }
 </code></pre></div>

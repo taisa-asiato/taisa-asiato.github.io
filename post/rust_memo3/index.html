@@ -58,7 +58,7 @@
 <p>上記であれば&quot;間に合う&quot;との事だったので, その通りに実装したが3度TLEをもらいました。
 subtask1_X_02.txtが入力の時のみTLEになっていた。
 この時のコードは次の通りです。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Rust" data-lang="Rust"><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">read</span><span style="color:#f92672">&lt;</span>T: <span style="color:#a6e22e">std</span>::<span style="color:#66d9ef">str</span>::FromStr<span style="color:#f92672">&gt;</span>() -&gt; <span style="color:#a6e22e">T</span> {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Rust" data-lang="Rust"><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">read</span><span style="color:#f92672">&lt;</span>T: <span style="color:#a6e22e">std</span>::<span style="color:#66d9ef">str</span>::FromStr<span style="color:#f92672">&gt;</span>() -&gt; <span style="color:#a6e22e">T</span> {
     <span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> s <span style="color:#f92672">=</span> String::new();
     std::io::stdin().read_line(<span style="color:#f92672">&amp;</span><span style="color:#66d9ef">mut</span> s).ok();
     s.trim().parse().ok().unwrap()
@@ -81,10 +81,10 @@ subtask1_X_02.txtが入力の時のみTLEになっていた。
     } 
 
     <span style="color:#66d9ef">loop</span> {
-        <span style="color:#66d9ef">if</span> n <span style="color:#f92672">&gt;</span><span style="color:#f92672">=</span> val[<span style="color:#ae81ff">0</span>] {
+        <span style="color:#66d9ef">if</span> n <span style="color:#f92672">&gt;=</span> val[<span style="color:#ae81ff">0</span>] {
             <span style="color:#66d9ef">let</span> tmp: Vec<span style="color:#f92672">&lt;</span>char<span style="color:#f92672">&gt;</span> <span style="color:#f92672">=</span> n.to_string().chars().collect();
             <span style="color:#66d9ef">for</span> i <span style="color:#66d9ef">in</span> tmp.iter() {
-                <span style="color:#66d9ef">if</span> ary[(<span style="color:#f92672">*</span>i <span style="color:#66d9ef">as</span> <span style="color:#66d9ef">u32</span><span style="color:#f92672">-</span><span style="color:#ae81ff">48</span>) <span style="color:#66d9ef">as</span> <span style="color:#66d9ef">usize</span>] <span style="color:#f92672">=</span><span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span> {
+                <span style="color:#66d9ef">if</span> ary[(<span style="color:#f92672">*</span>i <span style="color:#66d9ef">as</span> <span style="color:#66d9ef">u32</span><span style="color:#f92672">-</span><span style="color:#ae81ff">48</span>) <span style="color:#66d9ef">as</span> <span style="color:#66d9ef">usize</span>] <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span> {
                     flag <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span>;
                 }
             }
@@ -96,7 +96,7 @@ subtask1_X_02.txtが入力の時のみTLEになっていた。
                 flag <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;
             }
         }
-        n <span style="color:#f92672">+</span><span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
+        n <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>;
     }
 }
 </code></pre></div><p>最悪なケースが99999の時なので, 自分の端末で試してみるとnの値がオーバーフローして
@@ -104,7 +104,7 @@ subtask1_X_02.txtが入力の時のみTLEになっていた。
 nの型はu16ですが, u16だと0から65535間の数値しか表現できないので, 異常終了した様です。
 TLEとは何の関係もなさそうですが, nの型をu32に変更し再度回答を提出するとなぜかACとなりました。
 以下変更箇所です。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Rust" data-lang="Rust">	...
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Rust" data-lang="Rust">	...
 <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
     <span style="color:#66d9ef">let</span> val: Vec<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">u32</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">=</span> read_vec::<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">u32</span><span style="color:#f92672">&gt;</span>();
     <span style="color:#66d9ef">let</span> nval: Vec<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">u32</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">=</span> read_vec::<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">u32</span><span style="color:#f92672">&gt;</span>();

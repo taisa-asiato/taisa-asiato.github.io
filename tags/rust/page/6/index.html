@@ -45,6 +45,23 @@
 	
 	<header class="list__header">
 		<h2 class="list__title post__title">
+			<a href="/post/rust_memo3/" rel="bookmark">
+			Rust memo3
+			</a>
+		</h2>
+		
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		Rustの勉強メモその3です。
+2018年にアカウントを登録しその後１問も解いていなかったAtcoderですが 2020年の年末から過去問題を解き始めたので, 解いた問題のメモです。
+解いた問題はABC042 C - こだわり者いろはちゃん です。 解法は思いつかなかったので公式の解説通りなのですが,
+ 数値(nとする)を1から1づつインクリメントする。 nが指定された値(問題文ではN)以上か確認 2.の判定が真ならnの各桁にいろはちゃんの嫌いな数字が混じっていないか確認 3.で嫌いな数字が混じっていなければnを出力して終了, そうでないなら1. に戻る  上記であれば&quot;間に合う&quot;との事だったので, その通りに実装したが3度TLEをもらいました。 subtask1_X_02.txtが入力の時のみTLEになっていた。 この時のコードは次の通りです。
+fn read&lt;T: std::str::FromStr&gt;() -&gt; T { let mut s = String::new(); std::io::stdin().
+	</div>
+</article><article class="list__item post">
+	
+	<header class="list__header">
+		<h2 class="list__title post__title">
 			<a href="/post/rust-memo2/" rel="bookmark">
 			Rust Memo2
 			</a>
@@ -71,28 +88,13 @@ error[E0382]: assign to part of moved value: `card_val` --&gt; pro3-4.rs:28:9 | 
 螺旋本の挿入ソートプログラムを書きました。 ソースコードは以下です。
 use std::io; fn main() { let mut tmp_str = String::new(); io::stdin().read_line( &amp;mut tmp_str ).expect( &#34;No input val&#34; ); let ar_size: u32 = tmp_str.trim().parse().expect( &#34;Failed parse&#34; ); tmp_str = String::new(); io::stdin().
 	</div>
-</article><article class="list__item post">
-	
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/post/pra/" rel="bookmark">
-			螺旋2
-			</a>
-		</h2>
-		
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		Rustの勉強がてらプロコンの問題を解くことにしました。 AOJのプロコン導入問題を解いていきます。 問題は螺旋本に登場する問題を順番に解いていきます。 はじめの問題はALDS1_1_Dです。
-なお，タイトルの螺旋2は螺旋+章番号を意味します。 今後のナンバリングは上記螺旋+章番号で統一します。
-以下ソースコードです。
-use std::io; fn main() { let mut tmp_str = String::new(); // 標準入力から一行受け取る  io::stdin().read_line( &amp;mut tmp_str ); // 標準入力から受け取った文字を数字に変換する  let linenum: i32 = tmp_str.
-	</div>
 </article>
 </main>
 
 <div class="pagination">
 	<a class="pagination__item pagination__item--prev btn" href="/tags/rust/page/5/">«</a>
-	<span class="pagination__item pagination__item--current">6/6</span>
+	<span class="pagination__item pagination__item--current">6/7</span>
+	<a class="pagination__item pagination__item--next btn" href="/tags/rust/page/7/">»</a>
 </div>
 
 			</div>
@@ -110,11 +112,11 @@ use std::io; fn main() { let mut tmp_str = String::new(); // 標準入力から�
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/post/abc125/">Abc124c</a></li>
 			<li class="widget__item"><a class="widget__link" href="/post/abc044c/">Abc044c</a></li>
 			<li class="widget__item"><a class="widget__link" href="/post/abc224d/">Abc224d</a></li>
 			<li class="widget__item"><a class="widget__link" href="/post/abc118c/">Abc118c</a></li>
 			<li class="widget__item"><a class="widget__link" href="/post/abc117c/">Abc117c</a></li>
-			<li class="widget__item"><a class="widget__link" href="/post/abc116c/">Abc116c</a></li>
 		</ul>
 	</div>
 </div>

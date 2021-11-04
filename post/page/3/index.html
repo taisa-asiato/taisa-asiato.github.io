@@ -48,6 +48,21 @@ weight = &ldquo;10&rdquo;</p>
 	
 	<header class="list__header">
 		<h2 class="list__title post__title">
+			<a href="/post/abc114c/" rel="bookmark">
+			Abc114c
+			</a>
+		</h2>
+		
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		久しぶりに自力で解けた。 1から1000000000までの全ての数で, 3, 5, 7の数字のみのものを数え上げると時間が足りないのは明らか。 1000000000未満の数で3, 5, 7すべてを含んだ数を生成して配列に昇順に代入していく。 入力の値と配列に代入した値と比較を行い, 小さい場合にカウントを増やしていけばよい。
+以下提出コードです。
+fn read&lt;T: std::str::FromStr&gt;() -&gt; T { let mut s = String::new(); std::io::stdin().read_line(&amp;mut s).ok(); s.trim().parse().ok().unwrap() } fn main() { let n: u64 = read::&lt;u64&gt;(); let mut n3: u64 = 0; let mut n5: u64 = 0; let mut n7: u64 = 0; let mut v: Vec&lt;u64&gt; = Vec::new(); let mut ans: u64 = 0; makenum(0, &amp;mut v); v.
+	</div>
+</article><article class="list__item post">
+	
+	<header class="list__header">
+		<h2 class="list__title post__title">
 			<a href="/post/abc111c/" rel="bookmark">
 			Abc111c
 			</a>
@@ -76,22 +91,6 @@ use std::collections::BTreeMap; fn read&lt;T: std::str::FromStr&gt;() -&gt; T { 
 提出コードは下記です。
 use std::collections::HashMap; fn read&lt;T: std::str::FromStr&gt;() -&gt; T { let mut s = String::new(); std::io::stdin().read_line(&amp;mut s).ok(); s.trim().parse().ok().unwrap() } fn read_vec&lt;T: std::str::FromStr&gt;() -&gt; Vec&lt;T&gt; { read::&lt;String&gt;().split_whitespace() .map(|e| e.
 	</div>
-</article><article class="list__item post">
-	
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/post/abc109c/" rel="bookmark">
-			Abc109c
-			</a>
-		</h2>
-		
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		久々に自力で解けた。
-スタート地点Xと訪問する都市の関係は, その差の絶対値がDの倍数になる。 よって各都市とスタート地点Xとの差の最大公約数が求めるDとなる。 gcdの実装忘れてたので復習にもなった。
-以下提出コードです。
-fn read&lt;T: std::str::FromStr&gt;() -&gt; T { let mut s = String::new(); std::io::stdin().read_line(&amp;mut s).ok(); s.trim().parse().ok().unwrap() } fn read_vec&lt;T: std::str::FromStr&gt;() -&gt; Vec&lt;T&gt; { read::&lt;String&gt;().split_whitespace() .map(|e| e.parse().ok().unwrap()).collect() } fn main() { let nx: Vec&lt;u64&gt; = read_vec::&lt;u64&gt;(); let mut x: Vec&lt;u64&gt; = read_vec::&lt;u64&gt;(); let mut ans: u64 = 0; for i in 0.
-	</div>
 </article>
 </main>
 
@@ -116,11 +115,11 @@ fn read&lt;T: std::str::FromStr&gt;() -&gt; T { let mut s = String::new(); std::
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/post/abc125/">Abc124c</a></li>
 			<li class="widget__item"><a class="widget__link" href="/post/abc044c/">Abc044c</a></li>
 			<li class="widget__item"><a class="widget__link" href="/post/abc224d/">Abc224d</a></li>
 			<li class="widget__item"><a class="widget__link" href="/post/abc118c/">Abc118c</a></li>
 			<li class="widget__item"><a class="widget__link" href="/post/abc117c/">Abc117c</a></li>
-			<li class="widget__item"><a class="widget__link" href="/post/abc116c/">Abc116c</a></li>
 		</ul>
 	</div>
 </div>

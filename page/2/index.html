@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="no-js" lang="en">
 <head>
-	<meta name="generator" content="Hugo 0.60.1" />
+	<meta name="generator" content="Hugo 0.88.1" />
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -44,6 +44,22 @@
 	
 	<header class="list__header">
 		<h2 class="list__title post__title">
+			<a href="/post/abc118c/" rel="bookmark">
+			Abc118c
+			</a>
+		</h2>
+		
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		自力で解いたが, 解説の解き方の方が良い気がする（わかりやすい）。
+入力配列をソート後, 最小値を用い各要素の余りを求め, あまり0の場合は配列から削除する。 以降同じ操作を配列の個数が1になるまで続け, 最後に残った数値が答えとなる。
+以下提出コードです。
+fn read&lt;T: std::str::FromStr&gt;() -&gt; T { let mut s = String::new(); std::io::stdin().read_line(&amp;mut s).ok(); s.trim().parse().ok().unwrap() } fn read_vec&lt;T: std::str::FromStr&gt;() -&gt; Vec&lt;T&gt; { read::&lt;String&gt;().split_whitespace() .
+	</div>
+</article><article class="list__item post">
+	
+	<header class="list__header">
+		<h2 class="list__title post__title">
 			<a href="/post/abc117c/" rel="bookmark">
 			Abc117c
 			</a>
@@ -72,21 +88,6 @@ fn read&lt;T: std::str::FromStr&gt;() -&gt; T { let mut s = String::new(); std::
 以下提出コードです。
 fn read&lt;T: std::str::FromStr&gt;() -&gt; T { let mut s = String::new(); std::io::stdin().read_line(&amp;mut s).ok(); s.trim().parse().ok().unwrap() } fn read_vec&lt;T: std::str::FromStr&gt;() -&gt; Vec&lt;T&gt; { read::&lt;String&gt;().split_whitespace() .map(|e| e.parse().ok().unwrap()).collect() } fn main() { let n: usize = read::&lt;usize&gt;(); let mut v: Vec&lt;i32&gt; = read_vec::&lt;i32&gt;(); let mut cnt: u32 = 0; loop { let lr: (i32, i32) = lr(&amp;v); if lr.
 	</div>
-</article><article class="list__item post">
-	
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/post/abc114c/" rel="bookmark">
-			Abc114c
-			</a>
-		</h2>
-		
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		久しぶりに自力で解けた。 1から1000000000までの全ての数で, 3, 5, 7の数字のみのものを数え上げると時間が足りないのは明らか。 1000000000未満の数で3, 5, 7すべてを含んだ数を生成して配列に昇順に代入していく。 入力の値と配列に代入した値と比較を行い, 小さい場合にカウントを増やしていけばよい。
-以下提出コードです。
-fn read&lt;T: std::str::FromStr&gt;() -&gt; T { let mut s = String::new(); std::io::stdin().read_line(&amp;mut s).ok(); s.trim().parse().ok().unwrap() } fn main() { let n: u64 = read::&lt;u64&gt;(); let mut n3: u64 = 0; let mut n5: u64 = 0; let mut n7: u64 = 0; let mut v: Vec&lt;u64&gt; = Vec::new(); let mut ans: u64 = 0; makenum(0, &amp;mut v); v.
-	</div>
 </article>
 </main>
 
@@ -110,11 +111,11 @@ fn read&lt;T: std::str::FromStr&gt;() -&gt; T { let mut s = String::new(); std::
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/post/abc125/">Abc124c</a></li>
 			<li class="widget__item"><a class="widget__link" href="/post/abc044c/">Abc044c</a></li>
 			<li class="widget__item"><a class="widget__link" href="/post/abc224d/">Abc224d</a></li>
 			<li class="widget__item"><a class="widget__link" href="/post/abc118c/">Abc118c</a></li>
 			<li class="widget__item"><a class="widget__link" href="/post/abc117c/">Abc117c</a></li>
-			<li class="widget__item"><a class="widget__link" href="/post/abc116c/">Abc116c</a></li>
 		</ul>
 	</div>
 </div>
