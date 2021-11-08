@@ -6,7 +6,19 @@
     <description>Recent content on でぶろぐ</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Thu, 04 Nov 2021 22:14:54 +0900</lastBuildDate><atom:link href="https://taisa-asiato.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 08 Nov 2021 22:06:22 +0900</lastBuildDate><atom:link href="https://taisa-asiato.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Abc226c</title>
+      <link>https://taisa-asiato.github.io/post/abc226c/</link>
+      <pubDate>Mon, 08 Nov 2021 22:06:22 +0900</pubDate>
+      
+      <guid>https://taisa-asiato.github.io/post/abc226c/</guid>
+      <description>回答は解説通り。
+解き方自体はコンテスト中に思いついたが, 実装できずにタイプアップしてしまった。 自分の実装力の無さを改めて思い知らされ, かなりショックを受けた一問だった。 上に行くためにこれからも精進し続けるしかないですね&amp;hellip;。
+以下提出コードです。
+fn read&amp;lt;T: std::str::FromStr&amp;gt;() -&amp;gt; T { let mut s = String::new(); std::io::stdin().read_line(&amp;amp;mut s).ok(); s.trim().parse().ok().unwrap() } fn read_vec&amp;lt;T: std::str::FromStr&amp;gt;() -&amp;gt; Vec&amp;lt;T&amp;gt; { read::&amp;lt;String&amp;gt;().split_whitespace() .map(|e| e.</description>
+    </item>
+    
     <item>
       <title>Abc124c</title>
       <link>https://taisa-asiato.github.io/post/abc125/</link>
