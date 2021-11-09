@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Abc128c - でぶろぐ</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+
+	<link rel="stylesheet" href="/css/style.css">
+	
+
+	<link rel="shortcut icon" href="/favicon.ico">
+		
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container header__container">
+		
+	<div class="logo">
+		<a class="logo__link" href="/" title="でぶろぐ" rel="home">
+			<div class="logo__item logo__text">
+					<div class="logo__title">でぶろぐ</div>
+					
+				</div>
+		</a>
+	</div>
+		<div class="divider"></div>
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">Abc128c</h1>
+			
+		</header>
+		<div class="content post__content clearfix">
+			<p>自力で解けた。</p>
+<p>解説ではDFSを用いる方法などがあるとのことだったが, 自分はスイッチの組み合わせ問題と考えてbitDPで解いた。</p>
+<p>スイッチの入り切りの状態をnbitで表現し, そのうちi番目のライトの明滅に関与するスイッチのうちonのものをカウントする。
+onのスイッチをカウントし, 2で割った余りがp<sub>i</sub>と同じ場合は点灯するライトのカウンタをインクリメントする。
+すべてのライトに対して点灯するかを判定し, すべてのライトが点灯した場合に答えとして出力するカウンタをインクリメントする。
+以上をすべてのスイッチの組み合わせに対して行う。</p>
+<p>以下提出コードです。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Rust" data-lang="Rust"><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">read</span><span style="color:#f92672">&lt;</span>T: <span style="color:#a6e22e">std</span>::<span style="color:#66d9ef">str</span>::FromStr<span style="color:#f92672">&gt;</span>() -&gt; <span style="color:#a6e22e">T</span> {
+    <span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> s <span style="color:#f92672">=</span> String::new();
+    std::io::stdin().read_line(<span style="color:#f92672">&amp;</span><span style="color:#66d9ef">mut</span> s).ok();
+    s.trim().parse().ok().unwrap()
+}
+
+<span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">read_vec</span><span style="color:#f92672">&lt;</span>T: <span style="color:#a6e22e">std</span>::<span style="color:#66d9ef">str</span>::FromStr<span style="color:#f92672">&gt;</span>() -&gt; Vec<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> {
+    read::<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;</span>().split_whitespace()
+        .map(<span style="color:#f92672">|</span>e<span style="color:#f92672">|</span> e.parse().ok().unwrap()).collect()
+}
+
+<span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+    <span style="color:#66d9ef">let</span> nm: Vec<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">usize</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">=</span> read_vec::<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">usize</span><span style="color:#f92672">&gt;</span>();
+    <span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> sr: [[<span style="color:#66d9ef">bool</span>; <span style="color:#ae81ff">10</span>]; <span style="color:#ae81ff">10</span>] <span style="color:#f92672">=</span> [[<span style="color:#66d9ef">false</span>; <span style="color:#ae81ff">10</span>]; <span style="color:#ae81ff">10</span>];
+    <span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> ans: <span style="color:#66d9ef">u64</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+
+    <span style="color:#66d9ef">for</span> i <span style="color:#66d9ef">in</span> <span style="color:#ae81ff">0</span>..nm[<span style="color:#ae81ff">1</span>] {
+        <span style="color:#66d9ef">let</span> tmp: Vec<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">usize</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">=</span> read_vec::<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">usize</span><span style="color:#f92672">&gt;</span>();
+        <span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> t: Vec<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">usize</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">=</span> Vec::new();
+        <span style="color:#66d9ef">for</span> j <span style="color:#66d9ef">in</span> <span style="color:#ae81ff">0</span>..tmp[<span style="color:#ae81ff">0</span>] {
+            sr[i][tmp[<span style="color:#ae81ff">1</span><span style="color:#f92672">+</span>j]<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>] <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;
+        }
+    }
+    <span style="color:#66d9ef">let</span> p: Vec<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">u8</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">=</span> read_vec::<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">u8</span><span style="color:#f92672">&gt;</span>();
+
+    <span style="color:#66d9ef">for</span> i <span style="color:#66d9ef">in</span> <span style="color:#ae81ff">0</span>..<span style="color:#ae81ff">1</span><span style="color:#f92672">&lt;&lt;</span>nm[<span style="color:#ae81ff">0</span>] {
+
+        <span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> rcnt: <span style="color:#66d9ef">u32</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+        <span style="color:#66d9ef">for</span> j <span style="color:#66d9ef">in</span> <span style="color:#ae81ff">0</span>..nm[<span style="color:#ae81ff">1</span>] { <span style="color:#75715e">// スイッチの組み合わせ
+</span><span style="color:#75715e"></span>            <span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> scnt: <span style="color:#66d9ef">u32</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+            <span style="color:#66d9ef">for</span> k <span style="color:#66d9ef">in</span> <span style="color:#ae81ff">0</span>..nm[<span style="color:#ae81ff">0</span>] { <span style="color:#75715e">// ライトの組み合わせ
+</span><span style="color:#75715e"></span>                <span style="color:#66d9ef">if</span> sr[j][k] <span style="color:#f92672">&amp;&amp;</span> i <span style="color:#f92672">&amp;</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">&lt;&lt;</span> k <span style="color:#f92672">!=</span> <span style="color:#ae81ff">0</span> {
+                    scnt <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>;
+                } 
+            }
+            <span style="color:#66d9ef">if</span> scnt<span style="color:#f92672">%</span><span style="color:#ae81ff">2</span> <span style="color:#f92672">==</span> p[j] <span style="color:#66d9ef">as</span> <span style="color:#66d9ef">u32</span> {
+                rcnt <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>;
+            }
+        }
+
+        <span style="color:#66d9ef">if</span> rcnt <span style="color:#f92672">==</span> nm[<span style="color:#ae81ff">1</span>] <span style="color:#66d9ef">as</span> <span style="color:#66d9ef">u32</span> {
+            ans <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>;
+        }
+    }
+
+    println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;{}&#34;</span>, ans);
+}
+</code></pre></div>
+		</div>
+		<footer class="post__footer">
+			
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/rust/" rel="tag">Rust</a>
+		</li>
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/procon/" rel="tag">procon</a>
+		</li>
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/memo/" rel="tag">memo</a>
+		</li>
+	</ul>
+</div>
+		</footer>
+	</article>
+</main>
+
+
+
+
+			</div>
+			
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2021 でぶろぐ.
+			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="/js/menu.js"></script>
+</body>
+</html>

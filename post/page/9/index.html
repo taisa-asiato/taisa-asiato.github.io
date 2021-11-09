@@ -48,6 +48,21 @@ weight = &ldquo;10&rdquo;</p>
 	
 	<header class="list__header">
 		<h2 class="list__title post__title">
+			<a href="/post/rust-memo2/" rel="bookmark">
+			Rust Memo2
+			</a>
+		</h2>
+		
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		Rustの勉強メモその2です。
+螺旋本の3.5問目(安定ソート), トランプカードを 構造体を使用して表現していたのですが, 標準入力から得た値をパースしてCard型のVectorにpushする処理が コンパイル時にエラーになりました。
+error[E0382]: assign to part of moved value: `card_val` --&gt; pro3-4.rs:28:9 | 20 | let mut card_val = Card { | ------------ move occurs because `card_val` has type `Card`, which does not implement the `Copy` trait .
+	</div>
+</article><article class="list__item post">
+	
+	<header class="list__header">
+		<h2 class="list__title post__title">
 			<a href="/post/compsystem10/" rel="bookmark">
 			コンピュータシステムの理論と実装 10章
 			</a>
@@ -79,28 +94,13 @@ weight = &ldquo;10&rdquo;</p>
 螺旋本の挿入ソートプログラムを書きました。 ソースコードは以下です。
 use std::io; fn main() { let mut tmp_str = String::new(); io::stdin().read_line( &amp;mut tmp_str ).expect( &#34;No input val&#34; ); let ar_size: u32 = tmp_str.trim().parse().expect( &#34;Failed parse&#34; ); tmp_str = String::new(); io::stdin().
 	</div>
-</article><article class="list__item post">
-	
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/post/pra/" rel="bookmark">
-			螺旋2
-			</a>
-		</h2>
-		
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		Rustの勉強がてらプロコンの問題を解くことにしました。 AOJのプロコン導入問題を解いていきます。 問題は螺旋本に登場する問題を順番に解いていきます。 はじめの問題はALDS1_1_Dです。
-なお，タイトルの螺旋2は螺旋+章番号を意味します。 今後のナンバリングは上記螺旋+章番号で統一します。
-以下ソースコードです。
-use std::io; fn main() { let mut tmp_str = String::new(); // 標準入力から一行受け取る  io::stdin().read_line( &amp;mut tmp_str ); // 標準入力から受け取った文字を数字に変換する  let linenum: i32 = tmp_str.
-	</div>
 </article>
 </main>
 
 <div class="pagination">
 	<a class="pagination__item pagination__item--prev btn" href="/post/page/8/">«</a>
-	<span class="pagination__item pagination__item--current">9/9</span>
+	<span class="pagination__item pagination__item--current">9/10</span>
+	<a class="pagination__item pagination__item--next btn" href="/post/page/10/">»</a>
 </div>
 
 			</div>
@@ -118,11 +118,11 @@ use std::io; fn main() { let mut tmp_str = String::new(); // 標準入力から�
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/post/abc128c/">Abc128c</a></li>
 			<li class="widget__item"><a class="widget__link" href="/post/abc226c/">Abc226c</a></li>
 			<li class="widget__item"><a class="widget__link" href="/post/abc125/">Abc124c</a></li>
 			<li class="widget__item"><a class="widget__link" href="/post/abc044c/">Abc044c</a></li>
 			<li class="widget__item"><a class="widget__link" href="/post/abc224d/">Abc224d</a></li>
-			<li class="widget__item"><a class="widget__link" href="/post/abc118c/">Abc118c</a></li>
 		</ul>
 	</div>
 </div>

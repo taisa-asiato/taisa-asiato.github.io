@@ -6,7 +6,20 @@
     <description>Recent content on でぶろぐ</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Mon, 08 Nov 2021 22:06:22 +0900</lastBuildDate><atom:link href="https://taisa-asiato.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 09 Nov 2021 23:04:51 +0900</lastBuildDate><atom:link href="https://taisa-asiato.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Abc128c</title>
+      <link>https://taisa-asiato.github.io/post/abc128c/</link>
+      <pubDate>Tue, 09 Nov 2021 23:04:51 +0900</pubDate>
+      
+      <guid>https://taisa-asiato.github.io/post/abc128c/</guid>
+      <description>自力で解けた。
+解説ではDFSを用いる方法などがあるとのことだったが, 自分はスイッチの組み合わせ問題と考えてbitDPで解いた。
+スイッチの入り切りの状態をnbitで表現し, そのうちi番目のライトの明滅に関与するスイッチのうちonのものをカウントする。 onのスイッチをカウントし, 2で割った余りがpiと同じ場合は点灯するライトのカウンタをインクリメントする。 すべてのライトに対して点灯するかを判定し, すべてのライトが点灯した場合に答えとして出力するカウンタをインクリメントする。 以上をすべてのスイッチの組み合わせに対して行う。
+以下提出コードです。
+fn read&amp;lt;T: std::str::FromStr&amp;gt;() -&amp;gt; T { let mut s = String::new(); std::io::stdin().read_line(&amp;amp;mut s).ok(); s.trim().parse().ok().unwrap() } fn read_vec&amp;lt;T: std::str::FromStr&amp;gt;() -&amp;gt; Vec&amp;lt;T&amp;gt; { read::&amp;lt;String&amp;gt;().</description>
+    </item>
+    
     <item>
       <title>Abc226c</title>
       <link>https://taisa-asiato.github.io/post/abc226c/</link>

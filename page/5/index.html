@@ -44,6 +44,23 @@
 	
 	<header class="list__header">
 		<h2 class="list__title post__title">
+			<a href="/post/abc108c/" rel="bookmark">
+			Abc108c
+			</a>
+		</h2>
+		
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		解法は解説とおり。
+(a, b, c)について(a+b)%K=0, (a+c)%K=0, (b+c)%K=0となる。 これを満たすa, b, cは
+ a%K=b%K=c%K=0 a%K=b%K=c%K=K/2 のいずれか。  aについてi=1からNまでのうち, 上記個数をカウントし, それぞれ3乗した値の和が答えとなる。 (b, cも同様なのでaのみ考えれば良い。)
+以下提出コードです。
+fn read&lt;T: std::str::FromStr&gt;() -&gt; T { let mut s = String::new(); std::io::stdin().
+	</div>
+</article><article class="list__item post">
+	
+	<header class="list__header">
+		<h2 class="list__title post__title">
 			<a href="/post/abc220d/" rel="bookmark">
 			Abc220d
 			</a>
@@ -74,27 +91,12 @@ DP問題はあまり解いていないので, 早く慣れたいところ。 DP�
 以下提出コードです。
 fn read&lt;T: std::str::FromStr&gt;() -&gt; T { let mut s = String::new(); std::io::stdin().read_line(&amp;mut s).
 	</div>
-</article><article class="list__item post">
-	
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/post/abc097c/" rel="bookmark">
-			Abc097c
-			</a>
-		</h2>
-		
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		制約(Kは1以上5以下となる。)から, 生成できる部分文字列のうち, 上位5番目までの 文字列の長さはK以下となる。 １文字目から順に文字列長K以下となる部分文字列を生成・記録し, K番目の文字列を出力すれば良い。
-以下提出コードです。
-use std::collections::HashSet; fn read&lt;T: std::str::FromStr&gt;() -&gt; T { let mut s = String::new(); std::io::stdin().read_line(&amp;mut s).ok(); s.trim().parse().ok().unwrap() } fn main() { let v: String = read::&lt;String&gt;(); let k: usize = read::&lt;usize&gt;(); let mut hs: HashSet&lt;String&gt; = HashSet::new(); for i in 0.
-	</div>
 </article>
 </main>
 
 <div class="pagination">
 	<a class="pagination__item pagination__item--prev btn" href="/page/4/">«</a>
-	<span class="pagination__item pagination__item--current">5/9</span>
+	<span class="pagination__item pagination__item--current">5/10</span>
 	<a class="pagination__item pagination__item--next btn" href="/page/6/">»</a>
 </div>
 
@@ -112,11 +114,11 @@ use std::collections::HashSet; fn read&lt;T: std::str::FromStr&gt;() -&gt; T { l
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/post/abc128c/">Abc128c</a></li>
 			<li class="widget__item"><a class="widget__link" href="/post/abc226c/">Abc226c</a></li>
 			<li class="widget__item"><a class="widget__link" href="/post/abc125/">Abc124c</a></li>
 			<li class="widget__item"><a class="widget__link" href="/post/abc044c/">Abc044c</a></li>
 			<li class="widget__item"><a class="widget__link" href="/post/abc224d/">Abc224d</a></li>
-			<li class="widget__item"><a class="widget__link" href="/post/abc118c/">Abc118c</a></li>
 		</ul>
 	</div>
 </div>

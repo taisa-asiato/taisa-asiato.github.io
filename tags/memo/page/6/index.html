@@ -45,6 +45,21 @@
 	
 	<header class="list__header">
 		<h2 class="list__title post__title">
+			<a href="/post/abc097c/" rel="bookmark">
+			Abc097c
+			</a>
+		</h2>
+		
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		制約(Kは1以上5以下となる。)から, 生成できる部分文字列のうち, 上位5番目までの 文字列の長さはK以下となる。 １文字目から順に文字列長K以下となる部分文字列を生成・記録し, K番目の文字列を出力すれば良い。
+以下提出コードです。
+use std::collections::HashSet; fn read&lt;T: std::str::FromStr&gt;() -&gt; T { let mut s = String::new(); std::io::stdin().read_line(&amp;mut s).ok(); s.trim().parse().ok().unwrap() } fn main() { let v: String = read::&lt;String&gt;(); let k: usize = read::&lt;usize&gt;(); let mut hs: HashSet&lt;String&gt; = HashSet::new(); for i in 0.
+	</div>
+</article><article class="list__item post">
+	
+	<header class="list__header">
+		<h2 class="list__title post__title">
 			<a href="/post/abc096c/" rel="bookmark">
 			Abc096c
 			</a>
@@ -75,21 +90,6 @@ fn read&lt;T: std::str::FromStr&gt;() -&gt; T { let mut s = String::new(); std::
  数値(nとする)を1から1づつインクリメントする。 nが指定された値(問題文ではN)以上か確認 2.の判定が真ならnの各桁にいろはちゃんの嫌いな数字が混じっていないか確認 3.で嫌いな数字が混じっていなければnを出力して終了, そうでないなら1. に戻る  上記であれば&quot;間に合う&quot;との事だったので, その通りに実装したが3度TLEをもらいました。 subtask1_X_02.txtが入力の時のみTLEになっていた。 この時のコードは次の通りです。
 fn read&lt;T: std::str::FromStr&gt;() -&gt; T { let mut s = String::new(); std::io::stdin().
 	</div>
-</article><article class="list__item post">
-	
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/post/rust-memo2/" rel="bookmark">
-			Rust Memo2
-			</a>
-		</h2>
-		
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		Rustの勉強メモその2です。
-螺旋本の3.5問目(安定ソート), トランプカードを 構造体を使用して表現していたのですが, 標準入力から得た値をパースしてCard型のVectorにpushする処理が コンパイル時にエラーになりました。
-error[E0382]: assign to part of moved value: `card_val` --&gt; pro3-4.rs:28:9 | 20 | let mut card_val = Card { | ------------ move occurs because `card_val` has type `Card`, which does not implement the `Copy` trait .
-	</div>
 </article>
 </main>
 
@@ -114,11 +114,11 @@ error[E0382]: assign to part of moved value: `card_val` --&gt; pro3-4.rs:28:9 | 
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/post/abc128c/">Abc128c</a></li>
 			<li class="widget__item"><a class="widget__link" href="/post/abc226c/">Abc226c</a></li>
 			<li class="widget__item"><a class="widget__link" href="/post/abc125/">Abc124c</a></li>
 			<li class="widget__item"><a class="widget__link" href="/post/abc044c/">Abc044c</a></li>
 			<li class="widget__item"><a class="widget__link" href="/post/abc224d/">Abc224d</a></li>
-			<li class="widget__item"><a class="widget__link" href="/post/abc118c/">Abc118c</a></li>
 		</ul>
 	</div>
 </div>

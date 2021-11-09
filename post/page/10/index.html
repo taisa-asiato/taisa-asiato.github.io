@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>memo - でぶろぐ</title>
+	<title> - でぶろぐ</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,7 +14,7 @@
 
 	<link rel="stylesheet" href="/css/style.css">
 	
-	<link rel="alternate" type="application/rss+xml" href="/tags/memo/index.xml" title="でぶろぐ">
+	<link rel="alternate" type="application/rss+xml" href="/post/index.xml" title="でぶろぐ">
 
 	<link rel="shortcut icon" href="/favicon.ico">
 		
@@ -39,65 +39,33 @@
 			<div class="primary">
 			
 <main class="main list" role="main">
-	<header class="main__header">
-		<h1 class="main__title">memo</h1>
-	</header><article class="list__item post">
+	<div class="content main__content clearfix">
+		<p>title = &ldquo;Posts&rdquo;
+menu = &ldquo;main&rdquo;
+weight = &ldquo;10&rdquo;</p>
+
+	</div><article class="list__item post">
 	
 	<header class="list__header">
 		<h2 class="list__title post__title">
-			<a href="/post/abc044c/" rel="bookmark">
-			Abc044c
+			<a href="/post/pra/" rel="bookmark">
+			螺旋2
 			</a>
 		</h2>
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		解説どおり。
-全ての組み合わせを網羅しないと解けないので, 効率よく全通りの組み合わを試す方法を探す。 結論としてはDPを用いて解く。 配列の定義と更新時の処理は下記となる。
- dp[i][j][k] : i枚目までのカードのうちj枚選んだ時の合計がkである組み合わせの個数 dp[i+1][j][k] += dp[i+1][j][k] : カードを選択しなかった場合 dp[i+1][j+1][k+v[k]] += dp[i+1][j+1][k] : カードを選択した場合  以下提出コードです。
-fn read&lt;T: std::str::FromStr&gt;() -&gt; T { let mut s = String::new(); std::io::stdin().
-	</div>
-</article><article class="list__item post">
-	
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/post/abc224d/" rel="bookmark">
-			Abc224d
-			</a>
-		</h2>
-		
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		解説どおり。コードも解説のものと同じ。
-各頂点の隣接頂点の配列を入力を元に作成する。 また, 初期状態と目標状態を配列で保持する。 このとき, コマが置かれていない頂点は目印(例えば-1など)の値を設定する。
-初期状態から, コマが置かれていない頂点を探し, その頂点へ隣接する各頂点からコマを移動したときの頂点とコマの状態を HashMapに記録する。このとき, 初期状態から何回コマを動かしたかを値として記録する。 この操作を繰り返し行うことで全探索を行い, 目標とする配列の状態へと遷移できるかを調べる。
-終了条件を設定するため, 頂点とコマの状態の配列をHashMap及びVecDequeで管理する。 HashMapに記録されていない状態の配列の場合はHashMapに記録し, VecDequeに配列を追加する。 探索を行う際, VecDequeから配列を取り出し, 上記の探索を行う。 探索が終了した状態の配列はVecDequeから取り除く。 VecDequeが空になった場合が終了状態となる。 最終的に目標状態の配列がHashMapに登録されていれば, その値を出力すれば良い。
-以下提出コードです。 ほぼほぼCのコード。Rustっぽく書くにはどうすれば良いのだろうか。
-use std::collections::HashMap; use std::collections::VecDeque; fn read&lt;T: std::str::FromStr&gt;() -&gt; T { let mut s = String::new(); std::io::stdin().
-	</div>
-</article><article class="list__item post">
-	
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/post/abc118c/" rel="bookmark">
-			Abc118c
-			</a>
-		</h2>
-		
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		自力で解いたが, 解説の解き方の方が良い気がする（わかりやすい）。
-入力配列をソート後, 最小値を用い各要素の余りを求め, あまり0の場合は配列から削除する。 以降同じ操作を配列の個数が1になるまで続け, 最後に残った数値が答えとなる。
-以下提出コードです。
-fn read&lt;T: std::str::FromStr&gt;() -&gt; T { let mut s = String::new(); std::io::stdin().read_line(&amp;mut s).ok(); s.trim().parse().ok().unwrap() } fn read_vec&lt;T: std::str::FromStr&gt;() -&gt; Vec&lt;T&gt; { read::&lt;String&gt;().split_whitespace() .
+		Rustの勉強がてらプロコンの問題を解くことにしました。 AOJのプロコン導入問題を解いていきます。 問題は螺旋本に登場する問題を順番に解いていきます。 はじめの問題はALDS1_1_Dです。
+なお，タイトルの螺旋2は螺旋+章番号を意味します。 今後のナンバリングは上記螺旋+章番号で統一します。
+以下ソースコードです。
+use std::io; fn main() { let mut tmp_str = String::new(); // 標準入力から一行受け取る  io::stdin().read_line( &amp;mut tmp_str ); // 標準入力から受け取った文字を数字に変換する  let linenum: i32 = tmp_str.
 	</div>
 </article>
 </main>
 
 <div class="pagination">
-	<a class="pagination__item pagination__item--prev btn" href="/tags/memo/">«</a>
-	<span class="pagination__item pagination__item--current">2/7</span>
-	<a class="pagination__item pagination__item--next btn" href="/tags/memo/page/3/">»</a>
+	<a class="pagination__item pagination__item--prev btn" href="/post/page/9/">«</a>
+	<span class="pagination__item pagination__item--current">10/10</span>
 </div>
 
 			</div>

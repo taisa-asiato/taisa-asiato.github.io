@@ -44,6 +44,23 @@
 	
 	<header class="list__header">
 		<h2 class="list__title post__title">
+			<a href="/post/abc128c/" rel="bookmark">
+			Abc128c
+			</a>
+		</h2>
+		
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		自力で解けた。
+解説ではDFSを用いる方法などがあるとのことだったが, 自分はスイッチの組み合わせ問題と考えてbitDPで解いた。
+スイッチの入り切りの状態をnbitで表現し, そのうちi番目のライトの明滅に関与するスイッチのうちonのものをカウントする。 onのスイッチをカウントし, 2で割った余りがpiと同じ場合は点灯するライトのカウンタをインクリメントする。 すべてのライトに対して点灯するかを判定し, すべてのライトが点灯した場合に答えとして出力するカウンタをインクリメントする。 以上をすべてのスイッチの組み合わせに対して行う。
+以下提出コードです。
+fn read&lt;T: std::str::FromStr&gt;() -&gt; T { let mut s = String::new(); std::io::stdin().read_line(&amp;mut s).ok(); s.trim().parse().ok().unwrap() } fn read_vec&lt;T: std::str::FromStr&gt;() -&gt; Vec&lt;T&gt; { read::&lt;String&gt;().
+	</div>
+</article><article class="list__item post">
+	
+	<header class="list__header">
+		<h2 class="list__title post__title">
 			<a href="/post/abc226c/" rel="bookmark">
 			Abc226c
 			</a>
@@ -71,27 +88,11 @@ fn read&lt;T: std::str::FromStr&gt;() -&gt; T { let mut s = String::new(); std::
 配列の左からi番目までの最大公約数と, 右からi番目の最大公約数をそれぞれ配列(l, r)に保存しておく。 左からi番目の数を書き換えるとき, gcd(l[i], r[i+1])を求め, その最大値が解となる。
 fn read&lt;T: std::str::FromStr&gt;() -&gt; T { let mut s = String::new(); std::io::stdin().read_line(&amp;mut s).ok(); s.trim().parse().ok().unwrap() } fn read_vec&lt;T: std::str::FromStr&gt;() -&gt; Vec&lt;T&gt; { read::&lt;String&gt;().split_whitespace() .
 	</div>
-</article><article class="list__item post">
-	
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/post/abc044c/" rel="bookmark">
-			Abc044c
-			</a>
-		</h2>
-		
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		解説どおり。
-全ての組み合わせを網羅しないと解けないので, 効率よく全通りの組み合わを試す方法を探す。 結論としてはDPを用いて解く。 配列の定義と更新時の処理は下記となる。
- dp[i][j][k] : i枚目までのカードのうちj枚選んだ時の合計がkである組み合わせの個数 dp[i+1][j][k] += dp[i+1][j][k] : カードを選択しなかった場合 dp[i+1][j+1][k+v[k]] += dp[i+1][j+1][k] : カードを選択した場合  以下提出コードです。
-fn read&lt;T: std::str::FromStr&gt;() -&gt; T { let mut s = String::new(); std::io::stdin().
-	</div>
 </article>
 </main>
 
 <div class="pagination">
-	<span class="pagination__item pagination__item--current">1/9</span>
+	<span class="pagination__item pagination__item--current">1/10</span>
 	<a class="pagination__item pagination__item--next btn" href="/page/2/">»</a>
 </div>
 
@@ -109,11 +110,11 @@ fn read&lt;T: std::str::FromStr&gt;() -&gt; T { let mut s = String::new(); std::
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/post/abc128c/">Abc128c</a></li>
 			<li class="widget__item"><a class="widget__link" href="/post/abc226c/">Abc226c</a></li>
 			<li class="widget__item"><a class="widget__link" href="/post/abc125/">Abc124c</a></li>
 			<li class="widget__item"><a class="widget__link" href="/post/abc044c/">Abc044c</a></li>
 			<li class="widget__item"><a class="widget__link" href="/post/abc224d/">Abc224d</a></li>
-			<li class="widget__item"><a class="widget__link" href="/post/abc118c/">Abc118c</a></li>
 		</ul>
 	</div>
 </div>
