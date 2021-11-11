@@ -6,7 +6,22 @@
     <description>Recent content on でぶろぐ</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Tue, 09 Nov 2021 23:04:51 +0900</lastBuildDate><atom:link href="https://taisa-asiato.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 11 Nov 2021 22:53:11 +0900</lastBuildDate><atom:link href="https://taisa-asiato.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Abc129c</title>
+      <link>https://taisa-asiato.github.io/post/abc129c/</link>
+      <pubDate>Thu, 11 Nov 2021 22:53:11 +0900</pubDate>
+      
+      <guid>https://taisa-asiato.github.io/post/abc129c/</guid>
+      <description>解説のとおり。
+初め再帰で解こうとしたが上手く行かなかった。
+何が原因か分からないが, 仮にうまく行っても制限時間内に多分解けなかったと思う。
+i段目の階段が使用できるかどうかを配列に保存しておく。 また, 探索用の配列dpを用意する。dpの初期値(dp[0])の値は1にする。(dp[i]はi段目への行き方の数を表す。)
+i+1段目とi+2段目の階段が使用できる場合はdp[i+1]及びdp[i+2]の値を更新する。 このとき, 1000000007で割った余りの値で更新する。 頻繁に間違った値で更新するので, 怪しいときは愚直なコードで更新すること!
+以下提出コードです。
+fn read&amp;lt;T: std::str::FromStr&amp;gt;() -&amp;gt; T { let mut s = String::new(); std::io::stdin().read_line(&amp;amp;mut s).ok(); s.trim().parse().ok().unwrap() } fn read_vec&amp;lt;T: std::str::FromStr&amp;gt;() -&amp;gt; Vec&amp;lt;T&amp;gt; { read::&amp;lt;String&amp;gt;().</description>
+    </item>
+    
     <item>
       <title>Abc128c</title>
       <link>https://taisa-asiato.github.io/post/abc128c/</link>

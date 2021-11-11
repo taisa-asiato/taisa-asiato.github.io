@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Tags - でぶろぐ</title>
+	<title>procon - でぶろぐ</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,7 +14,7 @@
 
 	<link rel="stylesheet" href="/css/style.css">
 	
-	<link rel="alternate" type="application/rss+xml" href="/tags/index.xml" title="でぶろぐ">
+	<link rel="alternate" type="application/rss+xml" href="/tags/procon/index.xml" title="でぶろぐ">
 
 	<link rel="shortcut icon" href="/favicon.ico">
 		
@@ -40,52 +40,31 @@
 			
 <main class="main list" role="main">
 	<header class="main__header">
-		<h1 class="main__title">Tags</h1>
+		<h1 class="main__title">procon</h1>
 	</header><article class="list__item post">
 	
 	<header class="list__header">
 		<h2 class="list__title post__title">
-			<a href="/tags/the-elements-of-computing-system/" rel="bookmark">
-			The Elements of Computing System
+			<a href="/post/abc099c/" rel="bookmark">
+			Abc099c
 			</a>
 		</h2>
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		
-	</div>
-</article><article class="list__item post">
-	
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/tags/%E3%82%A2%E3%83%AB%E3%82%B4%E3%83%AA%E3%82%BA%E3%83%A0/" rel="bookmark">
-			アルゴリズム
-			</a>
-		</h2>
-		
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		
-	</div>
-</article><article class="list__item post">
-	
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/tags/%E3%83%97%E3%83%AD%E3%82%B3%E3%83%B3/" rel="bookmark">
-			プロコン
-			</a>
-		</h2>
-		
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		
+		解法は解説動画のとおり。
+n円までの最小引出回数dp[n]の候補は
+ n-1円の時に1円を1回引出す場合(計dp[n-1]+1回) n-6円の時に6円を1回引出す場合(計dp[n-6]+1回) &hellip; n-9i円の時に9i円を1回引出す場合(計dp[n-9i]+1回)  があり, これらの中から最小だった引出し回数がdp[n]となる。 初期値dp[0]は0で初期化しておき, 以降ループないし再帰関数でdpのテーブルを埋めていけばよい。
+DP問題はあまり解いていないので, 早く慣れたいところ。 DP問題の中では多分簡単な方だと思う(dpテーブルが多次元のものもあるので, 1次元の問題は簡単な方では?と思う。)。 類似の問題を集めたWeb記事を見つけているのでちまちまやっていく。
+以下提出コードです。
+fn read&lt;T: std::str::FromStr&gt;() -&gt; T { let mut s = String::new(); std::io::stdin().read_line(&amp;mut s).
 	</div>
 </article>
 </main>
 
 <div class="pagination">
-	<a class="pagination__item pagination__item--prev btn" href="/tags/">«</a>
-	<span class="pagination__item pagination__item--current">2/2</span>
+	<a class="pagination__item pagination__item--prev btn" href="/tags/procon/page/5/">«</a>
+	<span class="pagination__item pagination__item--current">6/6</span>
 </div>
 
 			</div>

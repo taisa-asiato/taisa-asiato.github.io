@@ -45,6 +45,25 @@
 	
 	<header class="list__header">
 		<h2 class="list__title post__title">
+			<a href="/post/abc129c/" rel="bookmark">
+			Abc129c
+			</a>
+		</h2>
+		
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		解説のとおり。
+初め再帰で解こうとしたが上手く行かなかった。
+何が原因か分からないが, 仮にうまく行っても制限時間内に多分解けなかったと思う。
+i段目の階段が使用できるかどうかを配列に保存しておく。 また, 探索用の配列dpを用意する。dpの初期値(dp[0])の値は1にする。(dp[i]はi段目への行き方の数を表す。)
+i+1段目とi+2段目の階段が使用できる場合はdp[i+1]及びdp[i+2]の値を更新する。 このとき, 1000000007で割った余りの値で更新する。 頻繁に間違った値で更新するので, 怪しいときは愚直なコードで更新すること!
+以下提出コードです。
+fn read&lt;T: std::str::FromStr&gt;() -&gt; T { let mut s = String::new(); std::io::stdin().read_line(&amp;mut s).ok(); s.trim().parse().ok().unwrap() } fn read_vec&lt;T: std::str::FromStr&gt;() -&gt; Vec&lt;T&gt; { read::&lt;String&gt;().
+	</div>
+</article><article class="list__item post">
+	
+	<header class="list__header">
+		<h2 class="list__title post__title">
 			<a href="/post/abc128c/" rel="bookmark">
 			Abc128c
 			</a>
@@ -74,26 +93,11 @@ fn read&lt;T: std::str::FromStr&gt;() -&gt; T { let mut s = String::new(); std::
 以下提出コードです。
 fn read&lt;T: std::str::FromStr&gt;() -&gt; T { let mut s = String::new(); std::io::stdin().read_line(&amp;mut s).ok(); s.trim().parse().ok().unwrap() } fn read_vec&lt;T: std::str::FromStr&gt;() -&gt; Vec&lt;T&gt; { read::&lt;String&gt;().split_whitespace() .map(|e| e.
 	</div>
-</article><article class="list__item post">
-	
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/post/abc125/" rel="bookmark">
-			Abc124c
-			</a>
-		</h2>
-		
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		解説のとおり。
-配列の左からi番目までの最大公約数と, 右からi番目の最大公約数をそれぞれ配列(l, r)に保存しておく。 左からi番目の数を書き換えるとき, gcd(l[i], r[i+1])を求め, その最大値が解となる。
-fn read&lt;T: std::str::FromStr&gt;() -&gt; T { let mut s = String::new(); std::io::stdin().read_line(&amp;mut s).ok(); s.trim().parse().ok().unwrap() } fn read_vec&lt;T: std::str::FromStr&gt;() -&gt; Vec&lt;T&gt; { read::&lt;String&gt;().split_whitespace() .
-	</div>
 </article>
 </main>
 
 <div class="pagination">
-	<span class="pagination__item pagination__item--current">1/5</span>
+	<span class="pagination__item pagination__item--current">1/6</span>
 	<a class="pagination__item pagination__item--next btn" href="/tags/procon/page/2/">»</a>
 </div>
 
@@ -112,11 +116,11 @@ fn read&lt;T: std::str::FromStr&gt;() -&gt; T { let mut s = String::new(); std::
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/post/abc129c/">Abc129c</a></li>
 			<li class="widget__item"><a class="widget__link" href="/post/abc128c/">Abc128c</a></li>
 			<li class="widget__item"><a class="widget__link" href="/post/abc226c/">Abc226c</a></li>
 			<li class="widget__item"><a class="widget__link" href="/post/abc125/">Abc124c</a></li>
 			<li class="widget__item"><a class="widget__link" href="/post/abc044c/">Abc044c</a></li>
-			<li class="widget__item"><a class="widget__link" href="/post/abc224d/">Abc224d</a></li>
 		</ul>
 	</div>
 </div>

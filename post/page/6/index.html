@@ -48,6 +48,24 @@ weight = &ldquo;10&rdquo;</p>
 	
 	<header class="list__header">
 		<h2 class="list__title post__title">
+			<a href="/post/abc099c/" rel="bookmark">
+			Abc099c
+			</a>
+		</h2>
+		
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		解法は解説動画のとおり。
+n円までの最小引出回数dp[n]の候補は
+ n-1円の時に1円を1回引出す場合(計dp[n-1]+1回) n-6円の時に6円を1回引出す場合(計dp[n-6]+1回) &hellip; n-9i円の時に9i円を1回引出す場合(計dp[n-9i]+1回)  があり, これらの中から最小だった引出し回数がdp[n]となる。 初期値dp[0]は0で初期化しておき, 以降ループないし再帰関数でdpのテーブルを埋めていけばよい。
+DP問題はあまり解いていないので, 早く慣れたいところ。 DP問題の中では多分簡単な方だと思う(dpテーブルが多次元のものもあるので, 1次元の問題は簡単な方では?と思う。)。 類似の問題を集めたWeb記事を見つけているのでちまちまやっていく。
+以下提出コードです。
+fn read&lt;T: std::str::FromStr&gt;() -&gt; T { let mut s = String::new(); std::io::stdin().read_line(&amp;mut s).
+	</div>
+</article><article class="list__item post">
+	
+	<header class="list__header">
+		<h2 class="list__title post__title">
 			<a href="/post/abc097c/" rel="bookmark">
 			Abc097c
 			</a>
@@ -76,22 +94,6 @@ use std::collections::HashSet; fn read&lt;T: std::str::FromStr&gt;() -&gt; T { l
 以下提出コードです。
 fn read&lt;T: std::str::FromStr&gt;() -&gt; T { let mut s = String::new(); std::io::stdin().read_line(&amp;mut s).ok(); s.trim().parse().ok().unwrap() } fn read_vec&lt;T: std::str::FromStr&gt;() -&gt; Vec&lt;T&gt; { read::&lt;String&gt;().
 	</div>
-</article><article class="list__item post">
-	
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/post/abc047d/" rel="bookmark">
-			Abc047d
-			</a>
-		</h2>
-		
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		解法は解説通り。
-利益最大となる町の組み合わせ（買う店と売る店の組み合わせ）が複数存在する可能性もあるため一度最大の利益を求める。 その後, 町1から町i-1と町iで求められる利益と先に求めた最大の利益が同じ場合の数を カウントしていく。
-以下提出コードです。
-fn read&lt;T: std::str::FromStr&gt;() -&gt; T { let mut s = String::new(); std::io::stdin().read_line(&amp;mut s).ok(); s.trim().parse().ok().unwrap() } fn read_vec&lt;T: std::str::FromStr&gt;() -&gt; Vec&lt;T&gt; { read::&lt;String&gt;().split_whitespace() .map(|e| e.parse().ok().unwrap()).collect() } fn main() { let nt: Vec&lt;u64&gt; = read_vec::&lt;u64&gt;(); let a: Vec&lt;u64&gt; = read_vec::&lt;u64&gt;(); let mut min: u64 = 1_000_000_000; let mut max: u64 = 0; let mut cnt: u32 = 0; for i in 0.
-	</div>
 </article>
 </main>
 
@@ -116,11 +118,11 @@ fn read&lt;T: std::str::FromStr&gt;() -&gt; T { let mut s = String::new(); std::
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/post/abc129c/">Abc129c</a></li>
 			<li class="widget__item"><a class="widget__link" href="/post/abc128c/">Abc128c</a></li>
 			<li class="widget__item"><a class="widget__link" href="/post/abc226c/">Abc226c</a></li>
 			<li class="widget__item"><a class="widget__link" href="/post/abc125/">Abc124c</a></li>
 			<li class="widget__item"><a class="widget__link" href="/post/abc044c/">Abc044c</a></li>
-			<li class="widget__item"><a class="widget__link" href="/post/abc224d/">Abc224d</a></li>
 		</ul>
 	</div>
 </div>

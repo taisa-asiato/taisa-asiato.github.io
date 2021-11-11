@@ -44,6 +44,22 @@
 	
 	<header class="list__header">
 		<h2 class="list__title post__title">
+			<a href="/post/abc047d/" rel="bookmark">
+			Abc047d
+			</a>
+		</h2>
+		
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		解法は解説通り。
+利益最大となる町の組み合わせ（買う店と売る店の組み合わせ）が複数存在する可能性もあるため一度最大の利益を求める。 その後, 町1から町i-1と町iで求められる利益と先に求めた最大の利益が同じ場合の数を カウントしていく。
+以下提出コードです。
+fn read&lt;T: std::str::FromStr&gt;() -&gt; T { let mut s = String::new(); std::io::stdin().read_line(&amp;mut s).ok(); s.trim().parse().ok().unwrap() } fn read_vec&lt;T: std::str::FromStr&gt;() -&gt; Vec&lt;T&gt; { read::&lt;String&gt;().split_whitespace() .map(|e| e.parse().ok().unwrap()).collect() } fn main() { let nt: Vec&lt;u64&gt; = read_vec::&lt;u64&gt;(); let a: Vec&lt;u64&gt; = read_vec::&lt;u64&gt;(); let mut min: u64 = 1_000_000_000; let mut max: u64 = 0; let mut cnt: u32 = 0; for i in 0.
+	</div>
+</article><article class="list__item post">
+	
+	<header class="list__header">
+		<h2 class="list__title post__title">
 			<a href="/post/abc088c/" rel="bookmark">
 			Abc088c
 			</a>
@@ -70,21 +86,6 @@ fn read&lt;T: std::str::FromStr&gt;() -&gt; T { let mut s = String::new(); std::
 		全ての組み合わせを試すか, 1の位が一番小さな料理を最後にオーダーするかの 方法がある。後者で解いた。 以下提出コードです。
 fn read&lt;T: std::str::FromStr&gt;() -&gt; T { let mut s = String::new(); std::io::stdin().read_line(&amp;mut s).ok(); s.trim().parse().ok().unwrap() } fn main() { let mut v: Vec&lt;u32&gt; = Vec::new(); let mut a: Vec&lt;u32&gt; = Vec::new(); let mut r: Vec&lt;u32&gt; = Vec::new(); let mut ans: u32 = 0; for i in 0.
 	</div>
-</article><article class="list__item post">
-	
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/post/abc084c/" rel="bookmark">
-			Abc084C
-			</a>
-		</h2>
-		
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		問題記載のとおり, ダイアグラムを考え実装するだけ。 自力で実装したが, 解説を見たらそちらの方がわかりやすかった。
-以下提出コードです。
-fn read&lt;T: std::str::FromStr&gt;() -&gt; T { let mut s = String::new(); std::io::stdin().read_line(&amp;mut s).ok(); s.trim().parse().ok().unwrap() } fn read_vec&lt;T: std::str::FromStr&gt;() -&gt; Vec&lt;T&gt; { read::&lt;String&gt;().split_whitespace() .map(|e| e.parse().ok().unwrap()).collect() } fn main() { let n: usize = read::&lt;usize&gt;(); let mut v: Vec&lt;Vec&lt;u64&gt;&gt; = Vec::new(); let mut t: Vec&lt;u64&gt; = Vec::new(); for i in 0.
-	</div>
 </article>
 </main>
 
@@ -108,11 +109,11 @@ fn read&lt;T: std::str::FromStr&gt;() -&gt; T { let mut s = String::new(); std::
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/post/abc129c/">Abc129c</a></li>
 			<li class="widget__item"><a class="widget__link" href="/post/abc128c/">Abc128c</a></li>
 			<li class="widget__item"><a class="widget__link" href="/post/abc226c/">Abc226c</a></li>
 			<li class="widget__item"><a class="widget__link" href="/post/abc125/">Abc124c</a></li>
 			<li class="widget__item"><a class="widget__link" href="/post/abc044c/">Abc044c</a></li>
-			<li class="widget__item"><a class="widget__link" href="/post/abc224d/">Abc224d</a></li>
 		</ul>
 	</div>
 </div>
