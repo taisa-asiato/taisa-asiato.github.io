@@ -44,6 +44,21 @@
 	
 	<header class="list__header">
 		<h2 class="list__title post__title">
+			<a href="/post/abc116c/" rel="bookmark">
+			Abc116c
+			</a>
+		</h2>
+		
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		自力で解けた。 一度の操作で水やりできる最大区間を求め水やりを行う操作を繰り返せば良い。
+以下提出コードです。
+fn read&lt;T: std::str::FromStr&gt;() -&gt; T { let mut s = String::new(); std::io::stdin().read_line(&amp;mut s).ok(); s.trim().parse().ok().unwrap() } fn read_vec&lt;T: std::str::FromStr&gt;() -&gt; Vec&lt;T&gt; { read::&lt;String&gt;().split_whitespace() .map(|e| e.parse().ok().unwrap()).collect() } fn main() { let n: usize = read::&lt;usize&gt;(); let mut v: Vec&lt;i32&gt; = read_vec::&lt;i32&gt;(); let mut cnt: u32 = 0; loop { let lr: (i32, i32) = lr(&amp;v); if lr.
+	</div>
+</article><article class="list__item post">
+	
+	<header class="list__header">
+		<h2 class="list__title post__title">
 			<a href="/post/abc114c/" rel="bookmark">
 			Abc114c
 			</a>
@@ -71,22 +86,6 @@ fn read&lt;T: std::str::FromStr&gt;() -&gt; T { let mut s = String::new(); std::
 以下提出コードです。
 use std::collections::BTreeMap; fn read&lt;T: std::str::FromStr&gt;() -&gt; T { let mut s = String::new(); std::io::stdin().read_line(&amp;mut s).ok(); s.trim().parse().ok().unwrap() } fn read_vec&lt;T: std::str::FromStr&gt;() -&gt; Vec&lt;T&gt; { read::&lt;String&gt;().
 	</div>
-</article><article class="list__item post">
-	
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/post/abc110c/" rel="bookmark">
-			Abc110c
-			</a>
-		</h2>
-		
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		解法は解説通り。
-文字変換テーブルを作成し, 変換する文字と変換後の文字が全単射の関係になれば よい。
-提出コードは下記です。
-use std::collections::HashMap; fn read&lt;T: std::str::FromStr&gt;() -&gt; T { let mut s = String::new(); std::io::stdin().read_line(&amp;mut s).ok(); s.trim().parse().ok().unwrap() } fn read_vec&lt;T: std::str::FromStr&gt;() -&gt; Vec&lt;T&gt; { read::&lt;String&gt;().split_whitespace() .map(|e| e.
-	</div>
 </article>
 </main>
 
@@ -110,11 +109,11 @@ use std::collections::HashMap; fn read&lt;T: std::str::FromStr&gt;() -&gt; T { l
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/post/abc227c/">Abc227c</a></li>
 			<li class="widget__item"><a class="widget__link" href="/post/abc129c/">Abc129c</a></li>
 			<li class="widget__item"><a class="widget__link" href="/post/abc128c/">Abc128c</a></li>
 			<li class="widget__item"><a class="widget__link" href="/post/abc226c/">Abc226c</a></li>
 			<li class="widget__item"><a class="widget__link" href="/post/abc125/">Abc124c</a></li>
-			<li class="widget__item"><a class="widget__link" href="/post/abc044c/">Abc044c</a></li>
 		</ul>
 	</div>
 </div>

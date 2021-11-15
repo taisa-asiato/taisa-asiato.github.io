@@ -6,7 +6,22 @@
     <description>Recent content in procon on でぶろぐ</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Thu, 11 Nov 2021 22:53:11 +0900</lastBuildDate><atom:link href="https://taisa-asiato.github.io/tags/procon/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 15 Nov 2021 22:56:02 +0900</lastBuildDate><atom:link href="https://taisa-asiato.github.io/tags/procon/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Abc227c</title>
+      <link>https://taisa-asiato.github.io/post/abc227c/</link>
+      <pubDate>Mon, 15 Nov 2021 22:56:02 +0900</pubDate>
+      
+      <guid>https://taisa-asiato.github.io/post/abc227c/</guid>
+      <description>解説どおり。
+問題文から愚直解では明らかにTLEとなる。
+工夫して探索範囲を小さくする必要がある。
+具体的には, a≤b≤cの制約から, 明らかにaの範囲はa≤3√nとなる。 同様に, bの範囲はb≤√nとなる。 また, a, bの値が確定している場合, cの個数はループでカウントすることなくn/(a^b)-b+1となる。 以上をコードに落とし込めばACとなる。 なお, 誤差を考えると実際はa3≤nなどと置く方がよい。
+実装方針はわかったが実装まで行くことができなかったのが悔しい。
+以下提出コードです。
+fn read&amp;lt;T: std::str::FromStr&amp;gt;() -&amp;gt; T { let mut s = String::new(); std::io::stdin().read_line(&amp;amp;mut s).ok(); s.</description>
+    </item>
+    
     <item>
       <title>Abc129c</title>
       <link>https://taisa-asiato.github.io/post/abc129c/</link>

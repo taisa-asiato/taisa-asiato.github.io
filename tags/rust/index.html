@@ -45,6 +45,25 @@
 	
 	<header class="list__header">
 		<h2 class="list__title post__title">
+			<a href="/post/abc227c/" rel="bookmark">
+			Abc227c
+			</a>
+		</h2>
+		
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		解説どおり。
+問題文から愚直解では明らかにTLEとなる。
+工夫して探索範囲を小さくする必要がある。
+具体的には, a≤b≤cの制約から, 明らかにaの範囲はa≤3√nとなる。 同様に, bの範囲はb≤√nとなる。 また, a, bの値が確定している場合, cの個数はループでカウントすることなくn/(a^b)-b+1となる。 以上をコードに落とし込めばACとなる。 なお, 誤差を考えると実際はa3≤nなどと置く方がよい。
+実装方針はわかったが実装まで行くことができなかったのが悔しい。
+以下提出コードです。
+fn read&lt;T: std::str::FromStr&gt;() -&gt; T { let mut s = String::new(); std::io::stdin().read_line(&amp;mut s).ok(); s.
+	</div>
+</article><article class="list__item post">
+	
+	<header class="list__header">
+		<h2 class="list__title post__title">
 			<a href="/post/abc129c/" rel="bookmark">
 			Abc129c
 			</a>
@@ -77,22 +96,6 @@ fn read&lt;T: std::str::FromStr&gt;() -&gt; T { let mut s = String::new(); std::
 以下提出コードです。
 fn read&lt;T: std::str::FromStr&gt;() -&gt; T { let mut s = String::new(); std::io::stdin().read_line(&amp;mut s).ok(); s.trim().parse().ok().unwrap() } fn read_vec&lt;T: std::str::FromStr&gt;() -&gt; Vec&lt;T&gt; { read::&lt;String&gt;().
 	</div>
-</article><article class="list__item post">
-	
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/post/abc226c/" rel="bookmark">
-			Abc226c
-			</a>
-		</h2>
-		
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		回答は解説通り。
-解き方自体はコンテスト中に思いついたが, 実装できずにタイプアップしてしまった。 自分の実装力の無さを改めて思い知らされ, かなりショックを受けた一問だった。 上に行くためにこれからも精進し続けるしかないですね&hellip;。
-以下提出コードです。
-fn read&lt;T: std::str::FromStr&gt;() -&gt; T { let mut s = String::new(); std::io::stdin().read_line(&amp;mut s).ok(); s.trim().parse().ok().unwrap() } fn read_vec&lt;T: std::str::FromStr&gt;() -&gt; Vec&lt;T&gt; { read::&lt;String&gt;().split_whitespace() .map(|e| e.
-	</div>
 </article>
 </main>
 
@@ -116,11 +119,11 @@ fn read&lt;T: std::str::FromStr&gt;() -&gt; T { let mut s = String::new(); std::
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/post/abc227c/">Abc227c</a></li>
 			<li class="widget__item"><a class="widget__link" href="/post/abc129c/">Abc129c</a></li>
 			<li class="widget__item"><a class="widget__link" href="/post/abc128c/">Abc128c</a></li>
 			<li class="widget__item"><a class="widget__link" href="/post/abc226c/">Abc226c</a></li>
 			<li class="widget__item"><a class="widget__link" href="/post/abc125/">Abc124c</a></li>
-			<li class="widget__item"><a class="widget__link" href="/post/abc044c/">Abc044c</a></li>
 		</ul>
 	</div>
 </div>

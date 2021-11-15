@@ -48,6 +48,22 @@ weight = &ldquo;10&rdquo;</p>
 	
 	<header class="list__header">
 		<h2 class="list__title post__title">
+			<a href="/post/abc110c/" rel="bookmark">
+			Abc110c
+			</a>
+		</h2>
+		
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		解法は解説通り。
+文字変換テーブルを作成し, 変換する文字と変換後の文字が全単射の関係になれば よい。
+提出コードは下記です。
+use std::collections::HashMap; fn read&lt;T: std::str::FromStr&gt;() -&gt; T { let mut s = String::new(); std::io::stdin().read_line(&amp;mut s).ok(); s.trim().parse().ok().unwrap() } fn read_vec&lt;T: std::str::FromStr&gt;() -&gt; Vec&lt;T&gt; { read::&lt;String&gt;().split_whitespace() .map(|e| e.
+	</div>
+</article><article class="list__item post">
+	
+	<header class="list__header">
+		<h2 class="list__title post__title">
 			<a href="/post/abc109c/" rel="bookmark">
 			Abc109c
 			</a>
@@ -77,22 +93,6 @@ fn read&lt;T: std::str::FromStr&gt;() -&gt; T { let mut s = String::new(); std::
 以下提出コードです。
 fn read&lt;T: std::str::FromStr&gt;() -&gt; T { let mut s = String::new(); std::io::stdin().
 	</div>
-</article><article class="list__item post">
-	
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/post/abc220d/" rel="bookmark">
-			Abc220d
-			</a>
-		</h2>
-		
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		解法は解説どおり。
-Aiまで操作を行った際, 左端の値がjである回数をdp[i][j]にメモする。 ANまで操作を行っていき, 最終的にdp[N][0]からdp[N][9]の値が答えとなる。
-※ 配列の宣言, 回数の数え上げでミスをしていた。
-// これは要素数1_000_00の配列を10個宣言なので間違い let mut ary: [[u32; 1_000_00]; 10]; // 正しくは以下 let mut ary: [[u32; 10]; 1_000_00]; // これはdp[i][j]%mod+dp[i][j]の値をdp[m][n]に代入する操作 dp[m][n] += dp[i][j]%mod; // 正しい操作は, (dp[m][n]+dp[i][j])%modをdp[m][n]に代入する操作 自分はこんな変なことをしていたのかとかなりショックを受けた。
-	</div>
 </article>
 </main>
 
@@ -117,11 +117,11 @@ Aiまで操作を行った際, 左端の値がjである回数をdp[i][j]にメ�
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/post/abc227c/">Abc227c</a></li>
 			<li class="widget__item"><a class="widget__link" href="/post/abc129c/">Abc129c</a></li>
 			<li class="widget__item"><a class="widget__link" href="/post/abc128c/">Abc128c</a></li>
 			<li class="widget__item"><a class="widget__link" href="/post/abc226c/">Abc226c</a></li>
 			<li class="widget__item"><a class="widget__link" href="/post/abc125/">Abc124c</a></li>
-			<li class="widget__item"><a class="widget__link" href="/post/abc044c/">Abc044c</a></li>
 		</ul>
 	</div>
 </div>

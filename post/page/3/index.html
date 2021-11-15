@@ -48,6 +48,24 @@ weight = &ldquo;10&rdquo;</p>
 	
 	<header class="list__header">
 		<h2 class="list__title post__title">
+			<a href="/post/abc224d/" rel="bookmark">
+			Abc224d
+			</a>
+		</h2>
+		
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		解説どおり。コードも解説のものと同じ。
+各頂点の隣接頂点の配列を入力を元に作成する。 また, 初期状態と目標状態を配列で保持する。 このとき, コマが置かれていない頂点は目印(例えば-1など)の値を設定する。
+初期状態から, コマが置かれていない頂点を探し, その頂点へ隣接する各頂点からコマを移動したときの頂点とコマの状態を HashMapに記録する。このとき, 初期状態から何回コマを動かしたかを値として記録する。 この操作を繰り返し行うことで全探索を行い, 目標とする配列の状態へと遷移できるかを調べる。
+終了条件を設定するため, 頂点とコマの状態の配列をHashMap及びVecDequeで管理する。 HashMapに記録されていない状態の配列の場合はHashMapに記録し, VecDequeに配列を追加する。 探索を行う際, VecDequeから配列を取り出し, 上記の探索を行う。 探索が終了した状態の配列はVecDequeから取り除く。 VecDequeが空になった場合が終了状態となる。 最終的に目標状態の配列がHashMapに登録されていれば, その値を出力すれば良い。
+以下提出コードです。 ほぼほぼCのコード。Rustっぽく書くにはどうすれば良いのだろうか。
+use std::collections::HashMap; use std::collections::VecDeque; fn read&lt;T: std::str::FromStr&gt;() -&gt; T { let mut s = String::new(); std::io::stdin().
+	</div>
+</article><article class="list__item post">
+	
+	<header class="list__header">
+		<h2 class="list__title post__title">
 			<a href="/post/abc118c/" rel="bookmark">
 			Abc118c
 			</a>
@@ -77,21 +95,6 @@ fn read&lt;T: std::str::FromStr&gt;() -&gt; T { let mut s = String::new(); std::
 以下提出コードです。
 fn read&lt;T: std::str::FromStr&gt;() -&gt; T { let mut s = String::new(); std::io::stdin().read_line(&amp;mut s).ok(); s.trim().parse().ok().unwrap() } fn read_vec&lt;T: std::str::FromStr&gt;() -&gt; Vec&lt;T&gt; { read::&lt;String&gt;().
 	</div>
-</article><article class="list__item post">
-	
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/post/abc116c/" rel="bookmark">
-			Abc116c
-			</a>
-		</h2>
-		
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		自力で解けた。 一度の操作で水やりできる最大区間を求め水やりを行う操作を繰り返せば良い。
-以下提出コードです。
-fn read&lt;T: std::str::FromStr&gt;() -&gt; T { let mut s = String::new(); std::io::stdin().read_line(&amp;mut s).ok(); s.trim().parse().ok().unwrap() } fn read_vec&lt;T: std::str::FromStr&gt;() -&gt; Vec&lt;T&gt; { read::&lt;String&gt;().split_whitespace() .map(|e| e.parse().ok().unwrap()).collect() } fn main() { let n: usize = read::&lt;usize&gt;(); let mut v: Vec&lt;i32&gt; = read_vec::&lt;i32&gt;(); let mut cnt: u32 = 0; loop { let lr: (i32, i32) = lr(&amp;v); if lr.
-	</div>
 </article>
 </main>
 
@@ -116,11 +119,11 @@ fn read&lt;T: std::str::FromStr&gt;() -&gt; T { let mut s = String::new(); std::
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/post/abc227c/">Abc227c</a></li>
 			<li class="widget__item"><a class="widget__link" href="/post/abc129c/">Abc129c</a></li>
 			<li class="widget__item"><a class="widget__link" href="/post/abc128c/">Abc128c</a></li>
 			<li class="widget__item"><a class="widget__link" href="/post/abc226c/">Abc226c</a></li>
 			<li class="widget__item"><a class="widget__link" href="/post/abc125/">Abc124c</a></li>
-			<li class="widget__item"><a class="widget__link" href="/post/abc044c/">Abc044c</a></li>
 		</ul>
 	</div>
 </div>
